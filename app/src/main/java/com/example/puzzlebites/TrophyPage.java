@@ -27,20 +27,7 @@ public class TrophyPage extends AppCompatActivity {
                         */
                         int resultTrophy = trophyPageExit.getResultCode();
                         Intent trophyData = trophyPageExit.getData();
-                        if(trophyData.getBooleanExtra("Return", false));
-                        /*int result = activityResultFence.getResultCode();
-                        Intent data = activityResultFence.getData();
-                        assert data != null;
-                        Global.area = data.getIntExtra("areaStr",0);
-                        TextView outputTV = findViewById(R.id.outputTV);
-                        float cost = (Global.area/(float)coverage*Global.costPerLiter);
-                        litersUsed = Global.area/(float)coverage*(float)3.8;
-                        int rounded = round(cost);
-                        //find 10 percent below and above
-                        int belowInt = (int) ((int) rounded*.90);
-                        int aboveInt = (int) ((int) rounded*1.10);
-                        outputTV.setText("Using " + String.format("%.2f",litersUsed) + " cans of paint, the cost will be anywhere from $" + belowInt
-                                + " to $" + aboveInt);*/
+
                     }
                 }
         );
