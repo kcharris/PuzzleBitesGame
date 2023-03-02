@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.384"
-        app:srcCompat="@drawable/goldStar" />
+        app:srcCompat="@drawable/goldstar" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.713"
-        app:srcCompat="@drawable/goldStar" />
+        app:srcCompat="@drawable/goldstar" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
-        app:srcCompat="@drawable/silverStar" />
+        app:srcCompat="@drawable/silverstar" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.595"
-        app:srcCompat="@drawable/bronzeStar" />
+        app:srcCompat="@drawable/bronzestar" />
 
     <Button
         android:id="@+id/exitBTN"
