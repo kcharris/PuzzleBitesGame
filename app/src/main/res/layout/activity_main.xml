@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="settings"
     tools:context=".MainActivity">
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="153dp"
         android:layout_marginEnd="162dp"
+        android:onClick="startPuzzleSelection"
         android:text="PLAY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +38,7 @@
         android:layout_marginStart="151dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="152dp"
+        android:onClick="settings"
         android:text="SETTINGS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
