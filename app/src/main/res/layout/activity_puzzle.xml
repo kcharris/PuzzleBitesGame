@@ -6,4 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".PuzzleActivity">
 
+    <Button
+        android:id="@+id/puzzleDownBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="122dp"
+        android:text="DOWN"
+        app:layout_constraintStart_toEndOf="@+id/puzzleInactiveTV"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleLeftBTN" />
+
+    <Button
+        android:id="@+id/puzzleLeftBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="102dp"
+        android:text="Left"
+        app:layout_constraintStart_toEndOf="@+id/puzzleActiveTV"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleUpBTN" />
+
+    <Button
+        android:id="@+id/puzzleUpBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="14dp"
+        android:text="UP"
+        app:layout_constraintStart_toEndOf="@+id/puzzleLevelTV"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="423dp"
+        android:layout_height="473dp"
+        android:layout_marginTop="57dp"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/app_name"
+        android:cropToPadding="false"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/checkerboard" />
+
+    <Button
+        android:id="@+id/puzzleBackBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="9dp"
+        android:text="<--"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/puzzleRightBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="RIGHT"
+        app:layout_constraintStart_toEndOf="@+id/puzzleLeftBTN"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleUpBTN" />
+
+    <TextView
+        android:id="@+id/puzzleMovesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="18dp"
+        android:background="#CBCBCB"
+        android:padding="10dp"
+        android:text="Move: # ____"
+        app:layout_constraintStart_toEndOf="@+id/puzzleBackBTN"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/puzzleLevelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
+        android:text="Level #:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+    <TextView
+        android:id="@+id/puzzleActiveTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="34dp"
+        android:text="Active:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleLevelTV" />
+
+    <TextView
+        android:id="@+id/puzzleInactiveTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="34dp"
+        android:text="Inactive:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleActiveTV" />
+
+    <Button
+        android:id="@+id/puzzleUndoBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="14dp"
+        android:text="UNDO"
+        app:layout_constraintStart_toEndOf="@+id/puzzleUpBTN"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+    <Button
+        android:id="@+id/puzzleActivityResetBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:text="RESET"
+        app:layout_constraintStart_toEndOf="@+id/puzzleDownBTN"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleUndoBTN" />
 </androidx.constraintlayout.widget.ConstraintLayout>
