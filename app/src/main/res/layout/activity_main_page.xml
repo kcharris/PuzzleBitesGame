@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainPageActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="423dp"
-        android:layout_height="473dp"
-        android:layout_marginTop="57dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/app_name"
-        android:cropToPadding="false"
-        android:padding="5dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/checkerboard" />
-
     <Button
         android:id="@+id/backBTN"
         android:layout_width="wrap_content"
@@ -36,10 +21,10 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="10dp"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/levelTV"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <Button
         android:id="@+id/rightBTN"
@@ -73,10 +58,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="10dp"
         android:text="UNDO"
         app:layout_constraintStart_toEndOf="@+id/upBTN"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <Button
         android:id="@+id/puzzleResetBTN"
@@ -93,10 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:text="Level #:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <TextView
         android:id="@+id/activeTV"
@@ -129,4 +114,17 @@
         android:text="Move: # ____"
         app:layout_constraintStart_toEndOf="@+id/backBTN"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/upBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backBTN"
+        app:srcCompat="@drawable/updatedcheckerboard" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
