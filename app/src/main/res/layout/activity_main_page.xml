@@ -6,4 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".MainPageActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="423dp"
+        android:layout_height="473dp"
+        android:layout_marginTop="57dp"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/app_name"
+        android:cropToPadding="false"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/checkerboard" />
+
+    <Button
+        android:id="@+id/backBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="9dp"
+        android:text="<--"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/upBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="14dp"
+        android:text="UP"
+        app:layout_constraintStart_toEndOf="@+id/levelTV"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <Button
+        android:id="@+id/rightBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="RIGHT"
+        app:layout_constraintStart_toEndOf="@+id/leftBTN"
+        app:layout_constraintTop_toBottomOf="@+id/upBTN" />
+
+    <Button
+        android:id="@+id/leftBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="102dp"
+        android:text="LEFT"
+        app:layout_constraintStart_toEndOf="@+id/activeTV"
+        app:layout_constraintTop_toBottomOf="@+id/upBTN" />
+
+    <Button
+        android:id="@+id/downBTN"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="1dp"
+        android:text="DOWN"
+        app:layout_constraintStart_toEndOf="@+id/inactiveTV"
+        app:layout_constraintTop_toBottomOf="@+id/rightBTN" />
+
+    <Button
+        android:id="@+id/undoBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="14dp"
+        android:text="UNDO"
+        app:layout_constraintStart_toEndOf="@+id/upBTN"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <Button
+        android:id="@+id/puzzleResetBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="84dp"
+        android:text="RESET"
+        app:layout_constraintStart_toEndOf="@+id/downBTN"
+        app:layout_constraintTop_toBottomOf="@+id/undoBTN" />
+
+    <TextView
+        android:id="@+id/levelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
+        android:text="Level #:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <TextView
+        android:id="@+id/activeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="34dp"
+        android:text="Active:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelTV" />
+
+    <TextView
+        android:id="@+id/inactiveTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="31dp"
+        android:text="Inactive:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activeTV" />
+
+    <TextView
+        android:id="@+id/movesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="18dp"
+        android:background="#CBCBCB"
+        android:padding="10dp"
+        android:text="Move: # ____"
+        app:layout_constraintStart_toEndOf="@+id/backBTN"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
