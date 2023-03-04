@@ -6,10 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".setting">
 
+    <Button
+        android:id="@+id/changeBgdBTN4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="116dp"
+        android:text="Change Sound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/changeBgdBTN3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Dark Mode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN4" />
+
+    <Button
+        android:id="@+id/changeBgdBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Animation Speed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN3" />
+
+    <Button
+        android:id="@+id/changeBgdBTN2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="CHANGE BACKGROUND"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN" />
+
     <ImageButton
         android:id="@+id/returnSetBTN"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="77dp"
+        android:layout_height="78dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:onClick="returnHome"
@@ -26,26 +69,23 @@
         android:id="@+id/resetBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
+        android:layout_margin="10dp"
         android:text="RESET SCORES"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN2" />
 
-    <Button
-        android:id="@+id/changeBgdBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="CHANGE BACKGROUND"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/resetBTN"
-        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="242dp"
+        android:layout_height="74dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="19dp"
+        android:text="Settings"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/returnSetBTN"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
