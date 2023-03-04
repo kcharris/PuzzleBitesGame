@@ -47,6 +47,7 @@ public class MainPageActivity extends AppCompatActivity {
         puzzle.putExtra("puzzle",0);
         setResult(Activity.RESULT_OK, puzzle);
         pStartLauncher.launch(puzzle);
+        finish();
     }
 
     public void toTrophies(View v){
@@ -54,6 +55,7 @@ public class MainPageActivity extends AppCompatActivity {
         trophy.putExtra("trophy",0);
         setResult(Activity.RESULT_OK, trophy);
         pStartLauncher.launch(trophy);
+        finish();
     }
 
 }

@@ -39,6 +39,7 @@ public class PuzzleActivity extends AppCompatActivity {
         puzzle.putExtra("puzzle",0);
         setResult(Activity.RESULT_OK, puzzle);
         sStartLauncher.launch(puzzle);
+        finish();
     }
     public void returnMain(View v)
     {
