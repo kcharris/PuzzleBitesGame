@@ -23,4 +23,11 @@ public class MainPageActivity extends AppCompatActivity {
         finish();
     }
 
+    public void toPuzzle() {
+        Intent puzzle = new Intent(this,PuzzleActivity.class);
+        puzzle.putExtra("puzzle",0);
+        setResult(Activity.RESULT_OK,puzzle);
+        finish();
+    }
+
 }

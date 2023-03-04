@@ -27,9 +27,9 @@ public class TrophyPage extends AppCompatActivity {
                         */
                         int resultTrophy = trophyPageExit.getResultCode();
                         Intent trophyData = trophyPageExit.getData();
-
                     }
                 }
         );
+
     }
 }
