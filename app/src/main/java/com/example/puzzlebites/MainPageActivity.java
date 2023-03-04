@@ -49,4 +49,11 @@ public class MainPageActivity extends AppCompatActivity {
         pStartLauncher.launch(puzzle);
     }
 
+    public void toTrophies(View v){
+        Intent trophy = new Intent(this, TrophyPage.class);
+        trophy.putExtra("trophy",0);
+        setResult(Activity.RESULT_OK, trophy);
+        pStartLauncher.launch(trophy);
+    }
+
 }
