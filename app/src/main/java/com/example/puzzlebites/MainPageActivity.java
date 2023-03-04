@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 public class MainPageActivity extends AppCompatActivity {
 
@@ -23,10 +24,10 @@ public class MainPageActivity extends AppCompatActivity {
         finish();
     }
 
-    public void toPuzzle() {
+    public void toPuzzle(ImageButton b) {
         Intent puzzle = new Intent(this,PuzzleActivity.class);
         puzzle.putExtra("puzzle",0);
-        setResult(Activity.RESULT_OK,puzzle);
+        setResult(Activity.RESULT_OK, puzzle);
         finish();
     }
 
