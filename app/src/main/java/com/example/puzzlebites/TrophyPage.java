@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class TrophyPage extends AppCompatActivity {
@@ -30,6 +31,17 @@ public class TrophyPage extends AppCompatActivity {
                     }
                 }
         );
+    }
 
+    public void returnButton(View v){
+        Intent trophy = new Intent(this, MainPageActivity.class);
+        startActivity(trophy);
+        finish();
+    }
+
+    public void exitButton(View v){
+        Intent trophy = new Intent(this, MainPageActivity.class);
+        startActivity(trophy);
+        finish();
     }
 }
