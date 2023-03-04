@@ -48,7 +48,7 @@ public class scoreScreen extends AppCompatActivity {
 
     public void retryBTN(View v) {
         Intent retryPuzzle = new Intent(this, PuzzleActivity.class);
-
+        setResult(Activity.RESULT_OK, retryPuzzle);
     }
 }
 
