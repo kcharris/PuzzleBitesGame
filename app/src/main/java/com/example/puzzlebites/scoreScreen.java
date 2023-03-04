@@ -37,18 +37,22 @@ public class scoreScreen extends AppCompatActivity {
         Intent mainPageIntent = new Intent(this, MainPageActivity.class);
         mainPageIntent.putExtra("Return", 0);
         setResult(Activity.RESULT_OK, mainPageIntent);
+        mpStartLauncher.launch(mainPageIntent);
         finish();
     }
 
     public void exitBTN(View v) {
         Intent mainPageIntent = new Intent(this, MainPageActivity.class);
         setResult(Activity.RESULT_OK, mainPageIntent);
+        mpStartLauncher.launch(mainPageIntent);
         finish();
     }
 
     public void retryBTN(View v) {
         Intent retryPuzzle = new Intent(this, PuzzleActivity.class);
         setResult(Activity.RESULT_OK, retryPuzzle);
+        mpStartLauncher.launch(retryPuzzle);
+        finish();
     }
 }
 

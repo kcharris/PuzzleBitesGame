@@ -35,7 +35,7 @@ public class PuzzleActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> sStartLauncher;
 
     public void skipPuzzle(View v) {
-        Intent puzzle = new Intent(this,PuzzleActivity.class);
+        Intent puzzle = new Intent(this,scoreScreen.class);
         puzzle.putExtra("puzzle",0);
         setResult(Activity.RESULT_OK, puzzle);
         sStartLauncher.launch(puzzle);
@@ -47,9 +47,9 @@ public class PuzzleActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
-    public void finishPuzzle(View v){
+    /*public void finishPuzzle(View v){
         Intent scoreIntent = new Intent(this, scoreScreen.class);
         startActivity(scoreIntent);
         finish();
-    }
+    }*/
 }

@@ -136,7 +136,7 @@
         android:id="@+id/buttonFinishPuzzle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="finishPuzzle"
+        android:onClick="skipPuzzle"
         android:text="Finish Puzzle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
