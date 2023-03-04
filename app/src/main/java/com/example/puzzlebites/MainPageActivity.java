@@ -1,5 +1,9 @@
 package com.example.puzzlebites;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -14,7 +18,21 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        pStartLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if(result.getResultCode() == Activity.RESULT_OK)
+                        {
+
+                        }
+                    }
+                });
     }
+
+    private ActivityResultLauncher<Intent> pStartLauncher;
 
     public void returnHome(View v)
     {
@@ -24,11 +42,11 @@ public class MainPageActivity extends AppCompatActivity {
         finish();
     }
 
-    public void toPuzzle(ImageButton b) {
+    public void toPuzzle(View v) {
         Intent puzzle = new Intent(this,PuzzleActivity.class);
         puzzle.putExtra("puzzle",0);
         setResult(Activity.RESULT_OK, puzzle);
-        finish();
+        pStartLauncher.launch(puzzle);
     }
 
 }
