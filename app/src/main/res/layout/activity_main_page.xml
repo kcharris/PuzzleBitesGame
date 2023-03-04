@@ -199,6 +199,7 @@
         android:layout_height="57dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
+        android:onClick="toPuzzle"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
