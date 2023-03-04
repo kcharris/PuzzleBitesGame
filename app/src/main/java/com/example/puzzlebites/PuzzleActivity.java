@@ -40,4 +40,11 @@ public class PuzzleActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, puzzle);
         sStartLauncher.launch(puzzle);
     }
+    public void returnMain(View v)
+    {
+        Intent mainIntent = new Intent(this, MainPageActivity.class);
+        mainIntent.putExtra("Return", 0);
+        setResult(Activity.RESULT_OK, mainIntent);
+        finish();
+    }
 }
