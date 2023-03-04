@@ -32,10 +32,10 @@
         android:layout_marginTop="14dp"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/puzzleLevelTV"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/checkerboardIB" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/checkerboardIB"
         android:layout_width="423dp"
         android:layout_height="473dp"
         android:layout_marginTop="57dp"
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="9dp"
-        android:text="--"
+        android:text="<--"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +89,7 @@
         android:layout_marginTop="44dp"
         android:text="Level #:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/checkerboardIB" />
 
     <TextView
         android:id="@+id/puzzleActiveTV"
@@ -119,7 +119,7 @@
         android:layout_marginTop="14dp"
         android:text="UNDO"
         app:layout_constraintStart_toEndOf="@+id/puzzleUpBTN"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/checkerboardIB" />
 
     <Button
         android:id="@+id/puzzleActivityResetBTN"
