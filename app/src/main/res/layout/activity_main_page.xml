@@ -130,6 +130,22 @@
         app:srcCompat="@drawable/updatedcheckerboard" />
 
     <ImageButton
+        android:id="@+id/trophiesBTN"
+        android:layout_width="54dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#EFEDED"
+        android:contentDescription="Sends the user to Puzzle1"
+        android:onClick="toTrophies"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609"
+        app:srcCompat="@drawable/goldenstar" />
+
+    <ImageButton
         android:id="@+id/PuzzleBTN1"
         android:layout_width="54dp"
         android:layout_height="57dp"
