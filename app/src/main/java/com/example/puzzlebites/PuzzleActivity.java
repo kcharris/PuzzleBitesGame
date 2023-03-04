@@ -21,4 +21,9 @@ public class PuzzleActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
+    public void finishPuzzle(View v){
+        Intent scoreIntent = new Intent(this, scoreScreen.class);
+        startActivity(scoreIntent);
+        finish();
+    }
 }
