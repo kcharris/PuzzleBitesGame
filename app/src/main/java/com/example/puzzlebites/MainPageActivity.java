@@ -32,7 +32,7 @@ public class MainPageActivity extends AppCompatActivity {
                 });
     }
 
-    private ActivityResultLauncher<Intent> pStartLauncher;
+         private ActivityResultLauncher<Intent> pStartLauncher;
 
     public void returnHome(View v)
     {
