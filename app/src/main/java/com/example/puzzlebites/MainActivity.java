@@ -7,9 +7,17 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,25 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*
-        ActivityResultLauncher<Intent> trophyPageLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult trophyPageExit) {
-                        /*My plan is to use one ActivityResult for the exit button and
-                            the back space (returnBTN) button
-                          "Exit" will be the exitBTN, else will be the returnBTN
-
-                        int resultTrophy = trophyPageExit.getResultCode();
-                        Intent trophyData = trophyPageExit.getData();
-                        if(trophyData.getBooleanExtra("Return", false)) {
-
-                        }
-                    }
-                });
-
-            */
 
         mStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -49,11 +38,27 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        try {
+            FileInputStream fin = openFileInput(filename);
+            int x;
+            String temp = "";
+            while ((x = fin.read()) != -1) {
+                temp = temp + Character.toString((char) x);
+            }
+            fin.close();
+            Log.d("fileRead", "File Read " + temp);
+        }catch(Exception e)
+            {
+                Log.d("fileRead", "File not read " + e);
+            }
+
 
 
     }
 
     private ActivityResultLauncher<Intent> mStartLauncher;
+    private String filename = "myFile";
+    private String fileContent = "HelloWorld";
 
     public void startPuzzleSelection(View v)
     {
@@ -69,6 +74,25 @@ public class MainActivity extends AppCompatActivity {
         Intent settings = new Intent(this, setting.class);
         mStartLauncher.launch(settings);
     }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
+        try {
+            FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
+            fos.write(fileContent.getBytes());
+            fos.close();
+            Log.d("fileRead", "file wrote " + fileContent);
+        }catch(Exception e)
+        {
+            Log.d("fileRead", "file not wrote" + e);
+            return;
+        }
+
+    }
+
 
 
 }
