@@ -11,6 +11,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="122dp"
+        android:onClick="moveDown"
         android:text="DOWN"
         app:layout_constraintStart_toEndOf="@+id/puzzleInactiveTV"
         app:layout_constraintTop_toBottomOf="@+id/puzzleLeftBTN" />
@@ -20,6 +21,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="102dp"
+        android:onClick="moveLeft"
         android:text="Left"
         app:layout_constraintStart_toEndOf="@+id/puzzleActiveTV"
         app:layout_constraintTop_toBottomOf="@+id/puzzleUpBTN" />
@@ -29,6 +31,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="125dp"
+        android:onClick="moveUp"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/puzzleLevelTV"
         app:layout_constraintTop_toBottomOf="@+id/GridBoard" />
@@ -48,6 +51,7 @@
         android:id="@+id/puzzleRightBTN"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:onClick="moveRight"
         android:text="RIGHT"
         app:layout_constraintStart_toEndOf="@+id/puzzleLeftBTN"
         app:layout_constraintTop_toBottomOf="@+id/puzzleUpBTN" />

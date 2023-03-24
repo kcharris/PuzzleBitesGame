@@ -48,6 +48,26 @@ public class PuzzleActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
+
+    public void moveUp(View v){
+        
+
+    }
+
+    public void moveDown(View v){
+
+
+    }
+
+    public void moveRight(View v){
+
+
+    }
+
+    public void moveLeft(View v){
+
+
+    }
     /*public void finishPuzzle(View v){
         Intent scoreIntent = new Intent(this, scoreScreen.class);
         startActivity(scoreIntent);
