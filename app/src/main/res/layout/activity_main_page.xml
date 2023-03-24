@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/levelTV"
-        app:layout_constraintTop_toBottomOf="@+id/checkerboardIV" />
+        app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
 
     <Button
         android:id="@+id/rightBTN"
@@ -63,7 +63,7 @@
         android:layout_marginTop="10dp"
         android:text="UNDO"
         app:layout_constraintStart_toEndOf="@+id/upBTN"
-        app:layout_constraintTop_toBottomOf="@+id/checkerboardIV" />
+        app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
 
     <Button
         android:id="@+id/puzzleResetBTN"
@@ -83,7 +83,7 @@
         android:layout_marginTop="40dp"
         android:text="Level #:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkerboardIV" />
+        app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
 
     <TextView
         android:id="@+id/activeTV"
@@ -118,111 +118,99 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/checkerboardIV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/gridboardIV"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/upBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backBTN"
-        app:srcCompat="@drawable/updatedcheckerboard" />
+        app:srcCompat="@drawable/gridboard1" />
 
     <ImageButton
         android:id="@+id/trophiesBTN"
-        android:layout_width="54dp"
-        android:layout_height="57dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginStart="40dp"
         android:backgroundTint="#EFEDED"
-        android:contentDescription="Sends the user to Puzzle1"
+        android:contentDescription="Sends the user to trophie page"
         android:onClick="toTrophies"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
+        app:layout_constraintStart_toStartOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/PuzzleBTN1"
-        android:layout_width="54dp"
-        android:layout_height="57dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="80dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
+        app:layout_constraintStart_toStartOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN2"
-        android:layout_width="54dp"
-        android:layout_height="57dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="160dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
+        app:layout_constraintStart_toStartOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN3"
-        android:layout_width="54dp"
-        android:layout_height="57dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="240dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.249"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
+        app:layout_constraintStart_toStartOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN4"
-        android:layout_width="54dp"
-        android:layout_height="57dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginStart="280dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
+        app:layout_constraintStart_toStartOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN5"
-        android:layout_width="54dp"
-        android:layout_height="57dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="160dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
+        app:layout_constraintStart_toStartOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

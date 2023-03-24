@@ -132,4 +132,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gridboard1" />
 
+    <ImageView
+        android:id="@+id/bagel"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/bagelbitebegin"
+        app:layout_constraintStart_toStartOf="@id/GridBoard"
+        app:layout_constraintTop_toTopOf="@id/GridBoard"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="200dp"
+        tools:layout_editor_absoluteX="-25dp"
+        tools:layout_editor_absoluteY="251dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
