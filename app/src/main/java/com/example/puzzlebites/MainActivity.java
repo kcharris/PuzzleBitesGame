@@ -4,14 +4,20 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,7 +39,15 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if(result.getResultCode() == Activity.RESULT_OK)
                         {
-
+                            Intent i = result.getData();
+                            if(i.getStringExtra("Background") == "blue")
+                            {
+                                bgColor = Color.rgb(176,196,222);
+                            }
+                            else
+                            {
+                                bgColor = Color.rgb(255,255,255);
+                            }
                         }
                     }
                 });
@@ -45,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             while ((x = fin.read()) != -1) {
                 temp = temp + Character.toString((char) x);
             }
+            fileContent = temp;
             fin.close();
             Log.d("fileRead", "File Read " + temp);
         }catch(Exception e)
@@ -52,13 +67,21 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("fileRead", "File not read " + e);
             }
 
+    }
 
-
+    @Nullable
+    @Override
+    public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+        Log.d("fileRead", "StartSetColor");
+        Log.d("fileRead", "Set Color Worked");
+        return super.onCreateView(parent, name, context, attrs);
     }
 
     private ActivityResultLauncher<Intent> mStartLauncher;
-    private String filename = "myFile";
-    private String fileContent = "HelloWorld";
+    private String filename = "savedData";
+    private String fileContent;
+    private int bgColor;
+
 
     public void startPuzzleSelection(View v)
     {
