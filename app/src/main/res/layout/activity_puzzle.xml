@@ -29,27 +29,9 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="14dp"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/puzzleLevelTV"
-        app:layout_constraintTop_toBottomOf="@+id/checkerboardIB" />
-
-    <ImageButton
-        android:id="@+id/checkerboardIB"
-        android:layout_width="423dp"
-        android:layout_height="473dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="14dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/app_name"
-        android:cropToPadding="false"
-        android:padding="5dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/puzzleUpBTN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/checkerboard" />
+        tools:layout_editor_absoluteY="544dp" />
 
     <Button
         android:id="@+id/puzzleBackBTN"
@@ -87,10 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
         android:text="Level #:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkerboardIB" />
+        tools:layout_editor_absoluteY="574dp" />
 
     <TextView
         android:id="@+id/puzzleActiveTV"
@@ -117,10 +98,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
-        android:layout_marginTop="14dp"
         android:text="UNDO"
         app:layout_constraintStart_toEndOf="@+id/puzzleUpBTN"
-        app:layout_constraintTop_toBottomOf="@+id/checkerboardIB" />
+        tools:layout_editor_absoluteY="544dp" />
 
     <Button
         android:id="@+id/puzzleActivityResetBTN"
@@ -138,6 +118,17 @@
         android:layout_height="wrap_content"
         android:onClick="skipPuzzle"
         android:text="Finish Puzzle"
-        app:layout_constraintStart_toStartOf="@+id/checkerboardIB"
-        app:layout_constraintTop_toTopOf="@+id/checkerboardIB" />
+        tools:layout_editor_absoluteY="57dp" />
+
+    <ImageView
+        android:id="@+id/GridBoard"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/GridBoard1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
