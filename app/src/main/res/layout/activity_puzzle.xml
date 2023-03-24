@@ -31,7 +31,7 @@
         android:layout_marginStart="125dp"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/puzzleLevelTV"
-        tools:layout_editor_absoluteY="544dp" />
+        app:layout_constraintTop_toBottomOf="@+id/GridBoard" />
 
     <Button
         android:id="@+id/puzzleBackBTN"
@@ -71,7 +71,7 @@
         android:layout_marginStart="40dp"
         android:text="Level #:"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="574dp" />
+        app:layout_constraintTop_toBottomOf="@+id/GridBoard" />
 
     <TextView
         android:id="@+id/puzzleActiveTV"
@@ -100,7 +100,7 @@
         android:layout_marginStart="33dp"
         android:text="UNDO"
         app:layout_constraintStart_toEndOf="@+id/puzzleUpBTN"
-        tools:layout_editor_absoluteY="544dp" />
+        app:layout_constraintTop_toBottomOf="@+id/GridBoard" />
 
     <Button
         android:id="@+id/puzzleActivityResetBTN"
@@ -118,7 +118,8 @@
         android:layout_height="wrap_content"
         android:onClick="skipPuzzle"
         android:text="Finish Puzzle"
-        tools:layout_editor_absoluteY="57dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleBackBTN" />
 
     <ImageView
         android:id="@+id/GridBoard"
@@ -129,6 +130,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/GridBoard1" />
+        app:srcCompat="@drawable/gridboard1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
