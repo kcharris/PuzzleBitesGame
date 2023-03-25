@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -50,19 +51,18 @@ public class PuzzleActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
-
+    public int getPXFromDP(double dp){
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        return (int)(dp * dm.density);
+    }
     public void moveUp(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        if(vlp.topMargin == 0){
-            setMargins(bagelIV, margin2, margin1, 0, 0);
-        }
-        else{
-            setMargins(bagelIV, margin2, margin1-110, 0, 0);
+        if(vlp.topMargin != 0){
+            setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
 
     }
@@ -74,12 +74,10 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        if(vlp.topMargin == 880){
-            setMargins(bagelIV, margin2, margin1, 0, 0);
+        if(vlp.topMargin != getPXFromDP(40*8)){
+            setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
         }
-        else{
-            setMargins(bagelIV, margin2, margin1+110, 0, 0);
-        }    }
+    }
 
     public void moveRight(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
@@ -88,11 +86,8 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        if(vlp.leftMargin == 880){
-            setMargins(bagelIV, margin2, margin1, 0, 0);
-        }
-        else{
-            setMargins(bagelIV, margin2+110, margin1, 0, 0);
+        if(vlp.leftMargin != getPXFromDP(40*8)){
+            setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
         }
     }
 
@@ -103,11 +98,8 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        if(vlp.leftMargin == 0){
-            setMargins(bagelIV, margin2, margin1, 0, 0);
-        }
-        else{
-            setMargins(bagelIV, margin2-110, margin1, 0, 0);
+        if(vlp.leftMargin != 0){
+            setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
         }
     }
 
