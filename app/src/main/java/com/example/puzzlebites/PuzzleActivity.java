@@ -58,7 +58,12 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        setMargins(bagelIV, margin2, margin1-110, 0, 0);
+        if(vlp.topMargin == 0){
+            setMargins(bagelIV, margin2, margin1, 0, 0);
+        }
+        else{
+            setMargins(bagelIV, margin2, margin1-110, 0, 0);
+        }
 
     }
 
@@ -69,8 +74,12 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        setMargins(bagelIV, margin2, margin1+110, 0, 0);
-    }
+        if(vlp.topMargin == 880){
+            setMargins(bagelIV, margin2, margin1, 0, 0);
+        }
+        else{
+            setMargins(bagelIV, margin2, margin1+110, 0, 0);
+        }    }
 
     public void moveRight(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
@@ -79,8 +88,12 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        setMargins(bagelIV, margin2+110, margin1, 0, 0);
-
+        if(vlp.leftMargin == 880){
+            setMargins(bagelIV, margin2, margin1, 0, 0);
+        }
+        else{
+            setMargins(bagelIV, margin2+110, margin1, 0, 0);
+        }
     }
 
     public void moveLeft(View v){
@@ -90,8 +103,12 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
-        setMargins(bagelIV, margin2-110, margin1, 0, 0);
-
+        if(vlp.leftMargin == 0){
+            setMargins(bagelIV, margin2, margin1, 0, 0);
+        }
+        else{
+            setMargins(bagelIV, margin2-110, margin1, 0, 0);
+        }
     }
 
     private void setMargins (View view, int left, int top, int right, int bottom) {
