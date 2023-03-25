@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class PuzzleActivity extends AppCompatActivity {
 
@@ -50,23 +52,54 @@ public class PuzzleActivity extends AppCompatActivity {
     }
 
     public void moveUp(View v){
-        
+        ImageView bagelIV = findViewById(R.id.bagelIV);
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
+
+        int margin1 = vlp.topMargin;
+        int margin2 = vlp.leftMargin;
+
+        setMargins(bagelIV, margin2, margin1-110, 0, 0);
 
     }
 
     public void moveDown(View v){
+        ImageView bagelIV = findViewById(R.id.bagelIV);
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
+        int margin1 = vlp.topMargin;
+        int margin2 = vlp.leftMargin;
 
+        setMargins(bagelIV, margin2, margin1+110, 0, 0);
     }
 
     public void moveRight(View v){
+        ImageView bagelIV = findViewById(R.id.bagelIV);
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
+        int margin1 = vlp.topMargin;
+        int margin2 = vlp.leftMargin;
+
+        setMargins(bagelIV, margin2+110, margin1, 0, 0);
 
     }
 
     public void moveLeft(View v){
+        ImageView bagelIV = findViewById(R.id.bagelIV);
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
+        int margin1 = vlp.topMargin;
+        int margin2 = vlp.leftMargin;
 
+        setMargins(bagelIV, margin2-110, margin1, 0, 0);
+
+    }
+
+    private void setMargins (View view, int left, int top, int right, int bottom) {
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+            p.setMargins(left, top, right, bottom);
+            view.requestLayout();
+        }
     }
     /*public void finishPuzzle(View v){
         Intent scoreIntent = new Intent(this, scoreScreen.class);
