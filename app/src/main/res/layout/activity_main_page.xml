@@ -221,8 +221,8 @@
         android:id="@+id/mainBagelIV"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintStart_toStartOf="@+id/gridboardIV"
         app:layout_constraintTop_toTopOf="@+id/gridboardIV"
         app:srcCompat="@drawable/bagelbitebegin" />
