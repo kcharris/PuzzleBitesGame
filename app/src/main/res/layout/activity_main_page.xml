@@ -24,6 +24,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="125dp"
         android:layout_marginTop="10dp"
+        android:onClick="moveUp2"
         android:text="UP"
         app:layout_constraintStart_toEndOf="@+id/levelTV"
         app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
@@ -32,6 +33,7 @@
         android:id="@+id/rightBTN"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:onClick="moveRight2"
         android:text="RIGHT"
         app:layout_constraintStart_toEndOf="@+id/leftBTN"
         app:layout_constraintTop_toBottomOf="@+id/upBTN" />
@@ -41,6 +43,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="102dp"
+        android:onClick="moveLeft2"
         android:text="LEFT"
         app:layout_constraintStart_toEndOf="@+id/activeTV"
         app:layout_constraintTop_toBottomOf="@+id/upBTN" />
@@ -51,6 +54,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="122dp"
         android:layout_marginTop="1dp"
+        android:onClick="moveDown2"
         android:text="DOWN"
         app:layout_constraintStart_toEndOf="@+id/inactiveTV"
         app:layout_constraintTop_toBottomOf="@+id/rightBTN" />
@@ -133,84 +137,94 @@
         android:id="@+id/trophiesBTN"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="240dp"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="240dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to trophie page"
         android:onClick="toTrophies"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:layout_constraintStart_toStartOf="@id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/PuzzleBTN1"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:layout_constraintStart_toStartOf="@id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN2"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
         android:layout_marginStart="160dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:layout_constraintStart_toStartOf="@id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN3"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
         android:layout_marginStart="240dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:layout_constraintStart_toStartOf="@id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN4"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="240dp"
         android:layout_marginStart="280dp"
+        android:layout_marginTop="240dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:layout_constraintStart_toStartOf="@id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
         android:id="@+id/puzzleBTN5"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="160dp"
         android:layout_marginStart="160dp"
+        android:layout_marginTop="160dp"
         android:backgroundTint="#EFEDED"
         android:contentDescription="Sends the user to Puzzle1"
         android:onClick="toPuzzle"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:layout_constraintStart_toStartOf="@id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@id/gridboardIV"
         app:srcCompat="@drawable/goldenstar" />
+
+    <ImageView
+        android:id="@+id/mainBagelIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="240dp"
+        app:layout_constraintStart_toStartOf="@+id/gridboardIV"
+        app:layout_constraintTop_toTopOf="@+id/gridboardIV"
+        app:srcCompat="@drawable/bagelbitebegin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
