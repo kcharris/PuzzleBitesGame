@@ -30,7 +30,18 @@ public class PuzzleActivity extends AppCompatActivity {
                     }
                 });
     }
-
+    public class pieces{
+        boolean canMove;
+        int x;
+        int y;
+        String type;
+        public pieces(String typeStrc, boolean canMoveBool) {
+            canMove = canMoveBool;
+            x = 0;
+            y = 0;
+            type = "typeSTR";
+        }
+    }
 
     private ActivityResultLauncher<Intent> sStartLauncher;
 

@@ -14,7 +14,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="9dp"
         android:onClick="returnHome"
-        android:text="--"
+        android:text="<--"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -146,7 +146,7 @@
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
-        android:id="@+id/PuzzleBTN1"
+        android:id="@+id/puzzleBTN1"
         android:layout_width="54dp"
         android:layout_height="57dp"
         android:backgroundTint="#EFEDED"
@@ -159,6 +159,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.405"
+        app:srcCompat="@drawable/goldenstar" />
+
+    <ImageButton
+        android:id="@+id/settingBTN"
+        android:layout_width="54dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#EFEDED"
+        android:contentDescription="Sends the user to Puzzle1"
+        android:onClick="toPuzzle"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609"
         app:srcCompat="@drawable/goldenstar" />
 
     <ImageButton
