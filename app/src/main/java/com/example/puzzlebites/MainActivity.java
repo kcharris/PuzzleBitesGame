@@ -9,11 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-<<<<<<< Updated upstream
 import android.content.Context;
-=======
 import android.app.Instrumentation;
->>>>>>> Stashed changes
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;

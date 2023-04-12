@@ -14,7 +14,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="9dp"
         android:onClick="returnHome"
-        android:text="<--"
+        android:text="--"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,8 +135,8 @@
 
     <ImageButton
         android:id="@+id/trophiesBTN"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="240dp"
         android:backgroundTint="#EFEDED"
@@ -149,8 +149,8 @@
 
     <ImageButton
         android:id="@+id/PuzzleBTN1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="80dp"
         android:backgroundTint="#EFEDED"
@@ -179,8 +179,8 @@
 
     <ImageButton
         android:id="@+id/puzzleBTN2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="80dp"
         android:backgroundTint="#EFEDED"
@@ -193,8 +193,8 @@
 
     <ImageButton
         android:id="@+id/puzzleBTN3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="240dp"
         android:layout_marginTop="80dp"
         android:backgroundTint="#EFEDED"
@@ -207,8 +207,8 @@
 
     <ImageButton
         android:id="@+id/puzzleBTN4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="280dp"
         android:layout_marginTop="240dp"
         android:backgroundTint="#EFEDED"
@@ -221,8 +221,8 @@
 
     <ImageButton
         android:id="@+id/puzzleBTN5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="160dp"
         android:backgroundTint="#EFEDED"
