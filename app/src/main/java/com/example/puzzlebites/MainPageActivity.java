@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -70,7 +71,10 @@ public class MainPageActivity extends AppCompatActivity {
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
-
+        ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);
+        if(viewsOverlap(mainBagelIV, puzzleBTN1)) {
+            toPuzzle(v);
+        }
         if(vlp.topMargin != 0){
             setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
@@ -119,6 +123,22 @@ public class MainPageActivity extends AppCompatActivity {
             p.setMargins(left, top, right, bottom);
             view.requestLayout();
         }
+    }
+
+    private boolean viewsOverlap(View v1, View v2) {
+        int[] v1_coords = new int[2];
+        v1.getLocationOnScreen(v1_coords);
+        int v1_w = v1.getWidth();
+        int v1_h = v1.getHeight();
+        Rect v1_rect = new Rect(v1_coords[0], v1_coords[1], v1_coords[0] + v1_w, v1_coords[1] + v1_h);
+
+        int[] v2_coords = new int[2];
+        v2.getLocationOnScreen(v1_coords);
+        int v2_w = v2.getWidth();
+        int v2_h = v2.getHeight();
+        Rect v2_rect = new Rect(v2_coords[0], v2_coords[1], v2_coords[0] + v2_w, v2_coords[1] + v2_h);
+
+        return v1_rect.intersect(v2_rect) || v1_rect.contains(v2_rect) || v2_rect.contains(v1_rect);
     }
 
 }
