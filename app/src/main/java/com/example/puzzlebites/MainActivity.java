@@ -12,7 +12,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.app.Instrumentation;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,11 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,48 +37,19 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if(result.getResultCode() == Activity.RESULT_OK)
                         {
-                            Intent i = result.getData();
-                            if(i.getStringExtra("Background") == "blue")
-                            {
-                                bgColor = Color.rgb(176,196,222);
-                            }
-                            else
-                            {
-                                bgColor = Color.rgb(255,255,255);
-                            }
+
                         }
                     }
                 });
 
-        try {
-            FileInputStream fin = openFileInput(filename);
-            int x;
-            String temp = "";
-            while ((x = fin.read()) != -1) {
-                temp = temp + Character.toString((char) x);
-            }
-            fileContent = temp;
-            fin.close();
-            Log.d("fileRead", "File Read " + temp);
-        }catch(Exception e)
-            {
-                Log.d("fileRead", "File not read " + e);
-            }
+                restoreSharedPreferences();
 
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-        Log.d("fileRead", "StartSetColor");
-        Log.d("fileRead", "Set Color Worked");
-        return super.onCreateView(parent, name, context, attrs);
-    }
 
     private ActivityResultLauncher<Intent> mStartLauncher;
-    private String filename = "savedData";
-    private String fileContent;
-    private int bgColor;
+    private String backgroundColor;
+    private int highScore;
 
 
     public void startPuzzleSelection(View v)
@@ -100,23 +68,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop()
+    public void onStop()
     {
+        saveSharedPreferences();
         super.onStop();
+    }
 
-        try {
-            FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
-            fos.write(fileContent.getBytes());
-            fos.close();
-            Log.d("fileRead", "file wrote " + fileContent);
-        }catch(Exception e)
-        {
-            Log.d("fileRead", "file not wrote" + e);
-            return;
-        }
+    public void restoreSharedPreferences()
+    {
+        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+        backgroundColor = sp.getString("Color", "Default");
+        highScore = sp.getInt("HighScore", 0);
 
     }
 
+    public void saveSharedPreferences()
+    {
+        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("Color", backgroundColor);
+        edit.putInt("HighScore", highScore);
+
+        edit.commit();
+    }
 
 
 }
