@@ -71,14 +71,31 @@ public class MainPageActivity extends AppCompatActivity {
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
-        /*ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);
-        if(viewsOverlap(mainBagelIV, puzzleBTN1)) {
-            toPuzzle(v);
-        }*/
         if(vlp.topMargin != 0){
             setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
-
+        ImageView lvlOne = findViewById(R.id.lvlOne);
+        if(viewsOverlap(mainBagelIV, lvlOne)) {
+            toPuzzle(v);
+        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
+        if(viewsOverlap(mainBagelIV, lvlTwo)) {
+            toPuzzle(v);
+        }ImageView lvlThree = findViewById(R.id.lvlThree);
+        if(viewsOverlap(mainBagelIV, lvlThree)) {
+            toPuzzle(v);
+        }ImageView lvlFour = findViewById(R.id.lvlFour);
+        if(viewsOverlap(mainBagelIV, lvlFour)) {
+            toPuzzle(v);
+        }ImageView lvlFive = findViewById(R.id.lvlFive);
+        if(viewsOverlap(mainBagelIV, lvlFive)) {
+            toPuzzle(v);
+        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
+        if(viewsOverlap(mainBagelIV, lvlSetting)) {
+            toPuzzle(v);
+        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
+        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
+            toPuzzle(v);
+        }
     }
 
     public void moveDown2(View v){
@@ -87,21 +104,62 @@ public class MainPageActivity extends AppCompatActivity {
 
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
-
         if(vlp.topMargin != getPXFromDP(40*8)){
             setMargins(mainBagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
+        }
+        ImageView lvlOne = findViewById(R.id.lvlOne);
+        if(viewsOverlap(mainBagelIV, lvlOne)) {
+            toPuzzle(v);
+        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
+        if(viewsOverlap(mainBagelIV, lvlTwo)) {
+            toPuzzle(v);
+        }ImageView lvlThree = findViewById(R.id.lvlThree);
+        if(viewsOverlap(mainBagelIV, lvlThree)) {
+            toPuzzle(v);
+        }ImageView lvlFour = findViewById(R.id.lvlFour);
+        if(viewsOverlap(mainBagelIV, lvlFour)) {
+            toPuzzle(v);
+        }ImageView lvlFive = findViewById(R.id.lvlFive);
+        if(viewsOverlap(mainBagelIV, lvlFive)) {
+            toPuzzle(v);
+        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
+        if(viewsOverlap(mainBagelIV, lvlSetting)) {
+            toPuzzle(v);
+        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
+        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
+            toPuzzle(v);
         }
     }
 
     public void moveRight2(View v){
         ImageView mainBagelIV = findViewById(R.id.mainBagelIV);
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
-
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
-
         if(vlp.leftMargin != getPXFromDP(40*8)){
             setMargins(mainBagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
+        }
+        ImageView lvlOne = findViewById(R.id.lvlOne);
+        if(viewsOverlap(mainBagelIV, lvlOne)) {
+            toPuzzle(v);
+        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
+        if(viewsOverlap(mainBagelIV, lvlTwo)) {
+            toPuzzle(v);
+        }ImageView lvlThree = findViewById(R.id.lvlThree);
+        if(viewsOverlap(mainBagelIV, lvlThree)) {
+            toPuzzle(v);
+        }ImageView lvlFour = findViewById(R.id.lvlFour);
+        if(viewsOverlap(mainBagelIV, lvlFour)) {
+            toPuzzle(v);
+        }ImageView lvlFive = findViewById(R.id.lvlFive);
+        if(viewsOverlap(mainBagelIV, lvlFive)) {
+            toPuzzle(v);
+        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
+        if(viewsOverlap(mainBagelIV, lvlSetting)) {
+            toPuzzle(v);
+        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
+        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
+            toPuzzle(v);
         }
     }
 
@@ -111,9 +169,30 @@ public class MainPageActivity extends AppCompatActivity {
 
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
-
         if(vlp.leftMargin != 0){
             setMargins(mainBagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
+        }
+        ImageView lvlOne = findViewById(R.id.lvlOne);
+        if(viewsOverlap(mainBagelIV, lvlOne)) {
+            toPuzzle(v);
+        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
+        if(viewsOverlap(mainBagelIV, lvlTwo)) {
+            toPuzzle(v);
+        }ImageView lvlThree = findViewById(R.id.lvlThree);
+        if(viewsOverlap(mainBagelIV, lvlThree)) {
+            toPuzzle(v);
+        }ImageView lvlFour = findViewById(R.id.lvlFour);
+        if(viewsOverlap(mainBagelIV, lvlFour)) {
+            toPuzzle(v);
+        }ImageView lvlFive = findViewById(R.id.lvlFive);
+        if(viewsOverlap(mainBagelIV, lvlFive)) {
+            toPuzzle(v);
+        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
+        if(viewsOverlap(mainBagelIV, lvlSetting)) {
+            toPuzzle(v);
+        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
+        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
+            toPuzzle(v);
         }
     }
 
@@ -126,19 +205,20 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     private boolean viewsOverlap(View v1, View v2) {
-        int[] v1_coords = new int[2];
-        v1.getLocationOnScreen(v1_coords);
-        int v1_w = v1.getWidth();
-        int v1_h = v1.getHeight();
-        Rect v1_rect = new Rect(v1_coords[0], v1_coords[1], v1_coords[0] + v1_w, v1_coords[1] + v1_h);
-
-        int[] v2_coords = new int[2];
-        v2.getLocationOnScreen(v1_coords);
-        int v2_w = v2.getWidth();
-        int v2_h = v2.getHeight();
-        Rect v2_rect = new Rect(v2_coords[0], v2_coords[1], v2_coords[0] + v2_w, v2_coords[1] + v2_h);
-
-        return v1_rect.intersect(v2_rect) || v1_rect.contains(v2_rect) || v2_rect.contains(v1_rect);
+        if (v1 == null || v2 == null) return false;
+        final int[] view1Loc = new int[2];
+        v1.getLocationOnScreen(view1Loc);
+        final Rect view1Rect = new Rect(view1Loc[0],
+                view1Loc[1],
+                view1Loc[0] + v1.getWidth(),
+                view1Loc[1] + v1.getHeight());
+        int[] view2Loc = new int[2];
+        v2.getLocationOnScreen(view2Loc);
+        final Rect view2Rect = new Rect(view2Loc[0],
+                view2Loc[1],
+                view2Loc[0] + v2.getWidth(),
+                view2Loc[1] + v2.getHeight());
+        return view1Rect.intersect(view2Rect);
     }
 
 }
