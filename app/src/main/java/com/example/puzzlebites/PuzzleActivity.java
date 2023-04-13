@@ -93,14 +93,14 @@ public class PuzzleActivity extends AppCompatActivity {
 
         public void moveLeft(View v){
             ImageView bagelIV = findViewById(R.id.bagelIV);
-            ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);
+            /*ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);*/
             ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
             int margin1 = vlp.topMargin;
             int margin2 = vlp.leftMargin;
-            if(puzzleBTN1.getLayoutParams().height == bagelIV.getHeight() && puzzleBTN1.getLayoutParams().width == bagelIV.getWidth()) {
+            /*if(puzzleBTN1.getLayoutParams().height == bagelIV.getHeight() && puzzleBTN1.getLayoutParams().width == bagelIV.getWidth()) {
 
-            }
+            }*/
             if(vlp.leftMargin != 0){
                 setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
             }

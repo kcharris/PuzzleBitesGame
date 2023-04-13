@@ -71,10 +71,10 @@ public class MainPageActivity extends AppCompatActivity {
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
-        ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);
+        /*ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);
         if(viewsOverlap(mainBagelIV, puzzleBTN1)) {
             toPuzzle(v);
-        }
+        }*/
         if(vlp.topMargin != 0){
             setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
