@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        restoreSharedPreferences();
+
         mStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -37,12 +39,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if(result.getResultCode() == Activity.RESULT_OK)
                         {
+                            Intent i = result.getData();
+                            if(i.hasExtra("Color"))
+                            {
+                                backgroundColor = i.getExtras().getString("Color");
+                            }
 
                         }
                     }
                 });
-
-                restoreSharedPreferences();
+        Log.d("SPColor", backgroundColor);
 
     }
 

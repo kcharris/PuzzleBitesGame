@@ -19,6 +19,8 @@ public class setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
     }
+
+    private String color = "Default";
     /*
     Braeden - One of my tasks is to implement a reset button that's on the settings page. I think that
     it would be wise to have a ModelClass that holds the scores for the instance of the activity running at the time
@@ -29,11 +31,13 @@ public class setting extends AppCompatActivity {
     {
         Intent mainIntent = new Intent(this, MainActivity.class);
         setResult(Activity.RESULT_OK, mainIntent);
+        mainIntent.putExtra("Color", color);
         finish();
     }
 
     public void backgroundChange(View v)
     {
+        color = "Blue";
     }
 
     public void resetScore() {
