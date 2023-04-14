@@ -10,13 +10,12 @@ import androidx.lifecycle.ViewModelProvider;
 public class scoreModel extends ViewModel {
     long timeStart;
     long timeEnd;
-    float timeFl=0;
-    private LiveData<Integer> numOfMoves = new MutableLiveData<>(0);
+    boolean hasStarted =false;
+    private MutableLiveData<Integer> numOfMoves = new MutableLiveData<>(0);
     private LiveData<String> numOfMovesString = Transformations.map(numOfMoves, new Function<Integer, String>() {
         @Override
         public String apply(Integer input) {
-            String strInput = "Total entries "+ String.valueOf(input);
-            return strInput;
+            return "Move: # "+ input;
         }
     });
     public LiveData<String> getNumOfMovesString() {
@@ -24,14 +23,19 @@ public class scoreModel extends ViewModel {
     }
     public void startClock() {
         long timeStart = System.nanoTime();
+        hasStarted =true;
     }
     public void endClock() {
         long timeEnd = System.nanoTime();
+        hasStarted =false;
     }
     public float calcClock() {
         return (float) timeEnd-timeStart;
     }
-    public void addNumOfMove() { //this will allow the numOfMove counter to increment for each move
-        //and should be called after each move inside the puzzle and MainPageActivities
+    public boolean getHasStarted() {
+        return hasStarted;
+    }
+    public void addNumOfMove() {
+        numOfMoves.setValue(numOfMoves.getValue()+1);
     }
 }

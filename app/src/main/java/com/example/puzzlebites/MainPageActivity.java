@@ -84,6 +84,7 @@ public class MainPageActivity extends AppCompatActivity {
         if(vlp.topMargin != 0){
             setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
+        score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if(viewsOverlap(mainBagelIV, lvlOne)) {
             toPuzzle(v);
@@ -117,6 +118,7 @@ public class MainPageActivity extends AppCompatActivity {
         if(vlp.topMargin != getPXFromDP(40*8)){
             setMargins(mainBagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
         }
+        score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if(viewsOverlap(mainBagelIV, lvlOne)) {
             toPuzzle(v);
@@ -149,6 +151,7 @@ public class MainPageActivity extends AppCompatActivity {
         if(vlp.leftMargin != getPXFromDP(40*8)){
             setMargins(mainBagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
         }
+        score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if(viewsOverlap(mainBagelIV, lvlOne)) {
             toPuzzle(v);
@@ -182,6 +185,7 @@ public class MainPageActivity extends AppCompatActivity {
         if(vlp.leftMargin != 0){
             setMargins(mainBagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
         }
+        score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if(viewsOverlap(mainBagelIV, lvlOne)) {
             toPuzzle(v);
