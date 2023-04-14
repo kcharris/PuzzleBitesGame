@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,8 +21,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainPageActivity extends AppCompatActivity {
     public scoreModel score;
+    public List<Piece> pieces = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,9 @@ public class MainPageActivity extends AppCompatActivity {
                         }
                     }
                 });
+        Piece piece = new Piece(this, "bagel", 6,6);
+        pieces.add(piece);
+        this.addContentView(piece, new ViewGroup.LayoutParams(0, 0));
     }
 
          private ActivityResultLauncher<Intent> pStartLauncher;
@@ -72,141 +80,30 @@ public class MainPageActivity extends AppCompatActivity {
         pStartLauncher.launch(trophy);
         finish();
     }
-    public int getPXFromDP(double dp){
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        return (int)(dp * dm.density);
-    }
     public void moveUp2(View v){
-        ImageView mainBagelIV = findViewById(R.id.mainBagelIV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-        if(vlp.topMargin != 0){
-            setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
-        }
         score.addNumOfMove();
-        ImageView lvlOne = findViewById(R.id.lvlOne);
-        if(viewsOverlap(mainBagelIV, lvlOne)) {
-            toPuzzle(v);
-        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
-        if(viewsOverlap(mainBagelIV, lvlTwo)) {
-            toPuzzle(v);
-        }ImageView lvlThree = findViewById(R.id.lvlThree);
-        if(viewsOverlap(mainBagelIV, lvlThree)) {
-            toPuzzle(v);
-        }ImageView lvlFour = findViewById(R.id.lvlFour);
-        if(viewsOverlap(mainBagelIV, lvlFour)) {
-            toPuzzle(v);
-        }ImageView lvlFive = findViewById(R.id.lvlFive);
-        if(viewsOverlap(mainBagelIV, lvlFive)) {
-            toPuzzle(v);
-        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
-        if(viewsOverlap(mainBagelIV, lvlSetting)) {
-            toPuzzle(v);
-        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
-        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
-            toPuzzle(v);
+        for (Piece p : pieces){
+            p.moveUp();
         }
     }
 
     public void moveDown2(View v){
-        ImageView mainBagelIV = findViewById(R.id.mainBagelIV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
 
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-        if(vlp.topMargin != getPXFromDP(40*8)){
-            setMargins(mainBagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
-        }
         score.addNumOfMove();
-        ImageView lvlOne = findViewById(R.id.lvlOne);
-        if(viewsOverlap(mainBagelIV, lvlOne)) {
-            toPuzzle(v);
-        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
-        if(viewsOverlap(mainBagelIV, lvlTwo)) {
-            toPuzzle(v);
-        }ImageView lvlThree = findViewById(R.id.lvlThree);
-        if(viewsOverlap(mainBagelIV, lvlThree)) {
-            toPuzzle(v);
-        }ImageView lvlFour = findViewById(R.id.lvlFour);
-        if(viewsOverlap(mainBagelIV, lvlFour)) {
-            toPuzzle(v);
-        }ImageView lvlFive = findViewById(R.id.lvlFive);
-        if(viewsOverlap(mainBagelIV, lvlFive)) {
-            toPuzzle(v);
-        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
-        if(viewsOverlap(mainBagelIV, lvlSetting)) {
-            toPuzzle(v);
-        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
-        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
-            toPuzzle(v);
+        for (Piece p : pieces){
+            p.moveDown();
         }
     }
 
     public void moveRight2(View v){
-        ImageView mainBagelIV = findViewById(R.id.mainBagelIV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-        if(vlp.leftMargin != getPXFromDP(40*8)){
-            setMargins(mainBagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
-        }
-        score.addNumOfMove();
-        ImageView lvlOne = findViewById(R.id.lvlOne);
-        if(viewsOverlap(mainBagelIV, lvlOne)) {
-            toPuzzle(v);
-        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
-        if(viewsOverlap(mainBagelIV, lvlTwo)) {
-            toPuzzle(v);
-        }ImageView lvlThree = findViewById(R.id.lvlThree);
-        if(viewsOverlap(mainBagelIV, lvlThree)) {
-            toPuzzle(v);
-        }ImageView lvlFour = findViewById(R.id.lvlFour);
-        if(viewsOverlap(mainBagelIV, lvlFour)) {
-            toPuzzle(v);
-        }ImageView lvlFive = findViewById(R.id.lvlFive);
-        if(viewsOverlap(mainBagelIV, lvlFive)) {
-            toPuzzle(v);
-        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
-        if(viewsOverlap(mainBagelIV, lvlSetting)) {
-            toPuzzle(v);
-        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
-        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
-            toPuzzle(v);
+        for (Piece p : pieces){
+            p.moveRight();
         }
     }
 
     public void moveLeft2(View v){
-        ImageView mainBagelIV = findViewById(R.id.mainBagelIV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) mainBagelIV.getLayoutParams();
-
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-        if(vlp.leftMargin != 0){
-            setMargins(mainBagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
-        }
-        score.addNumOfMove();
-        ImageView lvlOne = findViewById(R.id.lvlOne);
-        if(viewsOverlap(mainBagelIV, lvlOne)) {
-            toPuzzle(v);
-        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
-        if(viewsOverlap(mainBagelIV, lvlTwo)) {
-            toPuzzle(v);
-        }ImageView lvlThree = findViewById(R.id.lvlThree);
-        if(viewsOverlap(mainBagelIV, lvlThree)) {
-            toPuzzle(v);
-        }ImageView lvlFour = findViewById(R.id.lvlFour);
-        if(viewsOverlap(mainBagelIV, lvlFour)) {
-            toPuzzle(v);
-        }ImageView lvlFive = findViewById(R.id.lvlFive);
-        if(viewsOverlap(mainBagelIV, lvlFive)) {
-            toPuzzle(v);
-        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
-        if(viewsOverlap(mainBagelIV, lvlSetting)) {
-            toPuzzle(v);
-        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
-        if(viewsOverlap(mainBagelIV, lvlTrophy)) {
-            toPuzzle(v);
+        for (Piece p : pieces){
+            p.moveLeft();
         }
     }
 
@@ -234,5 +131,27 @@ public class MainPageActivity extends AppCompatActivity {
                 view2Loc[1] + v2.getHeight());
         return view1Rect.intersect(view2Rect);
     }
-
+//    private checkForLevelSelect(View mg){
+//        ImageView lvlOne = findViewById(R.id.lvlOne);
+//        if(viewsOverlap(mg, lvlOne)) {
+//            toPuzzle(1);
+//        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
+//        if(viewsOverlap(mg, lvlTwo)) {
+//            toPuzzle(2);
+//        }ImageView lvlThree = findViewById(R.id.lvlThree);
+//        if(viewsOverlap(mg, lvlThree)) {
+//            toPuzzle(3);
+//        }ImageView lvlFour = findViewById(R.id.lvlFour);
+//        if(viewsOverlap(mg, lvlFour)) {
+//            toPuzzle(4);
+//        }ImageView lvlFive = findViewById(R.id.lvlFive);
+//        if(viewsOverlap(mg, lvlFive)) {
+//            toPuzzle(5);
+//        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
+//        if(viewsOverlap(mg, lvlSetting)) {
+//            toPuzzle();
+//        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
+//        if(viewsOverlap(mg, lvlTrophy)) {
+//            toPuzzle();
+//        }
 }

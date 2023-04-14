@@ -63,74 +63,7 @@ public class PuzzleActivity extends AppCompatActivity {
         //methods can be called per piece to determine what pieces can and cannot move
         //move methods (two methods) 1. to check if a move can be made 2. one to actually move it
 
-        public void moveUp(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.topMargin != 0){
-                setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
-            }
 
-        }
-
-        public void moveDown(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.topMargin != getPXFromDP(40*8)){
-                setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
-            }
-        }
-
-        public void moveRight(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.leftMargin != getPXFromDP(40*8)){
-                setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
-            }
-        }
-
-        public void moveLeft(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            /*ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);*/
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.leftMargin != 0){
-                setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
-            }
-        }
     }
 
     private ActivityResultLauncher<Intent> sStartLauncher;
