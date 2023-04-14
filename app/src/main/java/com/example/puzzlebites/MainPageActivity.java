@@ -5,6 +5,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -16,14 +18,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainPageActivity extends AppCompatActivity {
-
+    public scoreModel score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-
+        score = new ViewModelProvider(this).get(scoreModel.class);
+        score.getNumOfMovesString().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                TextView moves = findViewById(R.id.movesTV);
+                moves.setText(s);
+            }
+        });
         pStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {

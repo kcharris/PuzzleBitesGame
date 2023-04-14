@@ -5,6 +5,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,17 +17,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class PuzzleActivity extends AppCompatActivity {
-    int[] xArr = new int[9]; //this is to
-    int[] yArr = new int[9];
+    public scoreModel score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puzzle);
-
+        score = new ViewModelProvider(this).get(scoreModel.class);
+        score.getNumOfMovesString().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                TextView moves = findViewById(R.id.puzzleMovesTV);
+                moves.setText(s);
+            }
+        });
         sStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -53,7 +62,6 @@ public class PuzzleActivity extends AppCompatActivity {
         //this class needs methods that will determine viable moves or not
         //methods can be called per piece to determine what pieces can and cannot move
         //move methods (two methods) 1. to check if a move can be made 2. one to actually move it
-
 
         public void moveUp(View v){
             ImageView bagelIV = findViewById(R.id.bagelIV);
