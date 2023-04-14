@@ -22,6 +22,7 @@ public class setting extends AppCompatActivity {
     }
 
     private String color = "Default";
+    private int score = 0;
     /*
     Braeden - One of my tasks is to implement a reset button that's on the settings page. I think that
     it would be wise to have a ModelClass that holds the scores for the instance of the activity running at the time
@@ -46,9 +47,8 @@ public class setting extends AppCompatActivity {
         Log.d("SPColor", "Changed the color to " + color);
     }
 
-    public void resetScore() {
-        //model.reset(); this is just an example of my idea, awaiting implementation
-        //Luke might want to do this but I can if anyone or Luke would rather
+    public void resetScore(View v) {
+        score = 0;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class setting extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         edit.putString("Color", color);
-
+        edit.putInt("HighScore", score);
         edit.commit();
     }
 
