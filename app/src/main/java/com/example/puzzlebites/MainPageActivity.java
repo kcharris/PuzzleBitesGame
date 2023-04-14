@@ -83,7 +83,7 @@ public class MainPageActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
         if(vlp.topMargin != 0){
-            mainBagelIV.animate().setDuration(2000).translationY(margin1- getPXFromDP(40));
+            mainBagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
             //setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
         score.addNumOfMove();
@@ -118,7 +118,8 @@ public class MainPageActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
         if(vlp.topMargin != getPXFromDP(40*8)){
-            setMargins(mainBagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
+            mainBagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(40));
+            //setMargins(mainBagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
         }
         score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
@@ -151,7 +152,8 @@ public class MainPageActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
         if(vlp.leftMargin != getPXFromDP(40*8)){
-            setMargins(mainBagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
+            mainBagelIV.animate().setDuration(1000).translationXBy(getPXFromDP(40));
+            //setMargins(mainBagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
         }
         score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
@@ -185,7 +187,8 @@ public class MainPageActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
         if(vlp.leftMargin != 0){
-            setMargins(mainBagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
+            mainBagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(-40));
+            //setMargins(mainBagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
         }
         score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
