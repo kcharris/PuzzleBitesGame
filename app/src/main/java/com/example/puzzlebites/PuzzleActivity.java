@@ -121,7 +121,6 @@ public class PuzzleActivity extends AppCompatActivity {
                 score.startClock();
             }
             ImageView bagelIV = findViewById(R.id.bagelIV);
-            /*ImageButton puzzleBTN1 = findViewById(R.id.PuzzleBTN1);*/
             ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
             int margin1 = vlp.topMargin;

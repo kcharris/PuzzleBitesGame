@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
@@ -82,7 +83,8 @@ public class MainPageActivity extends AppCompatActivity {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
         if(vlp.topMargin != 0){
-            setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
+            mainBagelIV.animate().setDuration(2000).translationY(margin1- getPXFromDP(40));
+            //setMargins(mainBagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
         }
         score.addNumOfMove();
         ImageView lvlOne = findViewById(R.id.lvlOne);
@@ -234,5 +236,9 @@ public class MainPageActivity extends AppCompatActivity {
                 view2Loc[1] + v2.getHeight());
         return view1Rect.intersect(view2Rect);
     }
+
+    /*public boolean viableMove() {
+    this is kind of useless because each move detects if it's viable before it activates
+    }*/
 
 }
