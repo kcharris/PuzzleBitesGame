@@ -22,7 +22,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class PuzzleActivity extends AppCompatActivity {
-    public scoreModel score;
+    private scoreModel score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +75,8 @@ public class PuzzleActivity extends AppCompatActivity {
             int margin2 = vlp.leftMargin;
             score.addNumOfMove();
             if(vlp.topMargin != 0){
-                setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
+                bagelIV.animate().setDuration(1100).translationYBy(getPXFromDP(-40));
+                //setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
             }
 
         }
@@ -93,7 +94,8 @@ public class PuzzleActivity extends AppCompatActivity {
             int margin2 = vlp.leftMargin;
             score.addNumOfMove();
             if(vlp.topMargin != getPXFromDP(40*8)){
-                setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
+                bagelIV.animate().setDuration(1100).translationYBy(getPXFromDP(40));
+                //setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
             }
         }
 
@@ -110,7 +112,8 @@ public class PuzzleActivity extends AppCompatActivity {
             int margin2 = vlp.leftMargin;
             score.addNumOfMove();
             if(vlp.leftMargin != getPXFromDP(40*8)){
-                setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
+                bagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(40));
+                //setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
             }
         }
 
@@ -127,7 +130,8 @@ public class PuzzleActivity extends AppCompatActivity {
             int margin2 = vlp.leftMargin;
             score.addNumOfMove();
             if(vlp.leftMargin != 0){
-                setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
+                bagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(-40));
+                //setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
             }
         }
     }

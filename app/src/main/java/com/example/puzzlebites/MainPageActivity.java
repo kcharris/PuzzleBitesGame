@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainPageActivity extends AppCompatActivity {
-    public scoreModel score;
+    private scoreModel score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
