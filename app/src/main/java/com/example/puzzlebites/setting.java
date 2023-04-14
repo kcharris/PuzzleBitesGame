@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,12 +33,17 @@ public class setting extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         setResult(Activity.RESULT_OK, mainIntent);
         mainIntent.putExtra("Color", color);
+        Log.d("SPColor", "Return with color " + color);
         finish();
     }
 
     public void backgroundChange(View v)
     {
-        color = "Blue";
+        if(color.equals("Default"))
+            color = "Blue";
+        else
+            color = "Default";
+        Log.d("SPColor", "Changed the color to " + color);
     }
 
     public void resetScore() {
@@ -45,5 +51,21 @@ public class setting extends AppCompatActivity {
         //Luke might want to do this but I can if anyone or Luke would rather
     }
 
+    @Override
+    public void onStop()
+    {
+        saveSharedPreferences();
+        super.onStop();
+    }
+
+
+    public void saveSharedPreferences()
+    {
+        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("Color", color);
+
+        edit.commit();
+    }
 
 }

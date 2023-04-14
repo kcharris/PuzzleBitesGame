@@ -28,9 +28,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         restoreSharedPreferences();
+
+        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+        View view = inflater.inflate(R.layout.activity_main, null);
+        setContentView(view);
+
+
 
         mStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -50,6 +55,33 @@ public class MainActivity extends AppCompatActivity {
                 });
         Log.d("SPColor", backgroundColor);
 
+        if(backgroundColor.equals("Default"))
+        {
+            view.setBackgroundColor(Color.rgb(255,255,255));
+        }
+        else
+        {
+            view.setBackgroundColor(Color.rgb(0,255,255));
+        }
+
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+        View view = inflater.inflate(R.layout.activity_main, null);
+        setContentView(view);
+        if(backgroundColor.equals("Default"))
+        {
+            view.setBackgroundColor(Color.rgb(255,255,255));
+        }
+        else
+        {
+            view.setBackgroundColor(Color.rgb(0,255,255));
+        }
     }
 
 
