@@ -59,22 +59,6 @@ public class PuzzleActivity extends AppCompatActivity {
         }
 
     }
-    public class pieces{
-        boolean canMove;
-        int x;
-        int y;
-        String type;
-        public pieces(String typeStrc, boolean canMoveBool) {
-            canMove = canMoveBool;
-            x = 0;
-            y = 0;
-            type = "typeSTR";
-        }
-
-        //this class needs methods that will determine viable moves or not
-        //methods can be called per piece to determine what pieces can and cannot move
-        //move methods (two methods) 1. to check if a move can be made 2. one to actually move it
-    }
 
     private ActivityResultLauncher<Intent> sStartLauncher;
 
@@ -97,22 +81,8 @@ public class PuzzleActivity extends AppCompatActivity {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         return (int)(dp * dm.density);
     }
-    public void moveUp(View v){
-        ImageView bagelIV = findViewById(R.id.bagelIV);
-        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
 
-        if(vlp.topMargin != 0){
-            //setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
-            bagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
-
-        }
-    }
-
-
-    public void moveUp2(View v) {
+    public void moveUp(View v) {
         score.addNumOfMove();
         for (Piece p : pieces) {
             p.moveUp();
@@ -122,7 +92,7 @@ public class PuzzleActivity extends AppCompatActivity {
         puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
 
-    public void moveDown2(View v) {
+    public void moveDown(View v) {
 
         score.addNumOfMove();
         for (Piece p : pieces) {
@@ -134,7 +104,7 @@ public class PuzzleActivity extends AppCompatActivity {
 
     }
 
-    public void moveRight2(View v) {
+    public void moveRight(View v) {
         for (Piece p : pieces) {
             p.moveRight();
         }
@@ -143,7 +113,7 @@ public class PuzzleActivity extends AppCompatActivity {
         puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
 
-    public void moveLeft2(View v) {
+    public void moveLeft(View v) {
         for (Piece p : pieces) {
             p.moveLeft();
         }
