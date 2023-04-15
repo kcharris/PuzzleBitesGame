@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,9 +21,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PuzzleActivity extends AppCompatActivity {
     private scoreModel score;
+    public List<Piece> pieces = new ArrayList<Piece>();
+    ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,13 @@ public class PuzzleActivity extends AppCompatActivity {
                         }
                     }
                 });
+        myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
+        Piece piece = new Piece(this, "bagel", 4, 6);
+        pieces.add(piece);
+        for (Piece p : pieces) {
+            myLayout.addView(p);
+        }
+
     }
     public class pieces{
         boolean canMove;
