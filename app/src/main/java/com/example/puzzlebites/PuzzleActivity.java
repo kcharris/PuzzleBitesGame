@@ -28,10 +28,12 @@ public class PuzzleActivity extends AppCompatActivity {
     public List<Piece> pieces = new ArrayList<Piece>();
     ConstraintLayout myLayout;
     Puzzles puzzles = new Puzzles(this);
+    private String puzzle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.puzzle = getIntent().getExtras().getString("puzzle");
         setContentView(R.layout.activity_puzzle);
         score = new ViewModelProvider(this).get(scoreModel.class);
         score.getNumOfMovesString().observe(this, new Observer<String>() {
@@ -53,13 +55,29 @@ public class PuzzleActivity extends AppCompatActivity {
                     }
                 });
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
-        pieces = puzzles.getPuzzle1();
+        setPuzzle(puzzle);
+
+    }
+
+    private ActivityResultLauncher<Intent> sStartLauncher;
+    private void setPuzzle(String puzzle){
+        if(!this.pieces.isEmpty()){
+            for(Piece p: pieces) {
+                myLayout.removeViewInLayout(p);
+            }
+            this.pieces = new ArrayList<>();
+        }
+        this.pieces = puzzles.getPuzzle(puzzle);
         for (Piece p : pieces) {
             myLayout.addView(p);
         }
     }
 
-    private ActivityResultLauncher<Intent> sStartLauncher;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setPuzzle(this.puzzle);
+    }
 
     public void skipPuzzle(View v) {
         Global.moveCount = 0;

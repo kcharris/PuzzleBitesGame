@@ -17,23 +17,34 @@ public class Puzzles {
         this.context = context;
     }
 
-    public List<Piece> getPuzzle1(){
-        pieces = new ArrayList<>();
-        pieces.add(new Piece(context, "bagel", 4, 6));
-        pieces.add(new Piece(context, "switch", 3, 5));
-        pieces.add(new Piece(context, "switch", 2, 6));
-        pieces.add(new Piece(context, "cat", 3, 4));
-        pieces.add(new Piece(context, "cat", 2, 4));
-        pieces.add(new Piece(context, "plate", 4, 1));
-        pieces.add(new Piece(context, "plate", 5, 4));
-        pieces.add(new Piece(context, "plate", 6, 2));
+    public List<Piece> getPuzzle(String s){
+        switch (s) {
+            case "one":
+                pieces = new ArrayList<>();
+                pieces.add(new Piece(context, "bagel", 4, 6));
+                pieces.add(new Piece(context, "switch", 1, 5));
+                pieces.add(new Piece(context, "switch", 3, 6));
+                pieces.add(new Piece(context, "cat", 1, 3));
+                pieces.add(new Piece(context, "cat", 3, 4));
+                pieces.add(new Piece(context, "plate", 4, 1));
+                pieces.add(new Piece(context, "plate", 5, 3));
+                pieces.add(new Piece(context, "plate", 6, 2));
 
-        pieces.add(new Piece(context, "end", 1, 1));
-        pieces.add(new Piece(context, "end", 3, 2));
-        pieces.add(new Piece(context, "end", 6, 1));
-        pieces.add(new Piece(context, "end", 7, 3));
-        pieces.add(new Piece(context, "end", 8, 2));
-
+                pieces.add(new Piece(context, "end", 1, 1));
+                pieces.add(new Piece(context, "end", 3, 2));
+                pieces.add(new Piece(context, "end", 6, 1));
+                pieces.add(new Piece(context, "end", 7, 3));
+                pieces.add(new Piece(context, "end", 8, 2));
+                break;
+            case "two":
+                break;
+            case "three":
+                break;
+            case "four":
+                break;
+            case "five":
+                break;
+        }
         return pieces;
     }
 }
