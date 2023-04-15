@@ -149,6 +149,12 @@ public class PuzzleActivity extends AppCompatActivity {
         }
     }
 
+    public void undoBTN(View v){
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        Global.moveCount += 1;
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
+    }
+
     private void setMargins (View view, int left, int top, int right, int bottom) {
         if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
