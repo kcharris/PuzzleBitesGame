@@ -71,6 +71,10 @@ public class PuzzleActivity extends AppCompatActivity {
         for (Piece p : pieces) {
             myLayout.addView(p);
         }
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        Global.moveCount = 0;
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
+
     }
 
     @Override
@@ -94,15 +98,13 @@ public class PuzzleActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
-    public int getPXFromDP(double dp){
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        return (int)(dp * dm.density);
-    }
 
     public void moveUp(View v) {
         score.addNumOfMove();
         for (Piece p : pieces) {
-            p.moveUp();
+            if(!p.moveUp()){
+
+            }
         }
         TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         Global.moveCount += 1;
@@ -144,13 +146,8 @@ public class PuzzleActivity extends AppCompatActivity {
         Global.moveCount -= 1;
         puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
-
-    private void setMargins (View view, int left, int top, int right, int bottom) {
-        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-            p.setMargins(left, top, right, bottom);
-            view.requestLayout();
-        }
+    public void resetPuzzle(View v){
+        setPuzzle(puzzle);
     }
     /*public void finishPuzzle(View v){
         Intent scoreIntent = new Intent(this, scoreScreen.class);
