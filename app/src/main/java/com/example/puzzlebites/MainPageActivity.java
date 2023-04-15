@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainPageActivity extends AppCompatActivity {
@@ -53,8 +54,19 @@ public class MainPageActivity extends AppCompatActivity {
                 });
         myLayout = (ConstraintLayout) findViewById(R.id.lv1BTN);
         Piece piece = new Piece(this, "bagel", 4,6);
+        Piece piece2 = new Piece(this, "bagel", 3, 4);
+        Piece piece3 = new Piece(this, "bagel", 4, 4);
+        Piece piece4 = new Piece(this, "bagel", 3, 7);
+        Piece piece5 = new Piece(this, "bagel", 5, 4);
+        Piece piece6 = new Piece(this, "bagel", 2, 4);
+        Piece piece7 = new Piece(this, "bagel", 6, 6);
+        Piece piece8 = new Piece(this, "bagel", 8, 8);
+
         pieces.add(piece);
-        myLayout.addView(piece);
+        pieces.addAll(Arrays.asList(piece2, piece3, piece4, piece5, piece6,piece7, piece8));
+        for(Piece p : pieces){
+            myLayout.addView(p);
+        }
     }
 
          private ActivityResultLauncher<Intent> pStartLauncher;
