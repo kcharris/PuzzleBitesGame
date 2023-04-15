@@ -59,7 +59,6 @@ public class MainPageActivity extends AppCompatActivity {
         Piece piece3 = new Piece(this, "bagel", 4, 4);
 
         pieces.add(piece);
-        pieces.addAll(Arrays.asList(piece2, piece3));
         for (Piece p : pieces) {
             myLayout.addView(p);
         }

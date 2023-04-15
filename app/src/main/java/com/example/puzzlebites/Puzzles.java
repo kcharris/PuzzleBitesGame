@@ -8,5 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Puzzles {
+        private static Puzzle puzzle1;
 
+        static{
+            
+            puzzle1.pieces.add()
+        }
 }

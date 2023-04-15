@@ -33,10 +33,26 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
             case "bagel":
                 this.speed = 1;
                 this.canMove = true;
-                setMargins( getPXFromDP(this.x * 40), getPXFromDP(this.y * 40), 0, 0);
                 this.setImageResource(R.drawable.bagelbitebegin);
                 break;
+            case "end":
+                this.setImageResource(R.drawable.goldstar); // switch to end image for pieces to go to
+                break;
+            case "cat":
+                this.speed = 2;
+                this.canMove = true;
+                this.setImageResource(R.drawable.catbegin);
+                break;
+            case "plate":
+                this.speed = 1;
+                this.canMove = true;
+                this.setImageResource(R.drawable.platebegin);
+                break;
+            case "switch":
+                this.setImageResource(R.drawable.switchoff);
+                break;
         }
+        setMargins( getPXFromDP(this.x * 40), getPXFromDP(this.y * 40), 0, 0);
         layoutParams.height = getPXFromDP(40);
         layoutParams.width = getPXFromDP(40);
         layoutParams.topToTop = R.id.gridboardIV;
@@ -67,7 +83,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin != 0) {
+        if (vlp.topMargin - getPXFromDP(speed * 40) < 0) {
             //this.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
             setMargins( margin2, margin1 - getPXFromDP(speed * 40), 0, 0);
         }
@@ -85,7 +101,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin != getPXFromDP(8*40)) {
+        if (vlp.topMargin  + getPXFromDP(speed * 40) > getPXFromDP(8*40)) {
             //this.animate().setDuration(1000).translationYBy(getPXFromDP(40));
             setMargins( margin2, margin1 + getPXFromDP(speed * 40), 0, 0);
         }
@@ -102,7 +118,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.leftMargin != getPXFromDP(8*40)) {
+        if (vlp.leftMargin + getPXFromDP(speed * 40) > getPXFromDP(8*40)) {
             //this.animate().setDuration(1000).translationXBy(getPXFromDP(40));
             setMargins( margin2 + getPXFromDP(speed * 40), margin1, 0, 0);
         }
@@ -119,7 +135,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.leftMargin != 0) {
+        if (vlp.leftMargin - getPXFromDP(speed * 40) < 0) {
             //this.animate().setDuration(1000).translationXBy(getPXFromDP(-40));
             setMargins(margin2 - getPXFromDP(speed * 40), margin1, 0, 0);
         }
