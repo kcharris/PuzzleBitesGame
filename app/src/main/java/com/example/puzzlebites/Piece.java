@@ -41,7 +41,6 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         layoutParams.width = getPXFromDP(40);
         layoutParams.topToTop = R.id.gridboardIV;
         layoutParams.startToStart = R.id.gridboardIV;
-        this.setTag("bagelIV");
         this.setLayoutParams(layoutParams);
     }
 

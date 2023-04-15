@@ -57,7 +57,6 @@ public class PuzzleActivity extends AppCompatActivity {
         for (Piece p : pieces) {
             myLayout.addView(p);
         }
-
     }
 
     private ActivityResultLauncher<Intent> sStartLauncher;
