@@ -15,10 +15,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 //methods can be called per piece to determine what pieces can and cannot move
 //move methods (two methods) 1. to check if a move can be made 2. one to actually move it
 public class Piece extends androidx.appcompat.widget.AppCompatImageView {
-    boolean canMove = false;
-    int speed = 0;
-    int x = 0;
-    int y = 0;
+    public boolean canMove = false;
+    public int speed = 0;
+    public int x = 0;
+    public int y = 0;
+    public ConstraintLayout.LayoutParams layoutParams;
     String type;
 
     public Piece(Context context, String type, int x, int y) {
@@ -26,27 +27,29 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         this.type = type;
         this.x = x;
         this.y = y;
+        this.layoutParams = new ConstraintLayout.LayoutParams(40,40);
+        this.setLayoutParams(this.layoutParams);
         switch (type) {
             case "bagel":
                 this.speed = 1;
                 this.canMove = true;
-                setMargins(this, getPXFromDP(x * 40), getPXFromDP(y * 40), 0, 0);
+                setMargins( getPXFromDP(this.x * 40), getPXFromDP(this.y * 40), 0, 0);
                 this.setImageResource(R.drawable.bagelbitebegin);
                 break;
-        };
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(0, 0);
+        }
         layoutParams.height = getPXFromDP(40);
         layoutParams.width = getPXFromDP(40);
-        layoutParams.topToTop = R.id.GridBoard;
-        layoutParams.startToStart = R.id.GridBoard;
+        layoutParams.topToTop = R.id.gridboardIV;
+        layoutParams.startToStart = R.id.gridboardIV;
+        this.setTag("bagelIV");
         this.setLayoutParams(layoutParams);
     }
 
-    private void setMargins(View view, int left, int top, int right, int bottom) {
-        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+    private void setMargins(int left, int top, int right, int bottom) {
+        if (this.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
             p.setMargins(left, top, right, bottom);
-            view.requestLayout();
+            this.setLayoutParams(p);
         }
     }
 
@@ -61,14 +64,13 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
 //        if(!score.getHasStarted()) {
 //            score.startClock();
 //        }
-        ConstraintLayout.LayoutParams clp = (ConstraintLayout.LayoutParams) this.getLayoutParams();
-        int margin1 = clp.topMargin;
-        int margin2 = clp.leftMargin;
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
+        int margin1 = vlp.topMargin;
+        int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (clp.topMargin != 0) {
-            clp.setMargins( margin2, margin1 - getPXFromDP(speed * 40), 0, 0);
+        if (vlp.topMargin != 0) {
+            setMargins( margin2, margin1 - getPXFromDP(speed * 40), 0, 0);
         }
-        this.setLayoutParams(clp);
 
     }
 
@@ -83,8 +85,8 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin != 0) {
-            setMargins(this, margin2, margin1 + getPXFromDP(speed * 40), 0, 0);
+        if (vlp.topMargin != getPXFromDP(8*40)) {
+            setMargins( margin2, margin1 + getPXFromDP(speed * 40), 0, 0);
         }
     }
 
@@ -99,8 +101,8 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin != 0) {
-            setMargins(this, margin2 + getPXFromDP(speed * 40), margin1, 0, 0);
+        if (vlp.leftMargin != getPXFromDP(8*40)) {
+            setMargins( margin2 + getPXFromDP(speed * 40), margin1, 0, 0);
         }
     }
 
@@ -115,8 +117,8 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin != 0) {
-            setMargins(this, margin2 - getPXFromDP(speed * 40), margin1, 0, 0);
+        if (vlp.leftMargin != 0) {
+            setMargins(margin2 - getPXFromDP(speed * 40), margin1, 0, 0);
         }
     }
 }

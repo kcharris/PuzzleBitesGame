@@ -27,6 +27,7 @@ import java.util.List;
 public class MainPageActivity extends AppCompatActivity {
     public scoreModel score;
     public List<Piece> pieces = new ArrayList<>();
+    private ConstraintLayout myLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +51,10 @@ public class MainPageActivity extends AppCompatActivity {
                         }
                     }
                 });
-        Piece piece = new Piece(this, "bagel", 6,6);
+        myLayout = (ConstraintLayout) findViewById(R.id.lv1BTN);
+        Piece piece = new Piece(this, "bagel", 4,6);
         pieces.add(piece);
-        this.addContentView(piece, new ViewGroup.LayoutParams(0, 0));
+        myLayout.addView(piece);
     }
 
          private ActivityResultLauncher<Intent> pStartLauncher;
@@ -93,6 +95,7 @@ public class MainPageActivity extends AppCompatActivity {
         for (Piece p : pieces){
             p.moveDown();
         }
+
     }
 
     public void moveRight2(View v){
@@ -104,14 +107,6 @@ public class MainPageActivity extends AppCompatActivity {
     public void moveLeft2(View v){
         for (Piece p : pieces){
             p.moveLeft();
-        }
-    }
-
-    private void setMargins (View view, int left, int top, int right, int bottom) {
-        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-            p.setMargins(left, top, right, bottom);
-            view.requestLayout();
         }
     }
 
@@ -134,7 +129,7 @@ public class MainPageActivity extends AppCompatActivity {
 //    private checkForLevelSelect(View mg){
 //        ImageView lvlOne = findViewById(R.id.lvlOne);
 //        if(viewsOverlap(mg, lvlOne)) {
-//            toPuzzle(1);
+//            toPuzzle(lvlOne);
 //        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
 //        if(viewsOverlap(mg, lvlTwo)) {
 //            toPuzzle(2);
