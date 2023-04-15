@@ -93,7 +93,8 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin2 = vlp.leftMargin;
 
         if(vlp.topMargin != 0){
-            setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
+            //setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
+            bagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
             Global.moveCount += 1;
             puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
@@ -109,7 +110,8 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin2 = vlp.leftMargin;
 
         if(vlp.topMargin != getPXFromDP(40*8)){
-            setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
+            //setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
+            bagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(40));
             Global.moveCount += 1;
             puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
@@ -124,7 +126,8 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin2 = vlp.leftMargin;
 
         if(vlp.leftMargin != getPXFromDP(40*8)){
-            setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
+            //setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
+            bagelIV.animate().setDuration(1000).translationXBy(getPXFromDP(40));
             Global.moveCount += 1;
             puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
@@ -139,7 +142,8 @@ public class PuzzleActivity extends AppCompatActivity {
         int margin2 = vlp.leftMargin;
 
         if(vlp.leftMargin != 0){
-            setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
+            //setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
+            bagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(-40));
             Global.moveCount += 1;
             puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
