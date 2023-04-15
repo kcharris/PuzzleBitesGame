@@ -22,13 +22,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 public class PuzzleActivity extends AppCompatActivity {
     private scoreModel score;
     public List<Piece> pieces = new ArrayList<Piece>();
-    ConstraintLayout myLayout;
     Puzzles puzzles = new Puzzles(this);
     private String puzzle;
+    ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +104,7 @@ public class PuzzleActivity extends AppCompatActivity {
     public void moveUp(View v) {
         score.addNumOfMove();
         for (Piece p : pieces) {
-            if(!p.moveUp()){
-
-            }
+            p.moveUp();
         }
         TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         Global.moveCount += 1;
@@ -148,6 +148,13 @@ public class PuzzleActivity extends AppCompatActivity {
     }
     public void resetPuzzle(View v){
         setPuzzle(puzzle);
+    }
+    public void moveChecker(){
+        //check that all pieces can move with no issue, if not prevent action. Right now maybe pop a toast
+        //then check if bagel lands on an inactive switch, and if so activates it and related pieces
+
+        //check if all the end stars are covered, finish the puzzle and send the move count to related sections.
+
     }
     /*public void finishPuzzle(View v){
         Intent scoreIntent = new Intent(this, scoreScreen.class);
