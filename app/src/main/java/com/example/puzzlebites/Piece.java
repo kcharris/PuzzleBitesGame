@@ -83,7 +83,8 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin - getPXFromDP(speed * 40) < 0) {
+        Log.d("check", (vlp.topMargin - getPXFromDP(speed * 40)) + " ");
+        if (vlp.topMargin - getPXFromDP(speed * 40) >= 0) {
             //this.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
             setMargins( margin2, margin1 - getPXFromDP(speed * 40), 0, 0);
         }
@@ -101,7 +102,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.topMargin  + getPXFromDP(speed * 40) > getPXFromDP(8*40)) {
+        if (vlp.topMargin  + getPXFromDP(speed * 40) <= getPXFromDP(8*40)) {
             //this.animate().setDuration(1000).translationYBy(getPXFromDP(40));
             setMargins( margin2, margin1 + getPXFromDP(speed * 40), 0, 0);
         }
@@ -118,7 +119,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.leftMargin + getPXFromDP(speed * 40) > getPXFromDP(8*40)) {
+        if (vlp.leftMargin + getPXFromDP(speed * 40) <= getPXFromDP(8*40)) {
             //this.animate().setDuration(1000).translationXBy(getPXFromDP(40));
             setMargins( margin2 + getPXFromDP(speed * 40), margin1, 0, 0);
         }
@@ -135,7 +136,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-        if (vlp.leftMargin - getPXFromDP(speed * 40) < 0) {
+        if (vlp.leftMargin - getPXFromDP(speed * 40) >= 0) {
             //this.animate().setDuration(1000).translationXBy(getPXFromDP(-40));
             setMargins(margin2 - getPXFromDP(speed * 40), margin1, 0, 0);
         }
