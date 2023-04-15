@@ -62,83 +62,12 @@ public class PuzzleActivity extends AppCompatActivity {
         //this class needs methods that will determine viable moves or not
         //methods can be called per piece to determine what pieces can and cannot move
         //move methods (two methods) 1. to check if a move can be made 2. one to actually move it
-
-        public void moveUp(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.topMargin != 0){
-                bagelIV.animate().setDuration(1100).translationYBy(getPXFromDP(-40));
-                //setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
-            }
-
-        }
-
-        public void moveDown(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.topMargin != getPXFromDP(40*8)){
-                bagelIV.animate().setDuration(1100).translationYBy(getPXFromDP(40));
-                //setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
-            }
-        }
-
-        public void moveRight(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.leftMargin != getPXFromDP(40*8)){
-                bagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(40));
-                //setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
-            }
-        }
-
-        public void moveLeft(View v){
-            /*Need to create function that determines if player has finished puzzle (by seeing if two IVs
-            overlap) and at that point score.endClock() and score.calcClock() will be called.*/
-            if(!score.getHasStarted()) {
-                score.startClock();
-            }
-            ImageView bagelIV = findViewById(R.id.bagelIV);
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
-            score.addNumOfMove();
-            if(vlp.leftMargin != 0){
-                bagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(-40));
-                //setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
-            }
-        }
     }
 
     private ActivityResultLauncher<Intent> sStartLauncher;
 
     public void skipPuzzle(View v) {
+        Global.moveCount = 0;
         Intent puzzle = new Intent(this,scoreScreen.class);
         puzzle.putExtra("puzzle",0);
         setResult(Activity.RESULT_OK, puzzle);
@@ -158,18 +87,22 @@ public class PuzzleActivity extends AppCompatActivity {
     }
     public void moveUp(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
         int margin1 = vlp.topMargin;
         int margin2 = vlp.leftMargin;
 
         if(vlp.topMargin != 0){
             setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
+            Global.moveCount += 1;
+            puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
 
     }
 
     public void moveDown(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
         int margin1 = vlp.topMargin;
@@ -177,11 +110,14 @@ public class PuzzleActivity extends AppCompatActivity {
 
         if(vlp.topMargin != getPXFromDP(40*8)){
             setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
+            Global.moveCount += 1;
+            puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
     }
 
     public void moveRight(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
         int margin1 = vlp.topMargin;
@@ -189,11 +125,14 @@ public class PuzzleActivity extends AppCompatActivity {
 
         if(vlp.leftMargin != getPXFromDP(40*8)){
             setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
+            Global.moveCount += 1;
+            puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
     }
 
     public void moveLeft(View v){
         ImageView bagelIV = findViewById(R.id.bagelIV);
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
         int margin1 = vlp.topMargin;
@@ -201,6 +140,8 @@ public class PuzzleActivity extends AppCompatActivity {
 
         if(vlp.leftMargin != 0){
             setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
+            Global.moveCount += 1;
+            puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
     }
 
