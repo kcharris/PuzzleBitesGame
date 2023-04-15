@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class scoreScreen extends AppCompatActivity {
 
@@ -28,6 +29,10 @@ public class scoreScreen extends AppCompatActivity {
                         }
                     }
                 });
+        Intent intent =  getIntent();
+        TextView congratsTV = findViewById(R.id.congratsTV);
+        String score = intent.getExtras().getInt("score") + "";
+        congratsTV.setText("Congrats!\n Your score is\n" + score);
     }
 
 

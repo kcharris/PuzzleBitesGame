@@ -28,7 +28,7 @@ import java.util.List;
 
 public class MainPageActivity extends AppCompatActivity {
     public scoreModel score;
-    public List<Piece> pieces = new ArrayList<>();
+    public Piece bagel;
     private ConstraintLayout myLayout;
 
     @Override
@@ -54,14 +54,9 @@ public class MainPageActivity extends AppCompatActivity {
                     }
                 });
         myLayout = (ConstraintLayout) findViewById(R.id.lv1BTN);
-        Piece piece = new Piece(this, "bagel", 4, 6);
-        Piece piece2 = new Piece(this, "bagel", 3, 4);
-        Piece piece3 = new Piece(this, "bagel", 4, 4);
+        bagel = new Piece(this, "bagel", 4, 6);
+        myLayout.addView(bagel);
 
-        pieces.add(piece);
-        for (Piece p : pieces) {
-            myLayout.addView(p);
-        }
     }
 
     private ActivityResultLauncher<Intent> pStartLauncher;
@@ -83,9 +78,8 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void moveUp2(View v) {
         score.addNumOfMove();
-        for (Piece p : pieces) {
-            p.moveUp();
-        }
+        bagel.moveUp();
+        bagel.setMargins();
         checkForLevelSelect();
 
     }
@@ -93,25 +87,22 @@ public class MainPageActivity extends AppCompatActivity {
     public void moveDown2(View v) {
 
         score.addNumOfMove();
-        for (Piece p : pieces) {
-            p.moveDown();
-        }
+        bagel.moveDown();
+        bagel.setMargins();
         checkForLevelSelect();
 
     }
 
     public void moveRight2(View v) {
-        for (Piece p : pieces) {
-            p.moveRight();
-        }
+        bagel.moveRight();
+        bagel.setMargins();
         checkForLevelSelect();
 
     }
 
     public void moveLeft2(View v) {
-        for (Piece p : pieces) {
-            p.moveLeft();
-        }
+        bagel.moveLeft();
+        bagel.setMargins();
         checkForLevelSelect();
     }
 
@@ -141,7 +132,6 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     private void checkForLevelSelect() {
-        Piece bagel = pieces.get(0);
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if (viewsOverlap(bagel, lvlOne)) {
             toPuzzle("one");

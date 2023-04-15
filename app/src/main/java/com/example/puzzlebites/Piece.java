@@ -21,16 +21,14 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
     public boolean canMove = false;
     public boolean isActive = false;
     public int speed = 0;
-    public int x = 0;
-    public int y = 0;
+    public int nextTopMargin = 0;
+    public int nextStartMargin = 0;
     public ConstraintLayout.LayoutParams layoutParams;
     String type;
 
     public Piece(Context context, String type, int x, int y) {
         super(context);
         this.type = type;
-        this.x = x;
-        this.y = y;
         this.layoutParams = new ConstraintLayout.LayoutParams(40,40);
         this.setLayoutParams(this.layoutParams);
         switch (type) {
@@ -65,7 +63,9 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
                 this.setBackgroundColor(Color.argb(255, 200,100,0));
                 break;
         }
-        setMargins( getPXFromDP(this.x * 40), getPXFromDP(this.y * 40), 0, 0);
+        this.nextStartMargin = getPXFromDP(x * 40);
+        this.nextTopMargin = getPXFromDP(y * 40);
+        setMargins();
         layoutParams.height = getPXFromDP(40);
         layoutParams.width = getPXFromDP(40);
         layoutParams.topToTop = R.id.gridboardIV;
@@ -73,10 +73,10 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         this.setLayoutParams(layoutParams);
     }
 
-    private void setMargins(int left, int top, int right, int bottom) {
+    public void setMargins() {
         if (this.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
-            p.setMargins(left, top, right, bottom);
+            p.setMargins(nextStartMargin, nextTopMargin, 0, 0);
             this.setLayoutParams(p);
         }
     }
@@ -92,19 +92,28 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
 //        if(!score.getHasStarted()) {
 //            score.startClock();
 //        }
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
+        int topMargin = vlp.topMargin;
+        int startMargin = vlp.leftMargin;
+
         if(this.isActive) {
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
-            Log.d("check", (vlp.topMargin - getPXFromDP(speed * 40)) + " ");
             if (vlp.topMargin - getPXFromDP(speed * 40) >= 0) {
                 //this.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
-                setMargins(margin2, margin1 - getPXFromDP(speed * 40), 0, 0);
+                //setMargins(startMargin, topMargin - getPXFromDP(speed * 40));
+                nextStartMargin = startMargin;
+                nextTopMargin = topMargin - getPXFromDP(speed * 40);
                 return true;
             }
+            else{
+                return false;
+            }
         }
-        return false;
+        else{
+            nextTopMargin = topMargin;
+            nextStartMargin = startMargin;
+        }
+        return true;
 
     }
 
@@ -115,18 +124,27 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
 //        if(!score.getHasStarted()) {
 //            score.startClock();
 //        }
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
+        int topMargin = vlp.topMargin;
+        int startMargin = vlp.leftMargin;
         if(this.isActive) {
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
             if (vlp.topMargin + getPXFromDP(speed * 40) <= getPXFromDP(8 * 40)) {
                 //this.animate().setDuration(1000).translationYBy(getPXFromDP(40));
-                setMargins(margin2, margin1 + getPXFromDP(speed * 40), 0, 0);
+                //setMargins(startMargin, topMargin + getPXFromDP(speed * 40));
+                nextStartMargin = startMargin;
+                nextTopMargin = topMargin + getPXFromDP(speed * 40);
                 return true;
             }
+            else{
+                return false;
+            }
         }
-        return false;
+        else{
+            nextTopMargin = topMargin;
+            nextStartMargin = startMargin;
+        }
+        return true;
     }
 
     public boolean moveRight() {
@@ -136,18 +154,28 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
 //        if(!score.getHasStarted()) {
 //            score.startClock();
 //        }
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
+        int topMargin = vlp.topMargin;
+        int startMargin = vlp.leftMargin;
         if(this.isActive) {
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
+
 //        score.addNumOfMove();
             if (vlp.leftMargin + getPXFromDP(speed * 40) <= getPXFromDP(8 * 40)) {
                 //this.animate().setDuration(1000).translationXBy(getPXFromDP(40));
-                setMargins(margin2 + getPXFromDP(speed * 40), margin1, 0, 0);
+                //setMargins(startMargin + getPXFromDP(speed * 40), topMargin);
+                nextStartMargin = startMargin + getPXFromDP(speed * 40);
+                nextTopMargin = topMargin;
                 return true;
             }
+            else{
+                return false;
+            }
         }
-        return false;
+        else{
+            nextTopMargin = topMargin;
+            nextStartMargin = startMargin;
+        }
+        return true;
     }
 
     public boolean moveLeft() {
@@ -157,17 +185,27 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
 //        if(!score.getHasStarted()) {
 //            score.startClock();
 //        }
+        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
+        int topMargin = vlp.topMargin;
+        int startMargin = vlp.leftMargin;
         if(this.isActive) {
-            ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
-            int margin1 = vlp.topMargin;
-            int margin2 = vlp.leftMargin;
+
 //        score.addNumOfMove();
             if (vlp.leftMargin - getPXFromDP(speed * 40) >= 0) {
                 //this.animate().setDuration(1000).translationXBy(getPXFromDP(-40));
-                setMargins(margin2 - getPXFromDP(speed * 40), margin1, 0, 0);
+                //setMargins(startMargin - getPXFromDP(speed * 40), topMargin);
+                nextStartMargin = startMargin - getPXFromDP(speed * 40);
+                nextTopMargin = topMargin;
                 return true;
             }
+            else{
+                return false;
+            }
         }
-        return false;
+        else{
+            nextTopMargin = topMargin;
+            nextStartMargin = startMargin;
+        }
+        return true;
     }
 }

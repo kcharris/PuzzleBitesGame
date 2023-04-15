@@ -17,28 +17,28 @@ public class Puzzles {
         this.context = context;
     }
 
-    public List<Piece> getPuzzle(String s){
+    public Puzzle getPuzzle(String s){
         // for puzzles, order of input into the array matters
         // ealier entries will show behind other views in the layout
         s = "one"; // until other puzzles are created
+        Puzzle p = new Puzzle();
         switch (s) {
             case "one":
-                pieces = new ArrayList<>();
-                pieces.add(new Piece(context, "end", 1, 1));
-                pieces.add(new Piece(context, "end", 3, 2));
-                pieces.add(new Piece(context, "end", 6, 1));
-                pieces.add(new Piece(context, "end", 7, 3));
-                pieces.add(new Piece(context, "end", 8, 2));
-                pieces.add(new Piece(context, "plateSwitch", 1, 5));
-                pieces.add(new Piece(context, "catSwitch", 3, 6));
+                p.endPieces.add(new Piece(context, "end", 1, 1));
+                p.endPieces.add(new Piece(context, "end", 3, 2));
+                p.endPieces.add(new Piece(context, "end", 6, 1));
+                p.endPieces.add(new Piece(context, "end", 7, 3));
+                p.endPieces.add(new Piece(context, "end", 8, 2));
 
-                pieces.add(new Piece(context, "cat", 1, 3));
-                pieces.add(new Piece(context, "cat", 3, 4));
-                pieces.add(new Piece(context, "plate", 4, 1));
-                pieces.add(new Piece(context, "plate", 5, 3));
-                pieces.add(new Piece(context, "plate", 6, 2));
+                p.switchPieces.add(new Piece(context, "plateSwitch", 1, 5));
+                p.switchPieces.add(new Piece(context, "catSwitch", 3, 6));
 
-                pieces.add(new Piece(context, "bagel", 4, 6));
+                p.pieces.add(new Piece(context, "cat", 1, 3));
+                p.pieces.add(new Piece(context, "cat", 3, 4));
+                p.pieces.add(new Piece(context, "plate", 4, 1));
+                p.pieces.add(new Piece(context, "plate", 5, 3));
+                p.pieces.add(new Piece(context, "plate", 6, 2));
+                p.pieces.add(new Piece(context, "bagel", 4, 6));
                 break;
             case "two":
                 break;
@@ -49,6 +49,6 @@ public class Puzzles {
             case "five":
                 break;
         }
-        return pieces;
+        return p;
     }
 }
