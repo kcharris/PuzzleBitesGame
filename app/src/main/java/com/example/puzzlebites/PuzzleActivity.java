@@ -27,6 +27,7 @@ public class PuzzleActivity extends AppCompatActivity {
     private scoreModel score;
     public List<Piece> pieces = new ArrayList<Piece>();
     ConstraintLayout myLayout;
+    Puzzles puzzles = new Puzzles(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,7 @@ public class PuzzleActivity extends AppCompatActivity {
                     }
                 });
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
-        Piece piece = new Piece(this, "bagel", 4, 6);
-        pieces.add(piece);
+        pieces = puzzles.getPuzzle1();
         for (Piece p : pieces) {
             myLayout.addView(p);
         }
