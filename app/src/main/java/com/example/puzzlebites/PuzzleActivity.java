@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class PuzzleActivity extends AppCompatActivity {
     private scoreModel score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,63 +96,54 @@ public class PuzzleActivity extends AppCompatActivity {
         if(vlp.topMargin != 0){
             //setMargins(bagelIV, margin2, margin1- getPXFromDP(40), 0, 0);
             bagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
-            Global.moveCount += 1;
-            puzzleMoves.setText("Move Count: " + Global.moveCount);
-        }
 
-    }
-
-    public void moveDown(View v){
-        ImageView bagelIV = findViewById(R.id.bagelIV);
-        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
-
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-
-        if(vlp.topMargin != getPXFromDP(40*8)){
-            //setMargins(bagelIV, margin2, margin1+ getPXFromDP(40), 0, 0);
-            bagelIV.animate().setDuration(1000).translationYBy(getPXFromDP(40));
-            Global.moveCount += 1;
-            puzzleMoves.setText("Move Count: " + Global.moveCount);
         }
     }
 
-    public void moveRight(View v){
-        ImageView bagelIV = findViewById(R.id.bagelIV);
-        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
 
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-
-        if(vlp.leftMargin != getPXFromDP(40*8)){
-            //setMargins(bagelIV, margin2+ getPXFromDP(40), margin1, 0, 0);
-            bagelIV.animate().setDuration(1000).translationXBy(getPXFromDP(40));
-            Global.moveCount += 1;
-            puzzleMoves.setText("Move Count: " + Global.moveCount);
+    public void moveUp2(View v) {
+        score.addNumOfMove();
+        for (Piece p : pieces) {
+            p.moveUp();
         }
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        Global.moveCount += 1;
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
 
-    public void moveLeft(View v){
-        ImageView bagelIV = findViewById(R.id.bagelIV);
-        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        ViewGroup.MarginLayoutParams vlp = (ViewGroup.MarginLayoutParams) bagelIV.getLayoutParams();
+    public void moveDown2(View v) {
 
-        int margin1 = vlp.topMargin;
-        int margin2 = vlp.leftMargin;
-
-        if(vlp.leftMargin != 0){
-            //setMargins(bagelIV, margin2- getPXFromDP(40), margin1, 0, 0);
-            bagelIV.animate().setDuration(1100).translationXBy(getPXFromDP(-40));
-            Global.moveCount += 1;
-            puzzleMoves.setText("Move Count: " + Global.moveCount);
+        score.addNumOfMove();
+        for (Piece p : pieces) {
+            p.moveDown();
         }
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        Global.moveCount += 1;
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
+
+    }
+
+    public void moveRight2(View v) {
+        for (Piece p : pieces) {
+            p.moveRight();
+        }
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        Global.moveCount += 1;
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
+    }
+
+    public void moveLeft2(View v) {
+        for (Piece p : pieces) {
+            p.moveLeft();
+        }
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        Global.moveCount += 1;
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
 
     public void undoBTN(View v){
         TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        Global.moveCount += 1;
+        Global.moveCount -= 1;
         puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
 
