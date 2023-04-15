@@ -135,8 +135,8 @@
 
     <ImageView
         android:id="@+id/lvlOne"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="240dp"
         android:scaleType="centerCrop"
@@ -146,9 +146,9 @@
 
     <ImageView
         android:id="@+id/lvlSetting"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="116dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="280dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/gridboardIV"
@@ -157,8 +157,8 @@
 
     <ImageView
         android:id="@+id/lvlTwo"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="120dp"
         android:scaleType="centerCrop"
@@ -168,9 +168,9 @@
 
     <ImageView
         android:id="@+id/lvlThree"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="116dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="80dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/gridboardIV"
@@ -179,8 +179,8 @@
 
     <ImageView
         android:id="@+id/lvlFour"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="80dp"
         android:scaleType="centerCrop"
@@ -190,8 +190,8 @@
 
     <ImageView
         android:id="@+id/lvlFive"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="280dp"
         android:layout_marginTop="120dp"
         android:scaleType="centerCrop"
@@ -201,9 +201,9 @@
 
     <ImageView
         android:id="@+id/lvlTrophy"
-        android:layout_width="41dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="276dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="280dp"
         android:layout_marginTop="240dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/gridboardIV"

@@ -69,6 +69,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
         if (vlp.topMargin != 0) {
+            //this.animate().setDuration(1000).translationYBy(getPXFromDP(-40));
             setMargins( margin2, margin1 - getPXFromDP(speed * 40), 0, 0);
         }
 
@@ -86,6 +87,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
         if (vlp.topMargin != getPXFromDP(8*40)) {
+            //this.animate().setDuration(1000).translationYBy(getPXFromDP(40));
             setMargins( margin2, margin1 + getPXFromDP(speed * 40), 0, 0);
         }
     }
@@ -102,6 +104,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
         if (vlp.leftMargin != getPXFromDP(8*40)) {
+            //this.animate().setDuration(1000).translationXBy(getPXFromDP(40));
             setMargins( margin2 + getPXFromDP(speed * 40), margin1, 0, 0);
         }
     }
@@ -118,6 +121,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int margin2 = vlp.leftMargin;
 //        score.addNumOfMove();
         if (vlp.leftMargin != 0) {
+            //this.animate().setDuration(1000).translationXBy(getPXFromDP(-40));
             setMargins(margin2 - getPXFromDP(speed * 40), margin1, 0, 0);
         }
     }

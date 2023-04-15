@@ -30,6 +30,7 @@ public class MainPageActivity extends AppCompatActivity {
     public scoreModel score;
     public List<Piece> pieces = new ArrayList<>();
     private ConstraintLayout myLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,80 +48,72 @@ public class MainPageActivity extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if(result.getResultCode() == Activity.RESULT_OK)
-                        {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
 
                         }
                     }
                 });
         myLayout = (ConstraintLayout) findViewById(R.id.lv1BTN);
-        Piece piece = new Piece(this, "bagel", 4,6);
+        Piece piece = new Piece(this, "bagel", 4, 6);
         Piece piece2 = new Piece(this, "bagel", 3, 4);
         Piece piece3 = new Piece(this, "bagel", 4, 4);
-        Piece piece4 = new Piece(this, "bagel", 3, 7);
-        Piece piece5 = new Piece(this, "bagel", 5, 4);
-        Piece piece6 = new Piece(this, "bagel", 2, 4);
-        Piece piece7 = new Piece(this, "bagel", 6, 6);
-        Piece piece8 = new Piece(this, "bagel", 8, 8);
 
         pieces.add(piece);
-        pieces.addAll(Arrays.asList(piece2, piece3, piece4, piece5, piece6,piece7, piece8));
-        for(Piece p : pieces){
+        pieces.addAll(Arrays.asList(piece2, piece3));
+        for (Piece p : pieces) {
             myLayout.addView(p);
         }
     }
 
-         private ActivityResultLauncher<Intent> pStartLauncher;
+    private ActivityResultLauncher<Intent> pStartLauncher;
 
-    public void returnHome(View v)
-    {
+    public void returnHome(View v) {
         Intent mainIntent = new Intent(this, MainActivity.class);
         mainIntent.putExtra("Return", 0);
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
 
-    public void toPuzzle(View v) {
-        Intent puzzle = new Intent(this,PuzzleActivity.class);
-        puzzle.putExtra("puzzle",0);
-        setResult(Activity.RESULT_OK, puzzle);
-        pStartLauncher.launch(puzzle);
-        finish();
-    }
-
-    public void toTrophies(View v){
+    public void toTrophies() {
         Intent trophy = new Intent(this, TrophyPage.class);
-        trophy.putExtra("trophy",0);
+        trophy.putExtra("trophy", 0);
         setResult(Activity.RESULT_OK, trophy);
         pStartLauncher.launch(trophy);
         finish();
     }
-    public void moveUp2(View v){
+
+    public void moveUp2(View v) {
         score.addNumOfMove();
-        for (Piece p : pieces){
+        for (Piece p : pieces) {
             p.moveUp();
         }
+        checkForLevelSelect();
+
     }
 
-    public void moveDown2(View v){
+    public void moveDown2(View v) {
 
         score.addNumOfMove();
-        for (Piece p : pieces){
+        for (Piece p : pieces) {
             p.moveDown();
         }
+        checkForLevelSelect();
 
     }
 
-    public void moveRight2(View v){
-        for (Piece p : pieces){
+    public void moveRight2(View v) {
+        for (Piece p : pieces) {
             p.moveRight();
         }
+        checkForLevelSelect();
+
     }
 
-    public void moveLeft2(View v){
-        for (Piece p : pieces){
+    public void moveLeft2(View v) {
+        for (Piece p : pieces) {
             p.moveLeft();
         }
+        checkForLevelSelect();
     }
 
     private boolean viewsOverlap(View v1, View v2) {
@@ -139,33 +132,48 @@ public class MainPageActivity extends AppCompatActivity {
                 view2Loc[1] + v2.getHeight());
         return view1Rect.intersect(view2Rect);
     }
-//    private checkForLevelSelect(View mg){
-//        ImageView lvlOne = findViewById(R.id.lvlOne);
-//        if(viewsOverlap(mg, lvlOne)) {
-//            toPuzzle(lvlOne);
-//        }ImageView lvlTwo = findViewById(R.id.lvlTwo);
-//        if(viewsOverlap(mg, lvlTwo)) {
-//            toPuzzle(2);
-//        }ImageView lvlThree = findViewById(R.id.lvlThree);
-//        if(viewsOverlap(mg, lvlThree)) {
-//            toPuzzle(3);
-//        }ImageView lvlFour = findViewById(R.id.lvlFour);
-//        if(viewsOverlap(mg, lvlFour)) {
-//            toPuzzle(4);
-//        }ImageView lvlFive = findViewById(R.id.lvlFive);
-//        if(viewsOverlap(mg, lvlFive)) {
-//            toPuzzle(5);
-//        }ImageView lvlSetting = findViewById(R.id.lvlSetting);
-//        if(viewsOverlap(mg, lvlSetting)) {
-//            toPuzzle();
-//        }ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
-//        if(viewsOverlap(mg, lvlTrophy)) {
-//            toPuzzle();
-//        }
-}
+
+    public void toPuzzle(String s) {
+        Intent puzzle = new Intent(this, PuzzleActivity.class);
+        puzzle.putExtra("puzzle", s);
+        setResult(Activity.RESULT_OK, puzzle);
+        pStartLauncher.launch(puzzle);
+        finish();
+    }
+
+    private void checkForLevelSelect() {
+        Piece bagel = pieces.get(0);
+        ImageView lvlOne = findViewById(R.id.lvlOne);
+        if (viewsOverlap(bagel, lvlOne)) {
+            toPuzzle("one");
+        }
+        ImageView lvlTwo = findViewById(R.id.lvlTwo);
+        if (viewsOverlap(bagel, lvlTwo)) {
+            toPuzzle("two");
+        }
+        ImageView lvlThree = findViewById(R.id.lvlThree);
+        if (viewsOverlap(bagel, lvlThree)) {
+            toPuzzle("three");
+        }
+        ImageView lvlFour = findViewById(R.id.lvlFour);
+        if (viewsOverlap(bagel, lvlFour)) {
+            toPuzzle("four");
+        }
+        ImageView lvlFive = findViewById(R.id.lvlFive);
+        if (viewsOverlap(bagel, lvlFive)) {
+            toPuzzle("five");
+        }
+        ImageView lvlSetting = findViewById(R.id.lvlSetting);
+        if (viewsOverlap(bagel, lvlSetting)) {
+            toPuzzle("settings");
+        }
+        ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
+        if (viewsOverlap(bagel, lvlTrophy)) {
+            toTrophies();
+        }
 
     /*public boolean viableMove() {
     this is kind of useless because each move detects if it's viable before it activates
     }*/
-
-
+    }
+}
