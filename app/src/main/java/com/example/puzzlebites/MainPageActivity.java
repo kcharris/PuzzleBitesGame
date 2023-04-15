@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
@@ -162,3 +163,9 @@ public class MainPageActivity extends AppCompatActivity {
 //            toPuzzle();
 //        }
 }
+
+    /*public boolean viableMove() {
+    this is kind of useless because each move detects if it's viable before it activates
+    }*/
+
+
