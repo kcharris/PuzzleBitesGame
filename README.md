@@ -1,7 +1,7 @@
 # PuzzleBitesGame
 #### Notes on running:  
 In order for the app to work we currently recommend testing the application using a larger screen or high pixel density. Android Studio with the built in emulator running a Pixel 4a or the Pixel 3a is recommended. The target sdk is 33, and the minSDK is 24.  
-The level selector currently works but is not labeled with words and leads to "puzzle1" for most options. The star on the bottom right leads to a trophy page. The settings page lists items that may be implemented, ChangeBackground works but requires exiting settings after pressing.
+The level selector currently works but is not labeled with words and leads to "puzzle1" for most options. The star on the bottom right leads to a trophy page. The settings page lists items that have yet to be implemented, ChangeBackground works.
 
 #### Game Made By
 * Braeden
