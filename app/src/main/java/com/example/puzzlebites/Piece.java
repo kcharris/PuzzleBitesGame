@@ -133,7 +133,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
                 //this.animate().setDuration(1000).translationYBy(getPXFromDP(40));
                 //setMargins(startMargin, topMargin + getPXFromDP(speed * 40));
                 nextStartMargin = startMargin;
-                nextTopMargin = topMargin + getPXFromDP(speed * 40);
+                nextTopMargin = topMargin + getPXFromDP(speed * 40);;
                 return true;
             }
             else{

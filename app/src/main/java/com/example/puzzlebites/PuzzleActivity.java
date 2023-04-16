@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -166,24 +167,48 @@ public class PuzzleActivity extends AppCompatActivity {
     }
     public void moveUp(View v) {
         moveGeneral("up");
+        Global.lastMove = 1;
     }
 
     public void moveDown(View v) {
         moveGeneral("down");
+        Global.lastMove = 2;
     }
 
     public void moveRight(View v) {
         moveGeneral("right");
+        Global.lastMove = 3;
     }
 
     public void moveLeft(View v) {
         moveGeneral("left");
+        Global.lastMove = 4;
     }
 
     public void undoBTN(View v){
+        Button undoButton = findViewById(R.id.undoBTN);
         TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        Global.moveCount -= 1;
+        if(Global.lastMove != 0){
+            Global.moveCount -= 2;
+        }
+        if(Global.lastMove == 1){
+            moveGeneral("down");
+            Global.lastMove = 0;
+        }
+        if(Global.lastMove == 2){
+            moveGeneral("up");
+            Global.lastMove = 0;
+        }
+        if(Global.lastMove == 3){
+            moveGeneral("left");
+            Global.lastMove = 0;
+        }
+        if(Global.lastMove == 4){
+            moveGeneral("right");
+            Global.lastMove = 0;
+        }
         puzzleMoves.setText("Move Count: " + Global.moveCount);
+        //undoButton.setEnabled(false);
     }
     public void resetPuzzle(View v){
         setPuzzle(puzzleStr);
