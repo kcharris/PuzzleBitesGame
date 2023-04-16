@@ -30,6 +30,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
         myLayout = (ConstraintLayout) findViewById(R.id.activitySetting);
         applySettings();
         //restoreSharedPreferences();
