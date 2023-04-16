@@ -44,7 +44,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="9dp"
         android:onClick="returnMain"
-        android:text="--"
+        android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,15 +118,6 @@
         android:text="RESET"
         app:layout_constraintStart_toEndOf="@+id/puzzleDownBTN"
         app:layout_constraintTop_toBottomOf="@+id/puzzleUndoBTN" />
-
-    <Button
-        android:id="@+id/buttonFinishPuzzle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="skipPuzzle"
-        android:text="Finish Puzzle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleBackBTN" />
 
     <ImageView
         android:id="@+id/gridboardIV"
