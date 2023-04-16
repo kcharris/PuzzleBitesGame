@@ -18,7 +18,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
         restoreSharedPreferences();
     }
 
@@ -82,7 +81,6 @@ public class SettingsActivity extends AppCompatActivity {
     {
         SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
         color = sp.getString("Color", "Default");
-
     }
 
 

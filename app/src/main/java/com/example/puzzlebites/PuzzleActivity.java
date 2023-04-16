@@ -19,6 +19,8 @@ import com.example.puzzlebites.data.model.Piece;
 import com.example.puzzlebites.data.model.Puzzle;
 import com.example.puzzlebites.data.model.Puzzles;
 import com.example.puzzlebites.data.model.Score;
+import com.example.puzzlebites.data.model.Setting;
+import com.example.puzzlebites.data.repository.SettingRepository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,13 +32,20 @@ public class PuzzleActivity extends AppCompatActivity {
     private HashSet<String> endLocations;
     private String puzzleStr;
     ConstraintLayout myLayout;
+    SettingRepository settingRepository;
+    Setting settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.puzzleStr = getIntent().getExtras().getString("puzzle");
         setContentView(R.layout.activity_puzzle);
+        myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         score = new ViewModelProvider(this).get(Score.class);
+        settingRepository = new SettingRepository(this);
+        settings = settingRepository.getSettings();
+        myLayout.setBackgroundColor(settings.backgroundColor);
+
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -60,7 +69,6 @@ public class PuzzleActivity extends AppCompatActivity {
                         }
                     }
                 });
-        myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         setPuzzle(puzzleStr);
 
     }
