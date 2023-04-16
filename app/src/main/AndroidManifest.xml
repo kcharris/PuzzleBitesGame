@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".setting"
+            android:name=".SettingsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +51,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".scoreScreen"
+            android:name=".ScoreScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

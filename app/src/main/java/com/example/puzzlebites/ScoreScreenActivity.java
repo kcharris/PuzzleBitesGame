@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class scoreScreen extends AppCompatActivity {
+public class ScoreScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,24 +39,22 @@ public class scoreScreen extends AppCompatActivity {
     private ActivityResultLauncher<Intent> mpStartLauncher;
 
     public void returnBTN(View v) {
-        Intent mainPageIntent = new Intent(this, MainPageActivity.class);
-        mainPageIntent.putExtra("Return", 0);
-        setResult(Activity.RESULT_OK, mainPageIntent);
-        mpStartLauncher.launch(mainPageIntent);
+        Intent retryPuzzle = new Intent(this, PuzzleActivity.class);
+        retryPuzzle.putExtra("returned", "returned");
+        setResult(Activity.RESULT_OK, retryPuzzle);
         finish();
     }
 
     public void exitBTN(View v) {
-        Intent mainPageIntent = new Intent(this, MainPageActivity.class);
-        setResult(Activity.RESULT_OK, mainPageIntent);
-        mpStartLauncher.launch(mainPageIntent);
+        Intent exitPuzzle = new Intent(this, PuzzleActivity.class);
+        setResult(Activity.RESULT_OK, exitPuzzle);
         finish();
     }
 
     public void retryBTN(View v) {
         Intent retryPuzzle = new Intent(this, PuzzleActivity.class);
+        retryPuzzle.putExtra("returned", "returned");
         setResult(Activity.RESULT_OK, retryPuzzle);
-        mpStartLauncher.launch(retryPuzzle);
         finish();
     }
 }

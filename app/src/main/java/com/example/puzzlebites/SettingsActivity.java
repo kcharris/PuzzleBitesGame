@@ -7,15 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import java.io.FileOutputStream;
-
-public class setting extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +27,7 @@ public class setting extends AppCompatActivity {
     {
         super.onResume();
 
-        LayoutInflater inflater = LayoutInflater.from(setting.this);
+        LayoutInflater inflater = LayoutInflater.from(SettingsActivity.this);
         View view = inflater.inflate(R.layout.activity_setting, null);
         setContentView(view);
         if(color.equals("Default"))

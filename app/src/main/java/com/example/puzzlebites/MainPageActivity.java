@@ -9,33 +9,34 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.example.puzzlebites.data.model.Piece;
+import com.example.puzzlebites.data.model.PieceType;
+import com.example.puzzlebites.data.model.Puzzle;
+import com.example.puzzlebites.data.model.Puzzles;
+import com.example.puzzlebites.data.model.Score;
 
-public class MainPageActivity extends AppCompatActivity {
-    public scoreModel score;
+import java.util.ArrayList;
+
+public class MainPageActivity  extends AppCompatActivity {
+    public Score score;
     public Piece bagel;
     private ConstraintLayout myLayout;
+    private Puzzle puzzle;
+    private Puzzles puzzles = new Puzzles(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        score = new ViewModelProvider(this).get(scoreModel.class);
+        score = new ViewModelProvider(this).get(Score.class);
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -49,17 +50,28 @@ public class MainPageActivity extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == Activity.RESULT_OK) {
-
+                            setPuzzle("main");
                         }
                     }
                 });
-        myLayout = (ConstraintLayout) findViewById(R.id.lv1BTN);
-        bagel = new Piece(this, "bagel", 4, 6);
-        myLayout.addView(bagel);
+        myLayout = (ConstraintLayout) findViewById(R.id.MainPageActivity);
+        setPuzzle("main");
 
     }
 
     private ActivityResultLauncher<Intent> pStartLauncher;
+    private void setPuzzle(String puzzleStr) {
+        if(!(this.puzzle == null)){
+            for(Piece p: puzzle.getAllPieces()) {
+                myLayout.removeViewInLayout(p);
+            }
+        }
+        puzzle = puzzles.getPuzzle(puzzleStr);
+        for (Piece p : puzzle.getAllPieces()) {
+            myLayout.addView(p);
+        }
+        score.reset();
+    }
 
     public void returnHome(View v) {
         Intent mainIntent = new Intent(this, MainActivity.class);
@@ -77,33 +89,39 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void moveUp2(View v) {
-        score.addNumOfMove();
-        bagel.moveUp();
-        bagel.setMargins();
-        checkForLevelSelect();
-
+        if(puzzle.moveGeneral("up")){
+            score.incrementNumOfMove();
+            checkForLevelSelect();
+        }
     }
 
     public void moveDown2(View v) {
-
-        score.addNumOfMove();
-        bagel.moveDown();
-        bagel.setMargins();
-        checkForLevelSelect();
-
+        if(puzzle.moveGeneral("down")){
+            score.incrementNumOfMove();
+            checkForLevelSelect();
+        }
     }
 
     public void moveRight2(View v) {
-        bagel.moveRight();
-        bagel.setMargins();
-        checkForLevelSelect();
-
+        if(puzzle.moveGeneral("right")){
+            score.incrementNumOfMove();
+            checkForLevelSelect();
+        }
     }
 
     public void moveLeft2(View v) {
-        bagel.moveLeft();
-        bagel.setMargins();
-        checkForLevelSelect();
+        if(puzzle.moveGeneral("left")){
+            score.incrementNumOfMove();
+            checkForLevelSelect();
+        }
+    }
+    public void undoBTN(View v){
+        if(puzzle.undoMove()){
+            score.decrementNumOfMoves();
+        }
+    }
+    public void resetPuzzle(View v){
+        setPuzzle("main");
     }
 
     private boolean viewsOverlap(View v1, View v2) {
@@ -128,33 +146,29 @@ public class MainPageActivity extends AppCompatActivity {
         puzzle.putExtra("puzzle", s);
         setResult(Activity.RESULT_OK, puzzle);
         pStartLauncher.launch(puzzle);
-        finish();
     }
 
     private void checkForLevelSelect() {
+        Piece bagel = puzzle.getBagel();
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if (viewsOverlap(bagel, lvlOne)) {
             toPuzzle("one");
         }
         ImageView lvlTwo = findViewById(R.id.lvlTwo);
         if (viewsOverlap(bagel, lvlTwo)) {
-            toPuzzle("two");
+            toPuzzle("one");
         }
         ImageView lvlThree = findViewById(R.id.lvlThree);
         if (viewsOverlap(bagel, lvlThree)) {
-            toPuzzle("three");
+            toPuzzle("one");
         }
         ImageView lvlFour = findViewById(R.id.lvlFour);
         if (viewsOverlap(bagel, lvlFour)) {
-            toPuzzle("four");
+            toPuzzle("one");
         }
         ImageView lvlFive = findViewById(R.id.lvlFive);
         if (viewsOverlap(bagel, lvlFive)) {
-            toPuzzle("five");
-        }
-        ImageView lvlSetting = findViewById(R.id.lvlSetting);
-        if (viewsOverlap(bagel, lvlSetting)) {
-            toPuzzle("settings");
+            toPuzzle("one");
         }
         ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
         if (viewsOverlap(bagel, lvlTrophy)) {

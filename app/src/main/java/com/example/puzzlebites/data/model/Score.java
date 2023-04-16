@@ -1,13 +1,12 @@
-package com.example.puzzlebites;
+package com.example.puzzlebites.data.model;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 
-public class scoreModel extends ViewModel {
+public class Score extends ViewModel {
     long timeStart;
     long timeEnd;
     boolean hasStarted =false;
@@ -18,6 +17,9 @@ public class scoreModel extends ViewModel {
             return "Move: # "+ input;
         }
     });
+    public int getNumOfMoves(){
+        return numOfMoves.getValue();
+    }
     public LiveData<String> getNumOfMovesString() {
         return numOfMovesString;
     }
@@ -35,7 +37,9 @@ public class scoreModel extends ViewModel {
     public boolean getHasStarted() {
         return hasStarted;
     }
-    public void addNumOfMove() {
+    public void incrementNumOfMove() {
         numOfMoves.setValue(numOfMoves.getValue()+1);
     }
+    public void decrementNumOfMoves(){numOfMoves.setValue(numOfMoves.getValue() -1);}
+    public void reset(){numOfMoves.setValue(0);}
 }

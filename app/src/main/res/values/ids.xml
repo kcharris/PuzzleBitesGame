@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item
+        type="id"
+        name="lvlOne"/>
+    <item
+        type="id"
+        name="lvlTwo"/>
+    <item
+        type="id"
+        name="lvlThree"/>
+    <item
+        type="id"
+        name="lvlFour"/>
+    <item
+        type="id"
+        name="lvlFive"/>
+    <item
+        type="id"
+        name="lvlTrophy"/>
+</resources>
