@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,17 +17,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.example.puzzlebites.data.model.Setting;
+import com.example.puzzlebites.data.repository.SettingRepository;
+
 
 public class MainActivity extends AppCompatActivity {
+    SettingRepository settingRepository;
+    Setting setting;
+    ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
+        myLayout = (ConstraintLayout) findViewById(R.id.mainActivity);
+        settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
+        myLayout.setBackgroundColor(setting.backgroundColor);
         restoreSharedPreferences();
-
-
-
         mStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -43,26 +51,27 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
     @Override
     public void onResume()
     {
-        Log.d("SPColor", backgroundColor);
+//        Log.d("SPColor", backgroundColor);
         super.onResume();
-
-        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-        View view = inflater.inflate(R.layout.activity_main, null);
-        setContentView(view);
-        if(backgroundColor.equals("Default"))
-        {
-            view.setBackgroundColor(Color.rgb(255,255,255));
-        }
-        else
-        {
-            view.setBackgroundColor(Color.rgb(0,255,255));
-        }
+//
+//        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+//        View view = inflater.inflate(R.layout.activity_main, null);
+//        setContentView(view);
+//        if(backgroundColor.equals("Default"))
+//        {
+//            view.setBackgroundColor(Color.rgb(255,255,255));
+//        }
+//        else
+//        {
+//            view.setBackgroundColor(Color.rgb(0,255,255));
+//        }
+        setting = settingRepository.getSettings();
+        myLayout.setBackgroundColor(setting.backgroundColor);
     }
 
 
