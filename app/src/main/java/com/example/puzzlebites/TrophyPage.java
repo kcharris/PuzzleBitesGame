@@ -22,26 +22,21 @@ public class TrophyPage extends AppCompatActivity {
                 new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult trophyPageExit) {
-                        /*My plan is to use one ActivityResult for the exit button and
-                            the back space (returnBTN) button
-                          "Return" will be the returnBTN, else will be the exitBTN
-                        */
-                        int resultTrophy = trophyPageExit.getResultCode();
-                        Intent trophyData = trophyPageExit.getData();
+                        // Not used
                     }
                 }
         );
     }
 
     public void returnButton(View v){
-        Intent trophy = new Intent(this, MainPageActivity.class);
-        startActivity(trophy);
+        Intent intent = new Intent(this, MainPageActivity.class);
+        setResult(RESULT_OK, intent);
         finish();
     }
 
     public void exitButton(View v){
-        Intent trophy = new Intent(this, MainPageActivity.class);
-        startActivity(trophy);
+        Intent intent = new Intent(this, MainPageActivity.class);
+        setResult(RESULT_OK, intent);
         finish();
     }
 }
