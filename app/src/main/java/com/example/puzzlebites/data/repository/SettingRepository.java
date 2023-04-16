@@ -20,16 +20,17 @@ public class SettingRepository {
         //shared.getAll();
     }
     public void saveSettings(Setting setting){
-        shared.edit().putInt("level1Score", setting.level1Score);
-        shared.edit().putInt("level2Score", setting.level2Score);
-        shared.edit().putInt("level3Score", setting.level3Score);
-        shared.edit().putInt("level4Score", setting.level4Score);
-        shared.edit().putInt("level5Score", setting.level5Score);
+        SharedPreferences.Editor edit = shared.edit();
+        edit.putInt("level1Score", setting.level1Score);
+        edit.putInt("level2Score", setting.level2Score);
+        edit.putInt("level3Score", setting.level3Score);
+        edit.putInt("level4Score", setting.level4Score);
+        edit.putInt("level5Score", setting.level5Score);
         // total score is not a saved property of Setting
-        shared.edit().putInt("totalScore", setting.getTotalScore());
+        edit.putInt("totalScore", setting.getTotalScore());
 
-        shared.edit().putInt("backgroundColor", setting.backgroundColor);
-        shared.edit().apply();
+        edit.putInt("backgroundColor", setting.backgroundColor);
+        edit.commit();
     }
 
     public Setting getSettings(){

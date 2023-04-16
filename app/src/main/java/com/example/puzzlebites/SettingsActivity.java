@@ -1,6 +1,7 @@
 package com.example.puzzlebites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,32 +13,47 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.example.puzzlebites.data.model.Setting;
+import com.example.puzzlebites.data.repository.SettingRepository;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class SettingsActivity extends AppCompatActivity {
+    ConstraintLayout myLayout;
+    SettingRepository settingRepository;
+    Setting setting;
+    private ArrayList<Integer> colors = new ArrayList<>(Arrays.asList(Color.BLUE,Color.LTGRAY, Color.CYAN, Color.MAGENTA ));
+    private int cycle = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        restoreSharedPreferences();
+        myLayout = (ConstraintLayout) findViewById(R.id.activitySetting);
+        settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
+        myLayout.setBackgroundColor(setting.backgroundColor);
+        //restoreSharedPreferences();
     }
 
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-
-        LayoutInflater inflater = LayoutInflater.from(SettingsActivity.this);
-        View view = inflater.inflate(R.layout.activity_setting, null);
-        setContentView(view);
-        if(color.equals("Default"))
-        {
-            view.setBackgroundColor(Color.rgb(255,255,255));
-        }
-        else
-        {
-            view.setBackgroundColor(Color.rgb(0,255,255));
-        }
-    }
+//    @Override
+//    public void onResume()
+//    {
+//        super.onResume();
+//
+//        LayoutInflater inflater = LayoutInflater.from(SettingsActivity.this);
+//        View view = inflater.inflate(R.layout.activity_setting, null);
+//        setContentView(view);
+//        if(color.equals("Default"))
+//        {
+//            view.setBackgroundColor(Color.rgb(255,255,255));
+//        }
+//        else
+//        {
+//            view.setBackgroundColor(Color.rgb(0,255,255));
+//        }
+//    }
 
 
     private String color = "Default";
@@ -51,6 +67,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void returnHome(View v)
     {
         Intent mainIntent = new Intent(this, MainActivity.class);
+        saveSharedPreferences();
         setResult(Activity.RESULT_OK, mainIntent);
         mainIntent.putExtra("Color", color);
         Log.d("SPColor", "Return with color " + color);
@@ -59,11 +76,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void backgroundChange(View v)
     {
-        if(color.equals("Default"))
-            color = "Blue";
-        else
-            color = "Default";
-        Log.d("SPColor", "Changed the color to " + color);
+        cycle += 1;
+        setting.backgroundColor = colors.get(cycle% colors.size());
+        myLayout.setBackgroundColor(setting.backgroundColor);
     }
 
     public void resetScore(View v) {
@@ -86,11 +101,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void saveSharedPreferences()
     {
-        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = sp.edit();
-        edit.putString("Color", color);
-        edit.putInt("HighScore", score);
-        edit.commit();
+        settingRepository.saveSettings(setting);
+//        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor edit = sp.edit();
+//        edit.putString("Color", color);
+//        edit.putInt("HighScore", score);
+//        edit.commit();
     }
 
 }
