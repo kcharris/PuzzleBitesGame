@@ -130,12 +130,78 @@ public class PuzzleActivity extends AppCompatActivity {
             // if the bagel lands on a switch, try  and activate it as well as it's related pieces
             for(Piece sp : puzzle.switchPieces){
                 if(puzzle.getBagel().nextTopMargin == sp.nextTopMargin && puzzle.getBagel().nextStartMargin == sp.nextStartMargin){
-                    if (sp.isActive == false){
+                    if (sp.isActive == false) {
                         sp.isActive = true;
                         sp.setImageResource(R.drawable.switchon);
-                        for(Piece p : puzzle.pieces){
-                            if(sp.type.contains(p.type)){
+                        for (Piece p : puzzle.pieces) {
+                            if (sp.type.contains(p.type)) {
                                 p.isActive = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Add to the score after moving
+            TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+            Global.moveCount += 1;
+            puzzleMoves.setText("Move Count: " + Global.moveCount);
+
+            // Check for win condition after moving, and if true go to score screen with score
+            if (endLocations == null){
+                endLocations = new HashSet<>();
+                for(Piece end : puzzle.endPieces){
+                    endLocations.add(end.nextStartMargin + ", " + end.nextTopMargin);
+                }
+            }
+            if(locationsHash.containsAll(endLocations)){
+                Intent intent = new Intent(this, scoreScreen.class);
+                intent.putExtra("score", Global.moveCount);
+                sStartLauncher.launch(intent);
+                finish();
+            }
+
+        }
+
+
+    }
+    public void undoMoveGeneral(String previousDirection){
+        Global.moveCount -= 1;
+        //Get the next location of each moveable piece
+        boolean checker = true;
+        HashSet<String> locationsHash = new HashSet<>();
+        for (Piece p : puzzle.pieces) {
+            switch (previousDirection){
+                case "up":
+                    checker = p.moveDown();
+                    break;
+                case "down":
+                    checker = p.moveUp();
+                    break;
+                case "left":
+                    checker = p.moveRight();
+                    break;
+                case "right":
+                    checker = p.moveLeft();
+                    break;
+            }
+            if (checker == false) break;
+            locationsHash.add(p.nextStartMargin + ", " + p.nextTopMargin);
+        }
+//      If the pieces do not share an endlocation, go ahead and move
+        if (locationsHash.size() == puzzle.pieces.size() && checker){
+            for(Piece p : puzzle.pieces){
+                p.setMargins();
+            }
+            // if the bagel lands on a switch, try  and activate it as well as it's related pieces
+            for(Piece sp : puzzle.switchPieces){
+                if(puzzle.getBagel().nextTopMargin == sp.nextTopMargin && puzzle.getBagel().nextStartMargin == sp.nextStartMargin){
+                    if (sp.isActive == true) {
+                        sp.isActive = false;
+                        sp.setImageResource(R.drawable.switchoff);
+                        for (Piece p : puzzle.pieces) {
+                            if (sp.type.contains(p.type)) {
+                                p.isActive = false;
                             }
                         }
                     }
