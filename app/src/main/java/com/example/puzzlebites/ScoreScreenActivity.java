@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,12 +13,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class ScoreScreenActivity extends AppCompatActivity {
+import com.example.puzzlebites.data.model.Setting;
+import com.example.puzzlebites.data.repository.SettingRepository;
 
+public class ScoreScreenActivity extends AppCompatActivity {
+    private ConstraintLayout myLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_screen);
+        myLayout = (ConstraintLayout) findViewById(R.id.scoreScreen);
+        applySettings();
         mpStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -33,6 +39,9 @@ public class ScoreScreenActivity extends AppCompatActivity {
         TextView congratsTV = findViewById(R.id.congratsTV);
         String score = intent.getExtras().getInt("score") + "";
         congratsTV.setText("Congrats!\n Your score is\n" + score);
+    }
+    public void applySettings(){
+        Setting.applySettingToView(myLayout);
     }
 
 

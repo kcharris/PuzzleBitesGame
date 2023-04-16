@@ -31,9 +31,7 @@ public class PuzzleActivity extends AppCompatActivity {
     Puzzles puzzles = new Puzzles(this);
     private HashSet<String> endLocations;
     private String puzzleStr;
-    ConstraintLayout myLayout;
-    SettingRepository settingRepository;
-    Setting settings;
+    private ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +40,7 @@ public class PuzzleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_puzzle);
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         score = new ViewModelProvider(this).get(Score.class);
-        settingRepository = new SettingRepository(this);
-        settings = settingRepository.getSettings();
-        myLayout.setBackgroundColor(settings.backgroundColor);
-
+        applySettings();
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -70,7 +65,9 @@ public class PuzzleActivity extends AppCompatActivity {
                     }
                 });
         setPuzzle(puzzleStr);
-
+    }
+    public void applySettings(){
+        Setting.applySettingToView(myLayout);
     }
     private ActivityResultLauncher<Intent> sStartLauncher;
     private void setPuzzle(String puzzleStr) {

@@ -1,6 +1,11 @@
 package com.example.puzzlebites.data.model;
 
+import android.content.Context;
 import android.graphics.Color;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.example.puzzlebites.data.repository.SettingRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,4 +24,9 @@ public class Setting {
         return level1Score + level2Score + level3Score + level4Score + level5Score;
     }
 
+    public static void applySettingToView(ConstraintLayout c){
+        Setting s;
+        s = new SettingRepository(c.getContext()).getSettings();
+        c.setBackgroundColor(s.backgroundColor);
+    }
 }

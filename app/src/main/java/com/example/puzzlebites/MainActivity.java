@@ -22,18 +22,14 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 
 
 public class MainActivity extends AppCompatActivity {
-    SettingRepository settingRepository;
-    Setting setting;
-    ConstraintLayout myLayout;
+    private ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myLayout = (ConstraintLayout) findViewById(R.id.mainActivity);
-        settingRepository = new SettingRepository(this);
-        setting = settingRepository.getSettings();
-        myLayout.setBackgroundColor(setting.backgroundColor);
+        applySettings();
         restoreSharedPreferences();
         mStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -51,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    public void applySettings(){
+        Setting.applySettingToView(myLayout);
     }
 
     @Override
@@ -70,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
 //        {
 //            view.setBackgroundColor(Color.rgb(0,255,255));
 //        }
-        setting = settingRepository.getSettings();
-        myLayout.setBackgroundColor(setting.backgroundColor);
+        applySettings();
     }
 
 

@@ -31,10 +31,11 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         myLayout = (ConstraintLayout) findViewById(R.id.activitySetting);
-        settingRepository = new SettingRepository(this);
-        setting = settingRepository.getSettings();
-        myLayout.setBackgroundColor(setting.backgroundColor);
+        applySettings();
         //restoreSharedPreferences();
+    }
+    public void applySettings(){
+        Setting.applySettingToView(myLayout);
     }
 
 //    @Override

@@ -29,20 +29,16 @@ import java.util.ArrayList;
 
 public class MainPageActivity  extends AppCompatActivity {
     public Score score;
-    private ConstraintLayout myLayout;
     private Puzzle puzzle;
     private Puzzles puzzles = new Puzzles(this);
-    SettingRepository settingRepository;
-    Setting setting;
+    private ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         myLayout = (ConstraintLayout) findViewById(R.id.MainPageActivity);
-        settingRepository = new SettingRepository(this);
-        setting = settingRepository.getSettings();
-        myLayout.setBackgroundColor(setting.backgroundColor);
+        applySettings();
         score = new ViewModelProvider(this).get(Score.class);
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
@@ -62,6 +58,9 @@ public class MainPageActivity  extends AppCompatActivity {
                     }
                 });
         setPuzzle("main");
+    }
+    public void applySettings(){
+        Setting.applySettingToView(myLayout);
     }
 
     private ActivityResultLauncher<Intent> pStartLauncher;
