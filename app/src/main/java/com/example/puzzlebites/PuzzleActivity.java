@@ -71,10 +71,12 @@ public class PuzzleActivity extends AppCompatActivity {
         for (Piece p : puzzle.getAllPieces()) {
             myLayout.addView(p);
         }
+        if(Global.lastMove.size() > 0){
+            Global.lastMove = new ArrayList<>();
+        }
         TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
         Global.moveCount = 0;
         puzzleMoves.setText("Move Count: " + Global.moveCount);
-
     }
 
     @Override
@@ -232,9 +234,4 @@ public class PuzzleActivity extends AppCompatActivity {
         setPuzzle(puzzleStr);
     }
 
-    /*public void finishPuzzle(View v){
-        Intent scoreIntent = new Intent(this, scoreScreen.class);
-        startActivity(scoreIntent);
-        finish();
-    }*/
 }
