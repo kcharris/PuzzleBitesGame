@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 public class MainPageActivity  extends AppCompatActivity {
     public Score score;
-    public Piece bagel;
     private ConstraintLayout myLayout;
     private Puzzle puzzle;
     private Puzzles puzzles = new Puzzles(this);
@@ -56,11 +55,11 @@ public class MainPageActivity  extends AppCompatActivity {
                 });
         myLayout = (ConstraintLayout) findViewById(R.id.MainPageActivity);
         setPuzzle("main");
-
     }
 
     private ActivityResultLauncher<Intent> pStartLauncher;
     private void setPuzzle(String puzzleStr) {
+        // If the puzzle already exists, remove it from view and then reset it. Removing from view may be unnecessary.
         if(!(this.puzzle == null)){
             for(Piece p: puzzle.getAllPieces()) {
                 myLayout.removeViewInLayout(p);
@@ -75,19 +74,19 @@ public class MainPageActivity  extends AppCompatActivity {
 
     public void returnHome(View v) {
         Intent mainIntent = new Intent(this, MainActivity.class);
-        mainIntent.putExtra("Return", 0);
+        //mainIntent.putExtra("Return", 0);
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
 
     public void toTrophies() {
         Intent trophy = new Intent(this, TrophyPage.class);
-        trophy.putExtra("trophy", 0);
+        //trophy.putExtra("trophy", 0);
         setResult(Activity.RESULT_OK, trophy);
         pStartLauncher.launch(trophy);
-        finish();
     }
 
+    // For the following move functions. They attempt to move the pieces with moveGeneral, and ++Score on success.
     public void moveUp2(View v) {
         if(puzzle.moveGeneral("up")){
             score.incrementNumOfMove();
@@ -115,6 +114,7 @@ public class MainPageActivity  extends AppCompatActivity {
             checkForLevelSelect();
         }
     }
+    // Attempts an undo, and if it works decrement the score
     public void undoBTN(View v){
         if(puzzle.undoMove()){
             score.decrementNumOfMoves();
@@ -123,6 +123,7 @@ public class MainPageActivity  extends AppCompatActivity {
     public void resetPuzzle(View v){
         setPuzzle("main");
     }
+
 
     private boolean viewsOverlap(View v1, View v2) {
         if (v1 == null || v2 == null) return false;
@@ -148,6 +149,7 @@ public class MainPageActivity  extends AppCompatActivity {
         pStartLauncher.launch(puzzle);
     }
 
+    // Checks to see if the bagel piece lands on either a level or the trophy piece and if so moves to the repective Activity.
     private void checkForLevelSelect() {
         Piece bagel = puzzle.getBagel();
         ImageView lvlOne = findViewById(R.id.lvlOne);
