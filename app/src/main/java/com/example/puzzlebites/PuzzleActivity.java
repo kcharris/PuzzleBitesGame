@@ -99,7 +99,6 @@ public class PuzzleActivity extends AppCompatActivity {
         finish();
     }
     public void moveGeneral(String direction){
-        score.addNumOfMove();
         //Get the next location of each moveable piece
         boolean checker = true;
         HashSet<String> locationsHash = new HashSet<>();
@@ -166,7 +165,6 @@ public class PuzzleActivity extends AppCompatActivity {
 
     }
     public void undoMoveGeneral(String previousDirection){
-        Global.moveCount -= 1;
         //Get the next location of each moveable piece
         boolean checker = true;
         HashSet<String> locationsHash = new HashSet<>();
@@ -209,8 +207,8 @@ public class PuzzleActivity extends AppCompatActivity {
             }
 
             // Add to the score after moving
+            Global.moveCount -= 1;
             TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-            Global.moveCount += 1;
             puzzleMoves.setText("Move Count: " + Global.moveCount);
 
             // Check for win condition after moving, and if true go to score screen with score
@@ -228,8 +226,6 @@ public class PuzzleActivity extends AppCompatActivity {
             }
 
         }
-
-
     }
     public void moveUp(View v) {
         moveGeneral("up");
