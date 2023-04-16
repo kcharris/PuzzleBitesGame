@@ -99,7 +99,9 @@ public class PuzzleActivity extends AppCompatActivity {
         finish();
     }
     public void moveGeneral(String direction){
-        //Get the next location of each moveable piece
+        // This first part gets the next location of each moveable piece and store it in that pieces p.next(top/start)margin
+        // The checker bool checks to see if a move tries to go outside it's bounds and if so prevents all movement
+        // The locationHash checks to make sure no to pieces potentially overlap
         boolean checker = true;
         HashSet<String> locationsHash = new HashSet<>();
         for (Piece p : puzzle.pieces) {
@@ -122,6 +124,7 @@ public class PuzzleActivity extends AppCompatActivity {
         }
 //      If the pieces do not share an endlocation, go ahead and move
         if (locationsHash.size() == puzzle.pieces.size() && checker){
+            Global.lastMove.add(direction);
             for(Piece p : puzzle.pieces){
                 p.setMargins();
             }
@@ -166,111 +169,64 @@ public class PuzzleActivity extends AppCompatActivity {
     }
     public void undoMoveGeneral(String previousDirection){
         //Get the next location of each moveable piece
-        boolean checker = true;
-        HashSet<String> locationsHash = new HashSet<>();
         for (Piece p : puzzle.pieces) {
             switch (previousDirection){
                 case "up":
-                    checker = p.moveDown();
+                    p.moveDown();
                     break;
                 case "down":
-                    checker = p.moveUp();
+                    p.moveUp();
                     break;
                 case "left":
-                    checker = p.moveRight();
+                    p.moveRight();
                     break;
                 case "right":
-                    checker = p.moveLeft();
+                    p.moveLeft();
                     break;
             }
-            if (checker == false) break;
-            locationsHash.add(p.nextStartMargin + ", " + p.nextTopMargin);
         }
-//      If the pieces do not share an endlocation, go ahead and move
-        if (locationsHash.size() == puzzle.pieces.size() && checker){
-            for(Piece p : puzzle.pieces){
-                p.setMargins();
-            }
-            // if the bagel lands on a switch, try  and activate it as well as it's related pieces
-            for(Piece sp : puzzle.switchPieces){
-                if(puzzle.getBagel().nextTopMargin == sp.nextTopMargin && puzzle.getBagel().nextStartMargin == sp.nextStartMargin){
-                    if (sp.isActive == true) {
-                        sp.isActive = false;
-                        sp.setImageResource(R.drawable.switchoff);
-                        for (Piece p : puzzle.pieces) {
-                            if (sp.type.contains(p.type)) {
-                                p.isActive = false;
-                            }
+        for(Piece p : puzzle.pieces){
+            p.setMargins();
+        }
+        // if the bagel lands on a switch, try  and deactivate it as well as it's related pieces
+        for(Piece sp : puzzle.switchPieces) {
+            if (puzzle.getBagel().nextTopMargin == sp.nextTopMargin && puzzle.getBagel().nextStartMargin == sp.nextStartMargin) {
+                if (sp.isActive == true) {
+                    sp.isActive = false;
+                    sp.setImageResource(R.drawable.switchoff);
+                    for (Piece p : puzzle.pieces) {
+                        if (sp.type.contains(p.type)) {
+                            p.isActive = false;
                         }
                     }
                 }
             }
-
-            // Add to the score after moving
-            Global.moveCount -= 1;
-            TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-            puzzleMoves.setText("Move Count: " + Global.moveCount);
-
-            // Check for win condition after moving, and if true go to score screen with score
-            if (endLocations == null){
-                endLocations = new HashSet<>();
-                for(Piece end : puzzle.endPieces){
-                    endLocations.add(end.nextStartMargin + ", " + end.nextTopMargin);
-                }
-            }
-            if(locationsHash.containsAll(endLocations)){
-                Intent intent = new Intent(this, scoreScreen.class);
-                intent.putExtra("score", Global.moveCount);
-                sStartLauncher.launch(intent);
-                finish();
-            }
-
         }
+        // Reduce the score after moving
+        Global.moveCount -= 1;
+        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
+        puzzleMoves.setText("Move Count: " + Global.moveCount);
     }
     public void moveUp(View v) {
         moveGeneral("up");
-        Global.lastMove = 1;
     }
 
     public void moveDown(View v) {
         moveGeneral("down");
-        Global.lastMove = 2;
     }
 
     public void moveRight(View v) {
         moveGeneral("right");
-        Global.lastMove = 3;
     }
 
     public void moveLeft(View v) {
         moveGeneral("left");
-        Global.lastMove = 4;
     }
 
     public void undoBTN(View v){
-        Button undoButton = findViewById(R.id.undoBTN);
-        TextView puzzleMoves = findViewById(R.id.puzzleMovesTV);
-        if(Global.lastMove != 0){
-            Global.moveCount -= 2;
+        if (Global.lastMove.size() > 0){
+            undoMoveGeneral(Global.lastMove.remove(Global.lastMove.size() - 1));
         }
-        if(Global.lastMove == 1){
-            moveGeneral("down");
-            Global.lastMove = 0;
-        }
-        if(Global.lastMove == 2){
-            moveGeneral("up");
-            Global.lastMove = 0;
-        }
-        if(Global.lastMove == 3){
-            moveGeneral("left");
-            Global.lastMove = 0;
-        }
-        if(Global.lastMove == 4){
-            moveGeneral("right");
-            Global.lastMove = 0;
-        }
-        puzzleMoves.setText("Move Count: " + Global.moveCount);
-        //undoButton.setEnabled(false);
     }
     public void resetPuzzle(View v){
         setPuzzle(puzzleStr);

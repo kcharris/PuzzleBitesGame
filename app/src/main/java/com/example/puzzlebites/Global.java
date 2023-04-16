@@ -1,6 +1,8 @@
 package com.example.puzzlebites;
 
+import java.util.ArrayList;
+
 public class Global {
     public static int moveCount;
-    public static int lastMove = 0;
+    public static ArrayList<String> lastMove = new ArrayList<>();
 }
