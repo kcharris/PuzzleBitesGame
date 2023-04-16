@@ -22,6 +22,8 @@ import com.example.puzzlebites.data.model.PieceType;
 import com.example.puzzlebites.data.model.Puzzle;
 import com.example.puzzlebites.data.model.Puzzles;
 import com.example.puzzlebites.data.model.Score;
+import com.example.puzzlebites.data.model.Setting;
+import com.example.puzzlebites.data.repository.SettingRepository;
 
 import java.util.ArrayList;
 
@@ -30,11 +32,17 @@ public class MainPageActivity  extends AppCompatActivity {
     private ConstraintLayout myLayout;
     private Puzzle puzzle;
     private Puzzles puzzles = new Puzzles(this);
+    SettingRepository settingRepository;
+    Setting setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        myLayout = (ConstraintLayout) findViewById(R.id.MainPageActivity);
+        settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
+        myLayout.setBackgroundColor(setting.backgroundColor);
         score = new ViewModelProvider(this).get(Score.class);
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
@@ -53,7 +61,6 @@ public class MainPageActivity  extends AppCompatActivity {
                         }
                     }
                 });
-        myLayout = (ConstraintLayout) findViewById(R.id.MainPageActivity);
         setPuzzle("main");
     }
 
