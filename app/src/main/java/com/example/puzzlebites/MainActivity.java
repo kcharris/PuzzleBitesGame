@@ -23,6 +23,7 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 
 public class MainActivity extends AppCompatActivity {
     private ConstraintLayout myLayout;
+    private String scoreStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 backgroundColor = i.getExtras().getString("Color");
                             }
+                            if(i.hasExtra("score")) {
+                                scoreStr = i.getExtras().getString("score"); //I'm stopping here because It's unlikely user would return to settings page everytime after a
+                            }                                                     //puzzle is completed in order to save data, need to save data instantly and carry it to trophyPage
 
                         }
                     }

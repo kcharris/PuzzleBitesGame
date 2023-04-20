@@ -29,6 +29,7 @@ import java.util.ArrayList;
 
 public class MainPageActivity  extends AppCompatActivity {
     public Score score;
+    private String scoreStr;
     private Puzzle puzzle;
     private Puzzles puzzles = new Puzzles(this);
     private ConstraintLayout myLayout;
@@ -53,6 +54,9 @@ public class MainPageActivity  extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == Activity.RESULT_OK) {
+                            if(result.getData().getExtras().getString("score")!=null) {
+                                scoreStr = result.getData().getExtras().getString("score");
+                            }
                             setPuzzle("main");
                         }
                     }
@@ -80,7 +84,7 @@ public class MainPageActivity  extends AppCompatActivity {
 
     public void returnHome(View v) {
         Intent mainIntent = new Intent(this, MainActivity.class);
-        //mainIntent.putExtra("Return", 0);
+        mainIntent.putExtra("score", scoreStr);
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }

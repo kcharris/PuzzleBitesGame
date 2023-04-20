@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.puzzlebites.data.model.Score;
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
 
@@ -113,8 +114,9 @@ public class ScoreScreenActivity extends AppCompatActivity {
         finish();
     }
 
-    public void exitBTN(View v) {
+    public void exitBTN(View v, Score score) {
         Intent exitPuzzle = new Intent(this, PuzzleActivity.class);
+        exitPuzzle.putExtra("score", score.toString());
         setResult(Activity.RESULT_OK, exitPuzzle);
         finish();
     }

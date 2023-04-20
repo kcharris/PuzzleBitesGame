@@ -36,7 +36,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
                 this.setScaleType(ScaleType.CENTER_CROP);
                 break;
             case END:
-                this.setImageResource(R.drawable.goldstar); // switch to end image for pieces to go to
+                this.setImageResource(R.drawable.goldStar); // switch to end image for pieces to go to
                 this.setBackgroundColor(Color.argb(255, 0, 150, 100));
                 break;
             case CAT:
