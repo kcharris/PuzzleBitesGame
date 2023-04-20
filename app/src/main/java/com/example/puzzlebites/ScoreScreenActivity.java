@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.puzzlebites.data.model.Score;
@@ -22,9 +23,11 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 
 public class ScoreScreenActivity extends AppCompatActivity {
     private ConstraintLayout myLayout;
+    private Setting setting;
     private int goldThres;
     private int silverThres;
     private int bronzeThres;
+    private String puzzleNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         goldThres = intent.getExtras().getInt("gold");
         silverThres = intent.getExtras().getInt("silver");
         bronzeThres = intent.getExtras().getInt("bronze");
+        puzzleNum = intent.getExtras().getString("puzzleNum");
         TextView congratsTV = findViewById(R.id.congratsTV);
         String score = intent.getExtras().getInt("score") + "";
         congratsTV.setText("Congrats!\n You completed the puzzle in " + score + " moves!");
@@ -92,13 +96,25 @@ public class ScoreScreenActivity extends AppCompatActivity {
             bronze.setVisibility(View.VISIBLE);
         }
         else {
-            /*bronze.startAnimation(fadeLock0);
-            silver.startAnimation(fadeLock1);
-            gold.startAnimation(fadeLock2);*/
+
         }
-        /*bronze.setVisibility(View.VISIBLE);
-        silver.setVisibility(View.VISIBLE);
-        gold.setVisibility(View.VISIBLE);*/
+        switch (puzzleNum) {
+            case "1":
+                setting.setLevel1Score(Integer.parseInt(score));
+                break;
+            case "2":
+                setting.setLevel2Score(Integer.parseInt(score));
+                break;
+            case "3":
+                setting.setLevel3Score(Integer.parseInt(score));
+                break;
+            case "4":
+                setting.setLevel4Score(Integer.parseInt(score));
+                break;
+            case "5":
+                setting.setLevel5Score(Integer.parseInt(score));
+                break;
+        }
     }
     public void applySettings(){
         Setting.applySettingToView(myLayout);

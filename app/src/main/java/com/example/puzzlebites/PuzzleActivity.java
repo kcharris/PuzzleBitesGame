@@ -170,6 +170,7 @@ public class PuzzleActivity extends AppCompatActivity {
             puzzle.putExtra("silver", 12);
             puzzle.putExtra("bronze", 16);
         }
+        puzzle.putExtra("puzzleNum",puzzleNum);
         sStartLauncher.launch(puzzle);
     }
     public void resetPuzzle(View v){

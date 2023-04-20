@@ -24,6 +24,22 @@ public class Setting {
         return level1Score + level2Score + level3Score + level4Score + level5Score;
     }
 
+    public void setLevel1Score(int score) {
+        level1Score = score;
+    }
+    public void setLevel2Score(int score) {
+        level2Score = score;
+    }
+    public void setLevel3Score(int score) {
+        level3Score = score;
+    }
+    public void setLevel4Score(int score) {
+        level4Score = score;
+    }
+    public void setLevel5Score(int score) {
+        level5Score = score;
+    }
+
     public static void applySettingToView(ConstraintLayout c){
         Setting s;
         s = new SettingRepository(c.getContext()).getSettings();
