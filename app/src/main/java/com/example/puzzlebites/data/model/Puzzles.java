@@ -47,6 +47,21 @@ public class Puzzles {
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
                 break;
             case "two":
+                p.endPieces.add(new Piece(context, END, 1, 1));
+                p.endPieces.add(new Piece(context, END, 2, 3));
+                p.endPieces.add(new Piece(context, END, 1, 6));
+                p.endPieces.add(new Piece(context, END, 3, 7));
+                p.endPieces.add(new Piece(context, END, 2, 8));
+
+                p.switchPieces.add(new Piece(context, PLATE_SWITCH, 5, 1));
+                p.switchPieces.add(new Piece(context, CAT_SWITCH, 6, 3));
+
+                p.pieces.add(new Piece(context, CAT, 3, 1));
+                p.pieces.add(new Piece(context, CAT, 4, 3));
+                p.pieces.add(new Piece(context, PLATE, 1, 4));
+                p.pieces.add(new Piece(context, PLATE, 3, 5));
+                p.pieces.add(new Piece(context, PLATE, 2, 6));
+                p.pieces.add(new Piece(context, BAGEL, 6, 4));
                 break;
             case "three":
                 break;

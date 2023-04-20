@@ -94,6 +94,7 @@ public class MainPageActivity  extends AppCompatActivity {
 
     // For the following move functions. They attempt to move the pieces with moveGeneral, and ++Score on success.
     public void moveUp2(View v) {
+        checkForLevelSelect();
         if(puzzle.moveGeneral("up")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -101,6 +102,7 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveDown2(View v) {
+        checkForLevelSelect();
         if(puzzle.moveGeneral("down")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -108,6 +110,7 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveRight2(View v) {
+        checkForLevelSelect();
         if(puzzle.moveGeneral("right")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -115,6 +118,7 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveLeft2(View v) {
+        checkForLevelSelect();
         if(puzzle.moveGeneral("left")){
             score.incrementNumOfMove();
             checkForLevelSelect();

@@ -40,7 +40,7 @@ public class Puzzle {
     public boolean moveGeneral(String direction){
         // This first part gets the next location of each moveable piece and store it in that pieces p.next(top/start)margin
         // The checker bool checks to see if a move tries to go outside it's bounds and if so prevents all movement
-        // The locationHash checks to make sure no to pieces potentially overlap
+        // The locationHash checks to make sure no two pieces potentially overlap
         boolean checker = true;
         locationsHash = new HashSet<>();
         for (Piece p : this.pieces) {
