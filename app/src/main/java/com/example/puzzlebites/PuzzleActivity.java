@@ -30,13 +30,13 @@ public class PuzzleActivity extends AppCompatActivity {
     public Puzzle puzzle;
     Puzzles puzzles = new Puzzles(this);
     private HashSet<String> endLocations;
-    private String puzzleStr;
+    private String puzzleNum;
     private ConstraintLayout myLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.puzzleStr = getIntent().getExtras().getString("puzzle");
+        this.puzzleNum = getIntent().getExtras().getString("puzzleNum");
         setContentView(R.layout.activity_puzzle);
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         score = new ViewModelProvider(this).get(Score.class);
@@ -56,7 +56,7 @@ public class PuzzleActivity extends AppCompatActivity {
                         if(result.getResultCode() == Activity.RESULT_OK)
                         {
                             if(result.getData().hasExtra("returned")){
-                                setPuzzle(puzzleStr);
+                                setPuzzle(puzzleNum);
                             }
                             else{
                                 returnMain();
@@ -64,19 +64,19 @@ public class PuzzleActivity extends AppCompatActivity {
                         }
                     }
                 });
-        setPuzzle(puzzleStr);
+        setPuzzle(puzzleNum);
     }
     public void applySettings(){
         Setting.applySettingToView(myLayout);
     }
     private ActivityResultLauncher<Intent> sStartLauncher;
-    private void setPuzzle(String puzzleStr) {
+    private void setPuzzle(String puzzleNum) {
         if(!(this.puzzle == null)){
             for(Piece p: puzzle.getAllPieces()) {
                 myLayout.removeViewInLayout(p);
             }
         }
-        puzzle = puzzles.getPuzzle(puzzleStr);
+        puzzle = puzzles.getPuzzle(puzzleNum);
         for (Piece p : puzzle.getAllPieces()) {
             myLayout.addView(p);
         }
@@ -85,7 +85,7 @@ public class PuzzleActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setPuzzle(this.puzzleStr);
+        setPuzzle(this.puzzleNum);
     }
 
     public void skipPuzzle(View v) {
@@ -146,12 +146,34 @@ public class PuzzleActivity extends AppCompatActivity {
         }
     }
     public void finishPuzzle(){
-        Intent intent = new Intent(this, ScoreScreenActivity.class);
-        intent.putExtra("score", score.getNumOfMoves());
-        sStartLauncher.launch(intent);
+        Intent puzzle = new Intent(this, ScoreScreenActivity.class);
+        puzzle.putExtra("score", score.getNumOfMoves());
+        if(puzzleNum.equalsIgnoreCase("one")) {
+            puzzle.putExtra("gold", 7);
+            puzzle.putExtra("silver", 12);
+            puzzle.putExtra("bronze", 16);
+        } if(puzzleNum.equalsIgnoreCase("two")) {
+            puzzle.putExtra("gold", 7);
+            puzzle.putExtra("silver", 12);
+            puzzle.putExtra("bronze", 16);
+        }if(puzzleNum.equalsIgnoreCase("three")) {
+            puzzle.putExtra("gold", 7);
+            puzzle.putExtra("silver", 12);  //the threshold numOfMoves that determines score should not be the same across all puzzles but until more are made, they are the same
+            puzzle.putExtra("bronze", 16);
+        }
+        if(puzzleNum.equalsIgnoreCase("four")) {
+            puzzle.putExtra("gold", 7);
+            puzzle.putExtra("silver", 12);
+            puzzle.putExtra("bronze", 16);
+        } else{
+            puzzle.putExtra("gold", 7);
+            puzzle.putExtra("silver", 12);
+            puzzle.putExtra("bronze", 16);
+        }
+        sStartLauncher.launch(puzzle);
     }
     public void resetPuzzle(View v){
-        setPuzzle(puzzleStr);
+        setPuzzle(puzzleNum);
     }
 
 }

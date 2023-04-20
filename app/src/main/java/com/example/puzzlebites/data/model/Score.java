@@ -7,9 +7,9 @@ import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 public class Score extends ViewModel {
-    long timeStart;
+   /* long timeStart;
     long timeEnd;
-    boolean hasStarted =false;
+    boolean hasStarted =false;*/
     private MutableLiveData<Integer> numOfMoves = new MutableLiveData<>(0);
     private LiveData<String> numOfMovesString = Transformations.map(numOfMoves, new Function<Integer, String>() {
         @Override
@@ -23,20 +23,20 @@ public class Score extends ViewModel {
     public LiveData<String> getNumOfMovesString() {
         return numOfMovesString;
     }
-    public void startClock() {
+    /*public void startClock() {
         long timeStart = System.nanoTime();
         hasStarted =true;
-    }
-    public void endClock() {
+    }*/
+   /* public void endClock() {
         long timeEnd = System.nanoTime();
         hasStarted =false;
-    }
-    public float calcClock() {
+    }*/
+   /* public float calcClock() {
         return (float) timeEnd-timeStart;
     }
     public boolean getHasStarted() {
         return hasStarted;
-    }
+    }*/
     public void incrementNumOfMove() {
         numOfMoves.setValue(numOfMoves.getValue()+1);
     }

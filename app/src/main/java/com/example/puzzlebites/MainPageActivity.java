@@ -150,12 +150,12 @@ public class MainPageActivity  extends AppCompatActivity {
 
     public void toPuzzle(String s) {
         Intent puzzle = new Intent(this, PuzzleActivity.class);
-        puzzle.putExtra("puzzle", s);
+        puzzle.putExtra("puzzleNum", s);
         setResult(Activity.RESULT_OK, puzzle);
         pStartLauncher.launch(puzzle);
     }
 
-    // Checks to see if the bagel piece lands on either a level or the trophy piece and if so moves to the repective Activity.
+    // Checks to see if the bagel piece lands on either a level or the trophy piece and if so moves to the respective Activity.
     private void checkForLevelSelect() {
         Piece bagel = puzzle.getBagel();
         ImageView lvlOne = findViewById(R.id.lvlOne);
@@ -164,19 +164,19 @@ public class MainPageActivity  extends AppCompatActivity {
         }
         ImageView lvlTwo = findViewById(R.id.lvlTwo);
         if (viewsOverlap(bagel, lvlTwo)) {
-            toPuzzle("one");
+            toPuzzle("two");
         }
         ImageView lvlThree = findViewById(R.id.lvlThree);
         if (viewsOverlap(bagel, lvlThree)) {
-            toPuzzle("one");
+            toPuzzle("three");
         }
         ImageView lvlFour = findViewById(R.id.lvlFour);
         if (viewsOverlap(bagel, lvlFour)) {
-            toPuzzle("one");
+            toPuzzle("four");
         }
         ImageView lvlFive = findViewById(R.id.lvlFive);
         if (viewsOverlap(bagel, lvlFive)) {
-            toPuzzle("one");
+            toPuzzle("five");
         }
         ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
         if (viewsOverlap(bagel, lvlTrophy)) {
