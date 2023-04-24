@@ -26,6 +26,12 @@ public class SettingRepository {
         edit.putInt("level3Score", setting.level3Score);
         edit.putInt("level4Score", setting.level4Score);
         edit.putInt("level5Score", setting.level5Score);
+
+        edit.putInt("level1Star", setting.level1Star);
+        edit.putInt("level2Star", setting.level2Star);
+        edit.putInt("level3Star", setting.level3Star);
+        edit.putInt("level4Star", setting.level4Star);
+        edit.putInt("level5Star", setting.level5Star);
         // total score is not a saved property of Setting
         edit.putInt("totalScore", setting.getTotalScore());
 
@@ -42,6 +48,12 @@ public class SettingRepository {
             setting.level3Score = (int)settingMap.get("level3Score");
             setting.level4Score = (int)settingMap.get("level4Score");
             setting.level5Score = (int)settingMap.get("level5Score");
+
+            setting.level1Star = (int)settingMap.get("level1Star");
+            setting.level2Star = (int)settingMap.get("level2Star");
+            setting.level3Star = (int)settingMap.get("level3Star");
+            setting.level4Star = (int)settingMap.get("level4Star");
+            setting.level5Star = (int)settingMap.get("level5Star");
 
             setting.backgroundColor = (int)settingMap.get("backgroundColor");
         }
