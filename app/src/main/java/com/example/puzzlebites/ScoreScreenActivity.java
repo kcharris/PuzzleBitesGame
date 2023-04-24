@@ -46,11 +46,23 @@ public class ScoreScreenActivity extends AppCompatActivity {
         puzzleNum = intent.getExtras().getString("puzzleNum");
         score = intent.getExtras().getInt("score");
 
-        TextView congratsTV = findViewById(R.id.congratsTV);
-        congratsTV.setText("Congrats!\n You completed the puzzle in " + score + " moves!");
+        setScoreTextViews();
         //setStars() will set the stars earned for the level and should complete before saving the score;
         setStars();
         saveScore();
+
+    }
+    public  void setScoreTextViews(){
+        TextView congratsTV = findViewById(R.id.congratsTV);
+        congratsTV.setText("Congrats!\n You completed the puzzle in " + score + " moves!");
+
+        TextView goldStat = findViewById(R.id.goldTV);
+        TextView bronzeStat = findViewById(R.id.bronzeTV);
+        TextView silverStat = findViewById(R.id.silverTV);
+
+        bronzeStat.setText(String.valueOf(bronzeThres) + " MOVES");
+        silverStat.setText(String.valueOf(silverThres) + " MOVES");
+        goldStat.setText(String.valueOf(goldThres) + " MOVES");
 
     }
     public void setStars(){
