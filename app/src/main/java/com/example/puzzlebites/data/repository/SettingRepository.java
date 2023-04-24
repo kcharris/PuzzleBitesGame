@@ -57,8 +57,20 @@ public class SettingRepository {
 
             setting.backgroundColor = (int)settingMap.get("backgroundColor");
         }
-
         return setting;
+    }
+    public void resetScore(Setting setting){
+        setting.level1Score = 0;
+        setting.level2Score = 0;
+        setting.level3Score = 0;
+        setting.level4Score = 0;
+        setting.level5Score = 0;
+
+        setting.level1Star = 0;
+        setting.level2Star = 0;
+        setting.level3Star = 0;
+        setting.level4Star = 0;
+        setting.level5Star = 0;
     }
 
 

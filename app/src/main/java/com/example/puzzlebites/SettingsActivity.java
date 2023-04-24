@@ -55,8 +55,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void resetScore(View v) {
-
-        //score = 0;
+        // add a fragment to allow users the option to select proceed or cancel
+        settingRepository.resetScore(setting);
+        settingRepository.saveSettings(setting);
     }
 //    public void darkModeToggleBTN(View v){
 //        //Dark mode is toggled by the settings of the android device itself, or it's settings toward our application.
