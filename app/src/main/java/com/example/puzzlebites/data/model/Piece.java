@@ -2,9 +2,7 @@ package com.example.puzzlebites.data.model;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -45,21 +43,31 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
                 this.speed = 2;
                 this.canMove = true;
                 this.setBackgroundColor(Color.argb(255, 100,50,225));
-                this.setImageResource(R.drawable.catbegin);
+                this.setImageResource(R.drawable.cat_toast);
                 break;
-            case PLATE:
+            case BEAR:
                 this.speed = 1;
                 this.canMove = true;
                 this.setBackgroundColor(Color.argb(255, 200,100,0));
-                this.setImageResource(R.drawable.platebegin);
+                this.setImageResource(R.drawable.bear_doughnut);
+                break;
+            case SOUP:
+                this.speed = 3;
+                this.canMove = true;
+                this.setBackgroundColor(Color.argb(255, 150,200,100));
+                this.setImageResource(R.drawable.noodle_soup);
                 break;
             case CAT_SWITCH:
                 this.setImageResource(R.drawable.switchoff);
                 this.setBackgroundColor(Color.argb(255, 100,50,225));
                 break;
-            case PLATE_SWITCH:
+            case BEAR_SWITCH:
                 this.setImageResource(R.drawable.switchoff);
                 this.setBackgroundColor(Color.argb(255, 200,100,0));
+                break;
+            case SOUP_SWITCH:
+                this.setImageResource(R.drawable.switchoff);
+                this.setBackgroundColor(Color.argb(255, 150,200,100));
                 break;
             case LEVEL1:
                 this.setImageResource(R.drawable.goldenstar);

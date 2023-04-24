@@ -36,14 +36,14 @@ public class Puzzles {
                 p.endPieces.add(new Piece(context, END, 7, 3));
                 p.endPieces.add(new Piece(context, END, 8, 2));
 
-                p.switchPieces.add(new Piece(context, PLATE_SWITCH, 1, 5));
+                p.switchPieces.add(new Piece(context, BEAR_SWITCH, 1, 5));
                 p.switchPieces.add(new Piece(context, CAT_SWITCH, 3, 6));
 
                 p.pieces.add(new Piece(context, CAT, 1, 3));
                 p.pieces.add(new Piece(context, CAT, 3, 4));
-                p.pieces.add(new Piece(context, PLATE, 4, 1));
-                p.pieces.add(new Piece(context, PLATE, 5, 3));
-                p.pieces.add(new Piece(context, PLATE, 6, 2));
+                p.pieces.add(new Piece(context, BEAR, 4, 1));
+                p.pieces.add(new Piece(context, BEAR, 5, 3));
+                p.pieces.add(new Piece(context, BEAR, 6, 2));
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
 
                 p.bronzeThres = 17;
@@ -57,14 +57,14 @@ public class Puzzles {
                 p.endPieces.add(new Piece(context, END, 3, 7));
                 p.endPieces.add(new Piece(context, END, 2, 8));
 
-                p.switchPieces.add(new Piece(context, PLATE_SWITCH, 5, 1));
+                p.switchPieces.add(new Piece(context, BEAR_SWITCH, 5, 1));
                 p.switchPieces.add(new Piece(context, CAT_SWITCH, 6, 3));
 
                 p.pieces.add(new Piece(context, CAT, 3, 1));
                 p.pieces.add(new Piece(context, CAT, 4, 3));
-                p.pieces.add(new Piece(context, PLATE, 1, 4));
-                p.pieces.add(new Piece(context, PLATE, 3, 5));
-                p.pieces.add(new Piece(context, PLATE, 2, 6));
+                p.pieces.add(new Piece(context, BEAR, 1, 4));
+                p.pieces.add(new Piece(context, BEAR, 3, 5));
+                p.pieces.add(new Piece(context, BEAR, 2, 6));
                 p.pieces.add(new Piece(context, BAGEL, 6, 4));
 
                 p.bronzeThres = 17;
@@ -78,14 +78,14 @@ public class Puzzles {
                 p.endPieces.add(new Piece(context, END, 7, 3));
                 p.endPieces.add(new Piece(context, END, 8, 2));
 
-                p.switchPieces.add(new Piece(context, PLATE_SWITCH, 1, 5));
+                p.switchPieces.add(new Piece(context, BEAR_SWITCH, 1, 5));
                 p.switchPieces.add(new Piece(context, CAT_SWITCH, 3, 6));
 
                 p.pieces.add(new Piece(context, CAT, 1, 3));
                 p.pieces.add(new Piece(context, CAT, 3, 4));
-                p.pieces.add(new Piece(context, PLATE, 4, 1));
-                p.pieces.add(new Piece(context, PLATE, 5, 3));
-                p.pieces.add(new Piece(context, PLATE, 6, 2));
+                p.pieces.add(new Piece(context, BEAR, 4, 1));
+                p.pieces.add(new Piece(context, BEAR, 5, 3));
+                p.pieces.add(new Piece(context, BEAR, 6, 2));
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
 
                 p.bronzeThres = 17;
@@ -99,14 +99,14 @@ public class Puzzles {
                 p.endPieces.add(new Piece(context, END, 7, 3));
                 p.endPieces.add(new Piece(context, END, 8, 2));
 
-                p.switchPieces.add(new Piece(context, PLATE_SWITCH, 1, 5));
+                p.switchPieces.add(new Piece(context, BEAR_SWITCH, 1, 5));
                 p.switchPieces.add(new Piece(context, CAT_SWITCH, 3, 6));
 
                 p.pieces.add(new Piece(context, CAT, 1, 3));
                 p.pieces.add(new Piece(context, CAT, 3, 4));
-                p.pieces.add(new Piece(context, PLATE, 4, 1));
-                p.pieces.add(new Piece(context, PLATE, 5, 3));
-                p.pieces.add(new Piece(context, PLATE, 6, 2));
+                p.pieces.add(new Piece(context, BEAR, 4, 1));
+                p.pieces.add(new Piece(context, BEAR, 5, 3));
+                p.pieces.add(new Piece(context, BEAR, 6, 2));
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
 
                 p.bronzeThres = 17;
@@ -120,14 +120,14 @@ public class Puzzles {
                 p.endPieces.add(new Piece(context, END, 7, 3));
                 p.endPieces.add(new Piece(context, END, 8, 2));
 
-                p.switchPieces.add(new Piece(context, PLATE_SWITCH, 1, 5));
+                p.switchPieces.add(new Piece(context, BEAR_SWITCH, 1, 5));
                 p.switchPieces.add(new Piece(context, CAT_SWITCH, 3, 6));
 
                 p.pieces.add(new Piece(context, CAT, 1, 3));
                 p.pieces.add(new Piece(context, CAT, 3, 4));
-                p.pieces.add(new Piece(context, PLATE, 4, 1));
-                p.pieces.add(new Piece(context, PLATE, 5, 3));
-                p.pieces.add(new Piece(context, PLATE, 6, 2));
+                p.pieces.add(new Piece(context, BEAR, 4, 1));
+                p.pieces.add(new Piece(context, BEAR, 5, 3));
+                p.pieces.add(new Piece(context, BEAR, 6, 2));
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
 
                 p.bronzeThres = 17;
