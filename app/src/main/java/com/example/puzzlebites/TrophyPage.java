@@ -17,7 +17,8 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 
 public class TrophyPage extends AppCompatActivity {
     private ConstraintLayout myLayout;
-
+    private Setting setting;
+    private int numOfStars;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,10 @@ public class TrophyPage extends AppCompatActivity {
                     }
                 }
         );
+        TextView numOfStarsTV = findViewById(R.id.textView);
+        numOfStars = setting.getTotalStars();
+        numOfStarsTV.setText("You Have " + numOfStars + " Stars!");
+        setting.
     }
     public void applySettings(){
         Setting.applySettingToView(myLayout);

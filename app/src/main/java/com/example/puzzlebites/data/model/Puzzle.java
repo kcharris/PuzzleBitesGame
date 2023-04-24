@@ -1,5 +1,9 @@
 package com.example.puzzlebites.data.model;
 
+import android.graphics.Rect;
+import android.view.View;
+import android.widget.ImageView;
+
 import com.example.puzzlebites.R;
 
 import java.util.ArrayList;
@@ -17,8 +21,8 @@ public class Puzzle {
     private Piece bagel;
     private List<Piece> allPieces;
 
-    public List<Piece> getAllPieces(){
-        if(allPieces == null){
+    public List<Piece> getAllPieces() {
+        if (allPieces == null) {
             allPieces = new ArrayList<>();
             allPieces.addAll(levelPieces);
             allPieces.addAll(endPieces);
@@ -27,8 +31,9 @@ public class Puzzle {
         }
         return allPieces;
     }
-    public Piece getBagel(){
-        if(this.bagel == null) {
+
+    public Piece getBagel() {
+        if (this.bagel == null) {
             for (Piece p : pieces) {
                 if (p.type == PieceType.BAGEL) {
                     this.bagel = p;
@@ -37,14 +42,15 @@ public class Puzzle {
         }
         return this.bagel;
     }
-    public boolean moveGeneral(String direction){
+
+    public boolean moveGeneral(String direction) {
         // This first part gets the next location of each moveable piece and store it in that pieces p.next(top/start)margin
         // The checker bool checks to see if a move tries to go outside it's bounds and if so prevents all movement
         // The locationHash checks to make sure no two pieces potentially overlap
         boolean checker = true;
         locationsHash = new HashSet<>();
         for (Piece p : this.pieces) {
-            switch (direction){
+            switch (direction) {
                 case "up":
                     checker = p.moveUp();
                     break;
@@ -62,15 +68,15 @@ public class Puzzle {
             locationsHash.add(p.nextStartMargin + ", " + p.nextTopMargin);
         }
 //      If the pieces do not share an endlocation, go ahead and move
-        if (locationsHash.size() == this.pieces.size() && checker){
+        if (locationsHash.size() == this.pieces.size() && checker) {
             moveList.add(direction);
-            for(Piece p : this.pieces){
+            for (Piece p : this.pieces) {
                 p.setMargins();
             }
 
             // if the bagel lands on a switch, try  and activate it as well as it's related pieces
-            for(Piece sp : this.switchPieces){
-                if(this.getBagel().nextTopMargin == sp.nextTopMargin && this.getBagel().nextStartMargin == sp.nextStartMargin){
+            for (Piece sp : this.switchPieces) {
+                if (this.getBagel().nextTopMargin == sp.nextTopMargin && this.getBagel().nextStartMargin == sp.nextStartMargin) {
                     if (sp.isActive == false) {
                         sp.isActive = true;
                         sp.setImageResource(R.drawable.switchon);
@@ -83,9 +89,9 @@ public class Puzzle {
                 }
             }
             // Check for win condition after moving, and if true go to score screen with score
-            if (endLocations == null){
+            if (endLocations == null) {
                 endLocations = new HashSet<>();
-                for(Piece end : this.endPieces){
+                for (Piece end : this.endPieces) {
                     endLocations.add(end.nextStartMargin + ", " + end.nextTopMargin);
                 }
             }
@@ -93,6 +99,7 @@ public class Puzzle {
         }
         return false;
     }
+
     public boolean undoMove() {
         if (moveList.size() > 0) {
             String previousDirection = moveList.remove(moveList.size() - 1);
@@ -135,7 +142,8 @@ public class Puzzle {
         }
         return false;
     }
-    public boolean isWinState(){
+
+    public boolean isWinState() {
         return locationsHash.containsAll(endLocations);
     }
 }

@@ -28,6 +28,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
     private int silverThres;
     private int bronzeThres;
     private String puzzleNum;
+    private String star;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +79,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
             bronze.setVisibility(View.VISIBLE);
             silver.setVisibility(View.VISIBLE);
             gold.setVisibility(View.VISIBLE);
+            star = "gold";
         }
         if ((Integer.parseInt(score) > goldThres) && (Integer.parseInt(score) <= silverThres)) {
             bronzeStat.setBackgroundResource(R.color.bronze);
@@ -87,6 +89,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
             /*gold.startAnimation(fadeLock2);*/
             bronze.setVisibility(View.VISIBLE);
             silver.setVisibility(View.VISIBLE);
+            star = "silver";
         }
         if ((Integer.parseInt(score) > silverThres) && (Integer.parseInt(score) <= bronzeThres)) {
             bronzeStat.setBackgroundResource(R.color.bronze);
@@ -94,25 +97,26 @@ public class ScoreScreenActivity extends AppCompatActivity {
            /* silver.startAnimation(fadeLock1);
             gold.startAnimation(fadeLock2);*/
             bronze.setVisibility(View.VISIBLE);
+            star = "silver";
         }
         else {
-
+            star = null;
         }
         switch (puzzleNum) {
             case "1":
-                setting.setLevel1Score(Integer.parseInt(score));
+                setting.setLevel1Score(Integer.parseInt(score),star);
                 break;
             case "2":
-                setting.setLevel2Score(Integer.parseInt(score));
+                setting.setLevel2Score(Integer.parseInt(score),star);
                 break;
             case "3":
-                setting.setLevel3Score(Integer.parseInt(score));
+                setting.setLevel3Score(Integer.parseInt(score),star);
                 break;
             case "4":
-                setting.setLevel4Score(Integer.parseInt(score));
+                setting.setLevel4Score(Integer.parseInt(score),star);
                 break;
             case "5":
-                setting.setLevel5Score(Integer.parseInt(score));
+                setting.setLevel5Score(Integer.parseInt(score),star);
                 break;
         }
     }
