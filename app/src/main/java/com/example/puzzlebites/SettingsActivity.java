@@ -23,35 +23,43 @@ public class SettingsActivity extends AppCompatActivity {
     ConstraintLayout myLayout;
     SettingRepository settingRepository;
     Setting setting;
-    private ArrayList<Integer> colors = new ArrayList<>(Arrays.asList(Color.BLUE,Color.LTGRAY, Color.CYAN, Color.MAGENTA ));
+    private ArrayList<Integer> styles = new ArrayList<>(Arrays.asList(R.style.Theme_PuzzleBites_theme1,
+            R.style.Theme_PuzzleBites_theme2,R.style.Theme_PuzzleBites_theme3,R.style.Theme_PuzzleBites_theme4));
     private int cycle = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySettings();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
         settingRepository = new SettingRepository(this);
+        setTheme(settingRepository.getSettings().style);
+        setContentView(R.layout.activity_setting);
         setting = settingRepository.getSettings();
         myLayout = (ConstraintLayout) findViewById(R.id.activitySetting);
-        applySettings();
     }
     public void applySettings(){
-        Setting.applySettingToView(myLayout);
+        Setting.applySettingToView(this);
     }
 
     public void returnHome(View v)
     {
         Intent mainIntent = new Intent(this, MainActivity.class);
         saveSharedPreferences();
+        mainIntent.putExtra("fromSettings", "fromSettings");
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
     }
 
-    public void backgroundChange(View v)
+    public void changeTheme(View v)
     {
+        cycle = styles.indexOf(setting.style);
         cycle += 1;
-        setting.backgroundColor = colors.get(cycle% colors.size());
-        myLayout.setBackgroundColor(setting.backgroundColor);
+        if(cycle >= styles.size()){
+            cycle = 0;
+        }
+        setting.style = styles.get(cycle% styles.size());
+        saveSharedPreferences();
+        this.recreate();
     }
 
     public void resetScore(View v) {
@@ -69,6 +77,13 @@ public class SettingsActivity extends AppCompatActivity {
     {
         saveSharedPreferences();
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        setResult(RESULT_OK, mainIntent);
     }
 
     public void saveSharedPreferences()

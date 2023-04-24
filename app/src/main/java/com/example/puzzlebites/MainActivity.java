@@ -24,13 +24,15 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 public class MainActivity extends AppCompatActivity {
     private ConstraintLayout myLayout;
     private ActivityResultLauncher<Intent> mStartLauncher;
+    private SettingRepository settingRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySettings();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myLayout = (ConstraintLayout) findViewById(R.id.mainActivity);
-        applySettings();
+
         mStartLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -38,13 +40,18 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if(result.getResultCode() == Activity.RESULT_OK)
                         {
-
+                            if(result.getData().hasExtra("fromSettings")){
+                                restartHelper();
+                            }
                         }
                     }
                 });
     }
     public void applySettings(){
-        Setting.applySettingToView(myLayout);
+        Setting.applySettingToView(this);
+    }
+    public void restartHelper(){
+        this.recreate();
     }
 
     @Override

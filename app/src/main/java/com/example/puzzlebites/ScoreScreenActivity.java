@@ -33,12 +33,12 @@ public class ScoreScreenActivity extends AppCompatActivity {
     private int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySettings();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_screen);
         myLayout = (ConstraintLayout) findViewById(R.id.scoreScreen);
         settingRepository = new SettingRepository(this);
         setting = settingRepository.getSettings();
-        applySettings();
         Intent intent = getIntent();
         goldThres = intent.getExtras().getInt("gold");
         silverThres = intent.getExtras().getInt("silver");
@@ -107,7 +107,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         settingRepository.saveSettings(setting);
     }
     public void applySettings(){
-        Setting.applySettingToView(myLayout);
+        Setting.applySettingToView(this);
     }
     private ActivityResultLauncher<Intent> mpStartLauncher;
 

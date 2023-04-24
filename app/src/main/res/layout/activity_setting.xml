@@ -28,12 +28,12 @@
         app:layout_constraintTop_toBottomOf="@+id/changeSound" />
 
     <Button
-        android:id="@+id/changeBgdBTN"
+        android:id="@+id/changeThemeBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:onClick="backgroundChange"
-        android:text="CHANGE BACKGROUND"
+        android:onClick="changeTheme"
+        android:text="CHANGE THEME"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/animationSpeed" />
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN" />
+        app:layout_constraintTop_toBottomOf="@+id/changeThemeBTN" />
 
     <TextView
         android:id="@+id/textView2"

@@ -23,13 +23,12 @@ public class TrophyPage extends AppCompatActivity {
     private int numOfStars;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySettings();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_page2);
         myLayout = (ConstraintLayout) findViewById(R.id.trophyPage);
         settingRepository = new SettingRepository(this);
         setting = settingRepository.getSettings();
-
-        applySettings();
         ActivityResultLauncher<Intent> trophyPageLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -112,7 +111,7 @@ public class TrophyPage extends AppCompatActivity {
         setScoreButtonText(level5BTN,level, score);
     }
     public void applySettings(){
-        Setting.applySettingToView(myLayout);
+        Setting.applySettingToView(this);
     }
 
     public void returnButton(View v){

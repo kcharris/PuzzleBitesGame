@@ -35,7 +35,7 @@ public class SettingRepository {
         // total score is not a saved property of Setting
         edit.putInt("totalScore", setting.getTotalScore());
 
-        edit.putInt("backgroundColor", setting.backgroundColor);
+        edit.putInt("backgroundColor", setting.style);
         edit.commit();
     }
 
@@ -55,7 +55,7 @@ public class SettingRepository {
             setting.level4Star = (int)settingMap.get("level4Star");
             setting.level5Star = (int)settingMap.get("level5Star");
 
-            setting.backgroundColor = (int)settingMap.get("backgroundColor");
+            setting.style = (int)settingMap.get("backgroundColor");
         }
         return setting;
     }

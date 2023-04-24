@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.puzzlebites.R;
 import com.example.puzzlebites.data.repository.SettingRepository;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Setting {
-    public int backgroundColor = Color.LTGRAY;
+    public int style = R.style.Theme_PuzzleBites_theme1;
     public int level1Score = 0;
     public int level1Star =0;
     public int level2Score = 0;
@@ -91,9 +92,9 @@ public class Setting {
     }
 
 
-    public static void applySettingToView(ConstraintLayout c){
+    public static void applySettingToView(Context c){
         Setting s;
-        s = new SettingRepository(c.getContext()).getSettings();
-        c.setBackgroundColor(s.backgroundColor);
+        s = new SettingRepository(c).getSettings();
+        c.setTheme(s.style);
     }
 }

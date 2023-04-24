@@ -35,10 +35,11 @@ public class MainPageActivity  extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySettings();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puzzle);
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
-        applySettings();
+
         score = new ViewModelProvider(this).get(Score.class);
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
@@ -60,7 +61,7 @@ public class MainPageActivity  extends AppCompatActivity {
         setPuzzle("main");
     }
     public void applySettings(){
-        Setting.applySettingToView(myLayout);
+        Setting.applySettingToView(this);
     }
 
     private ActivityResultLauncher<Intent> pStartLauncher;

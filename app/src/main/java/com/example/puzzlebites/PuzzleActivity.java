@@ -32,15 +32,16 @@ public class PuzzleActivity extends AppCompatActivity {
     private HashSet<String> endLocations;
     private String puzzleNum;
     private ConstraintLayout myLayout;
+    private SettingRepository settingRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        applySettings();
         super.onCreate(savedInstanceState);
         this.puzzleNum = getIntent().getExtras().getString("puzzleNum");
         setContentView(R.layout.activity_puzzle);
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         score = new ViewModelProvider(this).get(Score.class);
-        applySettings();
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -67,7 +68,7 @@ public class PuzzleActivity extends AppCompatActivity {
         setPuzzle(puzzleNum);
     }
     public void applySettings(){
-        Setting.applySettingToView(myLayout);
+        Setting.applySettingToView(this);
     }
     private ActivityResultLauncher<Intent> sStartLauncher;
     private void setPuzzle(String puzzleNum) {
