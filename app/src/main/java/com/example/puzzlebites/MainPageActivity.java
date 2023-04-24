@@ -65,6 +65,8 @@ public class MainPageActivity  extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> pStartLauncher;
     private void setPuzzle(String puzzleStr) {
+        TextView levelNameTV = findViewById(R.id.puzzleLevelTV);
+        levelNameTV.setText("Level: " + "main");
         // If the puzzle already exists, remove it from view and then reset it. Removing from view may be unnecessary.
         if(!(this.puzzle == null)){
             for(Piece p: puzzle.getAllPieces()) {
