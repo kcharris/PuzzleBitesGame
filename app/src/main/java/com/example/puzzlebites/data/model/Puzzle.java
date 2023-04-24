@@ -21,6 +21,7 @@ public class Puzzle {
     public int goldThres;
     private HashSet endLocations;
     private HashSet locationsHash;
+    private HashSet switchLocations;
     private Piece bagel;
     private List<Piece> allPieces;
 
@@ -44,6 +45,41 @@ public class Puzzle {
             }
         }
         return this.bagel;
+    }
+    public void updateSwitches(){
+        // if the bagel lands on a switch, try  and activate it as well as it's related pieces
+        if (switchLocations == null) {
+            switchLocations = new HashSet<>();
+            for (Piece s : this.switchPieces) {
+                switchLocations.add(s.nextStartMargin + ", " + s.nextTopMargin);
+            }
+        }
+        String bagelLocation = this.getBagel().nextStartMargin + ", " + this.getBagel().nextTopMargin;
+        if(switchLocations.contains(bagelLocation)) {
+            PieceType switchType = PieceType.BAGEL;
+            for (Piece sp : this.switchPieces) {
+                if (this.getBagel().nextTopMargin == sp.nextTopMargin && this.getBagel().nextStartMargin == sp.nextStartMargin) {
+                    switchType = sp.type;
+                    break;
+                }
+            }
+            for(Piece sp: this.switchPieces){
+                if(sp.type == switchType) {
+                    sp.isActive = !sp.isActive;
+                    if (sp.isActive == true) {
+                        sp.setImageResource(R.drawable.switchon);
+                    } else {
+                        sp.setImageResource(R.drawable.switchoff);
+                    }
+
+                }
+            }
+            for (Piece p : this.pieces) {
+                if (switchType.toString().contains(p.type.toString())) {
+                    p.isActive = !p.isActive;
+                }
+            }
+        }
     }
 
     public boolean moveGeneral(String direction) {
@@ -77,20 +113,7 @@ public class Puzzle {
                 p.setMargins();
             }
 
-            // if the bagel lands on a switch, try  and activate it as well as it's related pieces
-            for (Piece sp : this.switchPieces) {
-                if (this.getBagel().nextTopMargin == sp.nextTopMargin && this.getBagel().nextStartMargin == sp.nextStartMargin) {
-                    if (sp.isActive == false) {
-                        sp.isActive = true;
-                        sp.setImageResource(R.drawable.switchon);
-                        for (Piece p : this.pieces) {
-                            if (sp.type.toString().contains(p.type.toString())) {
-                                p.isActive = true;
-                            }
-                        }
-                    }
-                }
-            }
+            updateSwitches();
             // Check for win condition after moving, and if true go to score screen with score
             if (endLocations == null) {
                 endLocations = new HashSet<>();
@@ -128,19 +151,7 @@ public class Puzzle {
                 p.setMargins();
             }
             // if the bagel lands on a switch, try  and deactivate it as well as it's related pieces
-            for (Piece sp : this.switchPieces) {
-                if (this.getBagel().nextTopMargin == sp.nextTopMargin && this.getBagel().nextStartMargin == sp.nextStartMargin) {
-                    if (sp.isActive == true) {
-                        sp.isActive = false;
-                        sp.setImageResource(R.drawable.switchoff);
-                        for (Piece p : this.pieces) {
-                            if (sp.type.toString().contains(p.type.toString())) {
-                                p.isActive = false;
-                            }
-                        }
-                    }
-                }
-            }
+            updateSwitches();
             return true;
         }
         return false;
