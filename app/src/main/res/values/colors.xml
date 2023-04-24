@@ -11,6 +11,11 @@
     <color name="bronze">#CD7F32</color>
     <color name="silver">#C0C0C0</color>
 
+    <color name="orange">#fa7f00</color>
+    <color name="dark_orange">#e85108</color>
+    <color name="light_green">#bbf938</color>
+    <color name="olive">#97b818</color>
+
     <color name="light_blue">#019cef</color>
     <color name="medium_blue">#0a57a4</color>
     <color name="dark_blue">#00528c</color>

@@ -1,5 +1,7 @@
 package com.example.puzzlebites.data.model;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.view.View;
 import android.widget.ImageView;
@@ -68,14 +70,24 @@ public class Puzzle {
                     sp.isActive = !sp.isActive;
                     if (sp.isActive == true) {
                         sp.setImageResource(R.drawable.switchon);
+                        sp.setBackgroundColor(sp.onColor);
                     } else {
                         sp.setImageResource(R.drawable.switchoff);
+                        sp.setBackgroundColor(sp.offColor);
                     }
                 }
             }
             for (Piece p : this.pieces) {
                 if (switchType.toString().contains(p.type.toString())) {
                     p.isActive = !p.isActive;
+                    if(p.isActive) {
+                        p.setColorFilter(Color.argb(0,0,0,0));
+                        p.setBackgroundColor(p.onColor);
+                    }
+                    else{
+                        p.setColorFilter(Color.argb(100, 0, 0, 0), PorterDuff.Mode.SRC_ATOP);
+                        p.setBackgroundColor(p.offColor);
+                    }
                 }
             }
         }

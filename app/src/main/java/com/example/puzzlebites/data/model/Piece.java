@@ -2,6 +2,7 @@ package com.example.puzzlebites.data.model;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 
@@ -15,6 +16,9 @@ import com.example.puzzlebites.R;
 public class Piece extends androidx.appcompat.widget.AppCompatImageView {
     public boolean canMove = false;
     public boolean isActive = false;
+    public int offColor;
+    public int onColor;
+    public int currentColor;
     public int speed = 0;
     public int nextTopMargin = 0;
     public int nextStartMargin = 0;
@@ -42,32 +46,54 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
             case CAT:
                 this.speed = 2;
                 this.canMove = true;
-                this.setBackgroundColor(Color.argb(255, 100,50,225));
+                this.setBackgroundColor(getResources().getColor(R.color.purple_500));
                 this.setImageResource(R.drawable.cat_toast);
+                this.setColorFilter(Color.argb(100, 0,0,0), PorterDuff.Mode.SRC_ATOP);
+                this.onColor = getResources().getColor(R.color.purple_200);
+                this.offColor = getResources().getColor(R.color.purple_500);
+                this.setBackgroundColor(this.offColor);
                 break;
             case BEAR:
                 this.speed = 1;
                 this.canMove = true;
-                this.setBackgroundColor(Color.argb(255, 200,100,0));
+                this.setBackgroundColor(getResources().getColor(R.color.bronze));
                 this.setImageResource(R.drawable.bear_doughnut);
+                this.setColorFilter(Color.argb(100, 0,0,0), PorterDuff.Mode.SRC_ATOP);
+                this.onColor = getResources().getColor(R.color.orange);
+                this.offColor = getResources().getColor(R.color.dark_orange);
+                this.setBackgroundColor(this.offColor);
                 break;
             case SOUP:
                 this.speed = 3;
                 this.canMove = true;
-                this.setBackgroundColor(Color.argb(255, 150,200,100));
                 this.setImageResource(R.drawable.noodle_soup);
+                this.setColorFilter(Color.argb(100, 0,0,0), PorterDuff.Mode.SRC_ATOP);
+                this.onColor = getResources().getColor(R.color.light_green);
+                this.offColor = getResources().getColor(R.color.olive);
+                this.setBackgroundColor(this.offColor);
                 break;
             case CAT_SWITCH:
                 this.setImageResource(R.drawable.switchoff);
-                this.setBackgroundColor(Color.argb(255, 100,50,225));
+                setColorFilter(Color.argb(50, 0, 0, 0), PorterDuff.Mode.SRC_ATOP);
+                this.onColor = getResources().getColor(R.color.purple_200);
+                this.offColor = getResources().getColor(R.color.purple_500);
+                this.setBackgroundColor(this.offColor);
                 break;
             case BEAR_SWITCH:
                 this.setImageResource(R.drawable.switchoff);
-                this.setBackgroundColor(Color.argb(255, 200,100,0));
+                this.setBackgroundColor(getResources().getColor(R.color.bronze));
+                setColorFilter(Color.argb(50, 0, 0, 0), PorterDuff.Mode.SRC_ATOP);
+                this.onColor = getResources().getColor(R.color.orange);
+                this.offColor = getResources().getColor(R.color.dark_orange);
+                this.setBackgroundColor(this.offColor);
                 break;
             case SOUP_SWITCH:
                 this.setImageResource(R.drawable.switchoff);
                 this.setBackgroundColor(Color.argb(255, 150,200,100));
+                setColorFilter(Color.argb(50, 0, 0, 0), PorterDuff.Mode.SRC_ATOP);
+                this.onColor = getResources().getColor(R.color.light_green);
+                this.offColor = getResources().getColor(R.color.olive);
+                this.setBackgroundColor(this.offColor);
                 break;
             case LEVEL1:
                 this.setImageResource(R.drawable.goldenstar);
@@ -95,8 +121,9 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
                 this.setId(R.id.lvlFive);
                 break;
             case LEVEL_TROPHY:
-                this.setImageResource(R.drawable.goldenstar);
+                this.setImageResource(R.drawable.trophy);
                 this.setScaleType(ScaleType.CENTER_CROP);
+                this.setBackgroundColor(Color.argb(255, 0, 150, 100));
                 this.setId(R.id.lvlTrophy);
                 break;
         }
