@@ -8,6 +8,18 @@
     tools:context=".TrophyPage">
 
     <ImageView
+        android:id="@+id/level5StarIV"
+        android:layout_width="72dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.814"
+        app:srcCompat="@drawable/goldstar" />
+
+    <ImageView
         android:id="@+id/returnBTN"
         android:layout_width="104dp"
         android:layout_height="106dp"
@@ -22,7 +34,7 @@
         app:srcCompat="@drawable/backarrow" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/totalStarsTV"
         android:layout_width="325dp"
         android:layout_height="81dp"
         android:text="You Have *numOfStars* Stars!"
@@ -34,7 +46,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/level1StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +58,7 @@
         app:srcCompat="@drawable/goldstar" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/level4StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +70,7 @@
         app:srcCompat="@drawable/goldstar" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/level2StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +82,7 @@
         app:srcCompat="@drawable/silverstar" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/level3StarIV"
         android:layout_width="78dp"
         android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
