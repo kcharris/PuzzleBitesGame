@@ -76,6 +76,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
             bronze.setVisibility(View.VISIBLE);
             silver.setVisibility(View.VISIBLE);
             gold.setVisibility(View.VISIBLE);
+            star = "gold";
         }
         if (score > goldThres && score <= silverThres) {
             bronzeStat.setBackgroundResource(R.color.bronze);
@@ -85,6 +86,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
             /*gold.startAnimation(fadeLock2);*/
             bronze.setVisibility(View.VISIBLE);
             silver.setVisibility(View.VISIBLE);
+            star = "silver";
         }
         if (score > silverThres && score <= bronzeThres) {
             bronzeStat.setBackgroundResource(R.color.bronze);
@@ -92,6 +94,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
            /* silver.startAnimation(fadeLock1);
             gold.startAnimation(fadeLock2);*/
             bronze.setVisibility(View.VISIBLE);
+            star = "silver";
         }
     }
     public void saveScore(){
