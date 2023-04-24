@@ -138,32 +138,14 @@ public class PuzzleActivity extends AppCompatActivity {
         }
     }
     public void finishPuzzle(){
-        Intent puzzle = new Intent(this, ScoreScreenActivity.class);
-        puzzle.putExtra("score", score.getNumOfMoves());
-        if(puzzleNum.equalsIgnoreCase("one")) {
-            puzzle.putExtra("gold", 7);
-            puzzle.putExtra("silver", 12);
-            puzzle.putExtra("bronze", 16);
-        } if(puzzleNum.equalsIgnoreCase("two")) {
-            puzzle.putExtra("gold", 7);
-            puzzle.putExtra("silver", 12);
-            puzzle.putExtra("bronze", 16);
-        }if(puzzleNum.equalsIgnoreCase("three")) {
-            puzzle.putExtra("gold", 7);
-            puzzle.putExtra("silver", 12);  //the threshold numOfMoves that determines score should not be the same across all puzzles but until more are made, they are the same
-            puzzle.putExtra("bronze", 16);
-        }
-        if(puzzleNum.equalsIgnoreCase("four")) {
-            puzzle.putExtra("gold", 7);
-            puzzle.putExtra("silver", 12);
-            puzzle.putExtra("bronze", 16);
-        } else{
-            puzzle.putExtra("gold", 7);
-            puzzle.putExtra("silver", 12);
-            puzzle.putExtra("bronze", 16);
-        }
-        puzzle.putExtra("puzzleNum",puzzleNum);
-        sStartLauncher.launch(puzzle);
+        Intent scoreIntent = new Intent(this, ScoreScreenActivity.class);
+        scoreIntent.putExtra("score", score.getNumOfMoves());
+
+        scoreIntent.putExtra("puzzleNum",puzzleNum);
+        scoreIntent.putExtra("bronze", puzzle.bronzeThres);
+        scoreIntent.putExtra("silver", puzzle.silverThres);
+        scoreIntent.putExtra("gold", puzzle.goldThres);
+        sStartLauncher.launch(scoreIntent);
     }
     public void resetPuzzle(View v){
         setPuzzle(puzzleNum);

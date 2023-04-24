@@ -12,6 +12,9 @@ public class Puzzle {
     public List<Piece> levelPieces = new ArrayList();
     public List<Piece> pieces = new ArrayList<>();
     public List<String> moveList = new ArrayList<>();
+    public int bronzeThres;
+    public int silverThres;
+    public int goldThres;
     private HashSet endLocations;
     private HashSet locationsHash;
     private Piece bagel;

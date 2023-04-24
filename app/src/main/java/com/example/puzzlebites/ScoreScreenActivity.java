@@ -46,23 +46,6 @@ public class ScoreScreenActivity extends AppCompatActivity {
         congratsTV.setText("Congrats!\n You completed the puzzle in " + score + " moves!");
         setStars();
 
-        switch (puzzleNum) {
-            case "1":
-                setting.setLevel1Score(score);
-                break;
-            case "2":
-                setting.setLevel2Score(score);
-                break;
-            case "3":
-                setting.setLevel3Score(score);
-                break;
-            case "4":
-                setting.setLevel4Score(score);
-                break;
-            case "5":
-                setting.setLevel5Score(score);
-                break;
-        }
     }
     public void setStars(){
         TextView goldStat = findViewById(R.id.goldTV);
@@ -106,6 +89,26 @@ public class ScoreScreenActivity extends AppCompatActivity {
            /* silver.startAnimation(fadeLock1);
             gold.startAnimation(fadeLock2);*/
             bronze.setVisibility(View.VISIBLE);
+        }
+    }
+    public void saveScore(){
+        
+        switch (puzzleNum) {
+            case "1":
+                setting.setLevel1Score(score);
+                break;
+            case "2":
+                setting.setLevel2Score(score);
+                break;
+            case "3":
+                setting.setLevel3Score(score);
+                break;
+            case "4":
+                setting.setLevel4Score(score);
+                break;
+            case "5":
+                setting.setLevel5Score(score);
+                break;
         }
     }
     public void applySettings(){
