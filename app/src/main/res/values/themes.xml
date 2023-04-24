@@ -12,9 +12,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="materialThemeOverlay">@style/PuzzleBites.EditText.Style</item>
+
+    </style>
+    <style name= "PuzzleBites.EditText.Style" parent="@android:style/Widget.EditText">
+        <item name="android:background">@color/silver</item>
+        <item name="android:focusableInTouchMode">false</item>
     </style>
 
-    <style name="Theme.PuzzleBites.theme1" parent="Theme.PuzzleBites">
+    <style name="Theme.PuzzleBites.theme1" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/medium_blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
