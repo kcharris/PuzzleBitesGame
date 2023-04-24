@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 public class MainPageActivity  extends AppCompatActivity {
     public Score score;
-    private String scoreStr;
     private Puzzle puzzle;
     private Puzzles puzzles = new Puzzles(this);
     private ConstraintLayout myLayout;
@@ -54,9 +53,6 @@ public class MainPageActivity  extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == Activity.RESULT_OK) {
-                            if(result.getData().getExtras().getString("score")!=null) {
-                                scoreStr = result.getData().getExtras().getString("score");
-                            }
                             setPuzzle("main");
                         }
                     }
@@ -82,23 +78,8 @@ public class MainPageActivity  extends AppCompatActivity {
         score.reset();
     }
 
-    public void returnHome(View v) {
-        Intent mainIntent = new Intent(this, MainActivity.class);
-        mainIntent.putExtra("score", scoreStr);
-        setResult(Activity.RESULT_OK, mainIntent);
-        finish();
-    }
-
-    public void toTrophies() {
-        Intent trophy = new Intent(this, TrophyPage.class);
-        //trophy.putExtra("trophy", 0);
-        setResult(Activity.RESULT_OK, trophy);
-        pStartLauncher.launch(trophy);
-    }
-
     // For the following move functions. They attempt to move the pieces with moveGeneral, and ++Score on success.
     public void moveUp2(View v) {
-        checkForLevelSelect();
         if(puzzle.moveGeneral("up")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -106,7 +87,6 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveDown2(View v) {
-        checkForLevelSelect();
         if(puzzle.moveGeneral("down")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -114,7 +94,6 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveRight2(View v) {
-        checkForLevelSelect();
         if(puzzle.moveGeneral("right")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -122,7 +101,6 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveLeft2(View v) {
-        checkForLevelSelect();
         if(puzzle.moveGeneral("left")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -162,6 +140,17 @@ public class MainPageActivity  extends AppCompatActivity {
         setResult(Activity.RESULT_OK, puzzle);
         pStartLauncher.launch(puzzle);
     }
+    public void toTrophies() {
+        Intent trophy = new Intent(this, TrophyPage.class);
+        setResult(Activity.RESULT_OK, trophy);
+        pStartLauncher.launch(trophy);
+    }
+    public void returnHome(View v) {
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        setResult(Activity.RESULT_OK, mainIntent);
+        finish();
+    }
+
 
     // Checks to see if the bagel piece lands on either a level or the trophy piece and if so moves to the respective Activity.
     private void checkForLevelSelect() {
