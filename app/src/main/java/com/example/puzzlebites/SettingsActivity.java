@@ -58,6 +58,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         //score = 0;
     }
+//    public void darkModeToggleBTN(View v){
+//        //Dark mode is toggled by the settings of the android device itself, or it's settings toward our application.
+//        //Similar to turning on energy saver mode.
+//    }
 
     @Override
     public void onStop()

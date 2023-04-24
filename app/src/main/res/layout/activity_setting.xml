@@ -8,40 +8,27 @@
     tools:context=".SettingsActivity">
 
     <Button
-        android:id="@+id/changeBgdBTN4"
+        android:id="@+id/changeSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="50dp"
         android:text="Change Sound"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/changeBgdBTN3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Dark Mode"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN4" />
-
-    <Button
-        android:id="@+id/changeBgdBTN"
+        android:id="@+id/animationSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Animation Speed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN3" />
+        app:layout_constraintTop_toBottomOf="@+id/changeSound" />
 
     <Button
-        android:id="@+id/changeBgdBTN2"
+        android:id="@+id/changeBgdBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -49,7 +36,7 @@
         android:text="CHANGE BACKGROUND"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN" />
+        app:layout_constraintTop_toBottomOf="@+id/animationSpeed" />
 
     <ImageButton
         android:id="@+id/returnSetBTN"
@@ -78,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN2" />
+        app:layout_constraintTop_toBottomOf="@+id/changeBgdBTN" />
 
     <TextView
         android:id="@+id/textView2"

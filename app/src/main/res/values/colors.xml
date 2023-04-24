@@ -10,4 +10,23 @@
     <color name="gold">#FFD700</color>
     <color name="bronze">#CD7F32</color>
     <color name="silver">#C0C0C0</color>
+
+    <color name="light_blue">#019cef</color>
+    <color name="medium_blue">#0a57a4</color>
+    <color name="dark_blue">#00528c</color>
+    <color name="cloud_blue">#b3e5ff</color>
+
+    <color name="yellow">#f5f21e</color>
+    <color name="orange_yellow">#f7ad00</color>
+    <color name="light_yellow">#f5f46b</color>
+
+    <color name="teal">#00f1cd</color>
+    <color name="medium_teal">#00be87</color>
+    <color name="dark_teal">#007c46</color>
+    <color name="medium_purple">#7252ff</color>
+    <color name="light_purple">#b996fb</color>
+
+    <color name="pink">#f1009c</color>
+    <color name="dark_pink">#ca007b</color>
+    <color name="light_pink">#f5b8df</color>
 </resources>
