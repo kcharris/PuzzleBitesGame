@@ -87,14 +87,6 @@ public class PuzzleActivity extends AppCompatActivity {
         super.onResume();
         setPuzzle(this.puzzleNum);
     }
-
-    public void skipPuzzle(View v) {
-        Intent puzzle = new Intent(this, ScoreScreenActivity.class);
-        puzzle.putExtra("puzzle",0);
-        setResult(Activity.RESULT_OK, puzzle);
-        sStartLauncher.launch(puzzle);
-        finish();
-    }
     public void returnMain(View v)
     {
         returnMain();
