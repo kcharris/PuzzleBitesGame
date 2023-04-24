@@ -29,6 +29,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
     private int silverThres;
     private int bronzeThres;
     private String puzzleNum;
+    private int stars;
     private int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score_screen);
         myLayout = (ConstraintLayout) findViewById(R.id.scoreScreen);
         settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
         applySettings();
         Intent intent = getIntent();
         goldThres = intent.getExtras().getInt("gold");
@@ -46,6 +48,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
 
         TextView congratsTV = findViewById(R.id.congratsTV);
         congratsTV.setText("Congrats!\n You completed the puzzle in " + score + " moves!");
+        //setStars() will set the stars earned for the level and should complete before saving the score;
         setStars();
         saveScore();
 
@@ -66,42 +69,31 @@ public class ScoreScreenActivity extends AppCompatActivity {
         /*final Animation fadeLock0 = new AlphaAnimation(0.0F, 0.7F); fadeLock0.setStartOffset(2000); fadeLock0.setDuration(1500);
         final Animation fadeLock1 = new AlphaAnimation(0.0F, 0.7F); fadeLock1.setStartOffset(3000); fadeLock1.setDuration(1500);
         final Animation fadeLock2 = new AlphaAnimation(0.0F, 0.7F); fadeLock2.setStartOffset(4000); fadeLock2.setDuration(1500);*/
-        if (score <= goldThres) { //want to animate a fade in and setColor according to stars/numOfMoves, should send intent with score thresholds for higher/increased adaptability
-            bronzeStat.setBackgroundResource(R.color.bronze);
-            silverStat.setBackgroundResource(R.color.silver);
-            goldStat.setBackgroundResource(R.color.gold);
-            bronze.startAnimation(fadeIn0);
-            silver.startAnimation(fadeIn1);
-            gold.startAnimation(fadeIn2);
-            bronze.setVisibility(View.VISIBLE);
-            silver.setVisibility(View.VISIBLE);
-            gold.setVisibility(View.VISIBLE);
-            star = "gold";
-        }
-        if (score > goldThres && score <= silverThres) {
-            bronzeStat.setBackgroundResource(R.color.bronze);
-            silverStat.setBackgroundResource(R.color.silver);
-            bronze.startAnimation(fadeIn0);
-            silver.startAnimation(fadeIn1);
-            /*gold.startAnimation(fadeLock2);*/
-            bronze.setVisibility(View.VISIBLE);
-            silver.setVisibility(View.VISIBLE);
-            star = "silver";
-        }
+        stars = 0;
         if (score > silverThres && score <= bronzeThres) {
             bronzeStat.setBackgroundResource(R.color.bronze);
             bronze.startAnimation(fadeIn0);
-           /* silver.startAnimation(fadeLock1);
-            gold.startAnimation(fadeLock2);*/
             bronze.setVisibility(View.VISIBLE);
-            star = "silver";
+            stars = 1;
+        }
+        if (score > goldThres && score <= silverThres) {
+            silverStat.setBackgroundResource(R.color.silver);
+            silver.startAnimation(fadeIn1);
+            silver.setVisibility(View.VISIBLE);
+            stars = 2;
+        }
+        if (score <= goldThres) { //want to animate a fade in and setColor according to stars/numOfMoves, should send intent with score thresholds for higher/increased adaptability
+            goldStat.setBackgroundResource(R.color.gold);
+            gold.startAnimation(fadeIn2);
+            gold.setVisibility(View.VISIBLE);
+            stars = 3;
         }
     }
     public void saveScore(){
 
-        int oldScore =  setting.getScore(puzzleNum);
+        int oldScore = setting.getScore(puzzleNum);
         if(oldScore < score){
-            setting.setLevelScore(puzzleNum, score);
+            setting.setLevelScore(puzzleNum, score, stars);
         }
         settingRepository.saveSettings(setting);
     }

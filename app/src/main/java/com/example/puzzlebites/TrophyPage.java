@@ -18,12 +18,16 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 public class TrophyPage extends AppCompatActivity {
     private ConstraintLayout myLayout;
     private Setting setting;
+    private SettingRepository settingRepository;
     private int numOfStars;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_page2);
         myLayout = (ConstraintLayout) findViewById(R.id.trophyPage);
+        settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
+
         applySettings();
         ActivityResultLauncher<Intent> trophyPageLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -36,7 +40,6 @@ public class TrophyPage extends AppCompatActivity {
         TextView numOfStarsTV = findViewById(R.id.textView);
         numOfStars = setting.getTotalStars();
         numOfStarsTV.setText("You Have " + numOfStars + " Stars!");
-        setting.
     }
     public void applySettings(){
         Setting.applySettingToView(myLayout);

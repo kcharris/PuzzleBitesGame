@@ -34,46 +34,16 @@ public class SettingsActivity extends AppCompatActivity {
         setting = settingRepository.getSettings();
         myLayout = (ConstraintLayout) findViewById(R.id.activitySetting);
         applySettings();
-        //restoreSharedPreferences();
     }
     public void applySettings(){
         Setting.applySettingToView(myLayout);
     }
 
-//    @Override
-//    public void onResume()
-//    {
-//        super.onResume();
-//
-//        LayoutInflater inflater = LayoutInflater.from(SettingsActivity.this);
-//        View view = inflater.inflate(R.layout.activity_setting, null);
-//        setContentView(view);
-//        if(color.equals("Default"))
-//        {
-//            view.setBackgroundColor(Color.rgb(255,255,255));
-//        }
-//        else
-//        {
-//            view.setBackgroundColor(Color.rgb(0,255,255));
-//        }
-//    }
-
-
-    private String color = "Default";
-    private int score = 0;
-    /*
-    Braeden - One of my tasks is to implement a reset button that's on the settings page. I think that
-    it would be wise to have a ModelClass that holds the scores for the instance of the activity running at the time
-    this would mean that settings should call a reset method from the implied Model
-    this would be the equivalent to a Global Variable but this shows understanding of class material
-    */
     public void returnHome(View v)
     {
         Intent mainIntent = new Intent(this, MainActivity.class);
         saveSharedPreferences();
         setResult(Activity.RESULT_OK, mainIntent);
-        mainIntent.putExtra("Color", color);
-        Log.d("SPColor", "Return with color " + color);
         finish();
     }
 
@@ -85,7 +55,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void resetScore(View v) {
-        score = 0;
+
+        //score = 0;
     }
 
     @Override
@@ -95,21 +66,9 @@ public class SettingsActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public void restoreSharedPreferences()
-    {
-        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-        color = sp.getString("Color", "Default");
-    }
-
-
     public void saveSharedPreferences()
     {
         settingRepository.saveSettings(setting);
-//        SharedPreferences sp = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor edit = sp.edit();
-//        edit.putString("Color", color);
-//        edit.putInt("HighScore", score);
-//        edit.commit();
     }
 
 }
