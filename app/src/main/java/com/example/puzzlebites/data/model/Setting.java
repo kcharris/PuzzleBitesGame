@@ -39,6 +39,42 @@ public class Setting {
     public void setLevel5Score(int score) {
         level5Score = score;
     }
+    public void setLevelScore(String level, int score){
+        switch (level){
+            case "one":
+                level1Score = score;
+                break;
+            case "two":
+                level2Score = score;
+                break;
+            case "three":
+                level3Score = score;
+                break;
+            case "four":
+                level4Score = score;
+                break;
+            case "five":
+                level5Score = score;
+                break;
+        }
+    }
+
+    public int getScore(String level){
+        switch (level){
+            case "one":
+                return level1Score;
+            case "two":
+                return level2Score;
+            case "three":
+                return level3Score;
+            case "four":
+                return level4Score;
+            case "five":
+                return level5Score;
+            default:
+                return -1;
+        }
+    }
 
     public static void applySettingToView(ConstraintLayout c){
         Setting s;

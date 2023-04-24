@@ -23,6 +23,7 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 
 public class ScoreScreenActivity extends AppCompatActivity {
     private ConstraintLayout myLayout;
+    SettingRepository settingRepository;
     private Setting setting;
     private int goldThres;
     private int silverThres;
@@ -34,6 +35,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_screen);
         myLayout = (ConstraintLayout) findViewById(R.id.scoreScreen);
+        settingRepository = new SettingRepository(this);
         applySettings();
         Intent intent = getIntent();
         goldThres = intent.getExtras().getInt("gold");
@@ -45,6 +47,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         TextView congratsTV = findViewById(R.id.congratsTV);
         congratsTV.setText("Congrats!\n You completed the puzzle in " + score + " moves!");
         setStars();
+        saveScore();
 
     }
     public void setStars(){
@@ -92,24 +95,12 @@ public class ScoreScreenActivity extends AppCompatActivity {
         }
     }
     public void saveScore(){
-        
-        switch (puzzleNum) {
-            case "1":
-                setting.setLevel1Score(score);
-                break;
-            case "2":
-                setting.setLevel2Score(score);
-                break;
-            case "3":
-                setting.setLevel3Score(score);
-                break;
-            case "4":
-                setting.setLevel4Score(score);
-                break;
-            case "5":
-                setting.setLevel5Score(score);
-                break;
+
+        int oldScore =  setting.getScore(puzzleNum);
+        if(oldScore < score){
+            setting.setLevelScore(puzzleNum, score);
         }
+        settingRepository.saveSettings(setting);
     }
     public void applySettings(){
         Setting.applySettingToView(myLayout);
@@ -123,6 +114,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         finish();
     }
 
+    // The exit button and the retry button do essentially the same thing
     public void exitBTN(View v) {
         Intent exitPuzzle = new Intent(this, PuzzleActivity.class);
         exitPuzzle.putExtra("returned",  "returned");
