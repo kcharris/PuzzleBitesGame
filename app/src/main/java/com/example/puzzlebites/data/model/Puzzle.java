@@ -71,7 +71,6 @@ public class Puzzle {
                     } else {
                         sp.setImageResource(R.drawable.switchoff);
                     }
-
                 }
             }
             for (Piece p : this.pieces) {

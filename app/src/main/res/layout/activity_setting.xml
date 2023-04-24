@@ -53,8 +53,8 @@
 
     <ImageButton
         android:id="@+id/returnSetBTN"
-        android:layout_width="77dp"
-        android:layout_height="78dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:onClick="returnHome"
@@ -88,6 +88,7 @@
         android:layout_marginTop="19dp"
         android:text="Settings"
         android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/returnSetBTN"
         app:layout_constraintTop_toTopOf="parent" />
 

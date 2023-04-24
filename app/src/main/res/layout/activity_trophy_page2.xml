@@ -11,18 +11,14 @@
         android:id="@+id/level5StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814"
+        app:layout_constraintStart_toStartOf="@+id/level4StarIV"
+        app:layout_constraintTop_toBottomOf="@+id/lv4BTN"
         app:srcCompat="@drawable/goldstar" />
 
     <ImageView
         android:id="@+id/returnBTN"
-        android:layout_width="104dp"
-        android:layout_height="106dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:contentDescription="This buttons returns user to MainActivity"
         android:onClick="returnButton"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,60 +33,46 @@
         android:id="@+id/totalStarsTV"
         android:layout_width="325dp"
         android:layout_height="81dp"
+        android:layout_marginTop="80dp"
         android:text="You Have *numOfStars* Stars!"
+        android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/level1StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        android:layout_marginStart="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.384"
+        app:layout_constraintTop_toTopOf="@+id/lv1BTN"
         app:srcCompat="@drawable/goldstar" />
 
     <ImageView
         android:id="@+id/level4StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.713"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/level3StarIV"
+        app:layout_constraintTop_toTopOf="@+id/lv4BTN"
         app:srcCompat="@drawable/goldstar" />
 
     <ImageView
         android:id="@+id/level2StarIV"
         android:layout_width="72dp"
         android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintStart_toStartOf="@+id/level1StarIV"
+        app:layout_constraintTop_toTopOf="@+id/lv2BTN"
         app:srcCompat="@drawable/silverstar" />
 
     <ImageView
         android:id="@+id/level3StarIV"
         android:layout_width="78dp"
         android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595"
+        app:layout_constraintStart_toStartOf="@+id/level2StarIV"
+        app:layout_constraintTop_toTopOf="@+id/lv3BTN"
         app:srcCompat="@drawable/bronzestar" />
 
     <Button
@@ -102,38 +84,32 @@
         android:text="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintTop_toBottomOf="@+id/lv5BTN" />
 
     <Button
         android:id="@+id/lv1BTN"
         android:layout_width="215dp"
         android:layout_height="68dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#736F6F"
         android:text="Level 1 in 7 moves!"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintStart_toEndOf="@+id/level1StarIV"
+        app:layout_constraintTop_toBottomOf="@+id/totalStarsTV" />
 
     <Button
         android:id="@+id/lv2BTN"
         android:layout_width="215dp"
         android:layout_height="68dp"
+        android:layout_marginTop="6dp"
         android:backgroundTint="#736F6F"
         android:text="Level 2 in 15 moves!"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintStart_toEndOf="@+id/level2StarIV"
+        app:layout_constraintTop_toBottomOf="@+id/lv1BTN" />
 
     <Button
         android:id="@+id/lv3BTN"
@@ -141,27 +117,22 @@
         android:layout_height="68dp"
         android:backgroundTint="#736F6F"
         android:text="Level 3 in 27 moves!"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606" />
+        app:layout_constraintStart_toEndOf="@+id/level3StarIV"
+        app:layout_constraintTop_toBottomOf="@+id/lv2BTN" />
 
     <Button
         android:id="@+id/lv4BTN"
         android:layout_width="215dp"
         android:layout_height="68dp"
+        android:layout_marginTop="1dp"
         android:backgroundTint="#736F6F"
         android:text="Level 4 in 16 moves!"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.708" />
+        app:layout_constraintStart_toEndOf="@+id/level4StarIV"
+        app:layout_constraintTop_toBottomOf="@+id/lv3BTN" />
 
     <Button
         android:id="@+id/lv5BTN"
@@ -169,12 +140,9 @@
         android:layout_height="68dp"
         android:backgroundTint="#736F6F"
         android:text="Level 5 - LOCKED"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.811" />
+        app:layout_constraintStart_toEndOf="@+id/level5StarIV"
+        app:layout_constraintTop_toBottomOf="@+id/lv4BTN" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
