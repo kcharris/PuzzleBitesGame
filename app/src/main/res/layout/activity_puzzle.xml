@@ -11,39 +11,37 @@
         android:id="@+id/puzzleDownBTN"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="122dp"
         android:onClick="moveDown"
         android:text="DOWN"
-        app:layout_constraintStart_toEndOf="@+id/puzzleInactiveTV"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleLeftBTN" />
+        app:layout_constraintBottom_toBottomOf="@+id/puzzleActivityResetBTN"
+        app:layout_constraintEnd_toStartOf="@+id/puzzleActivityResetBTN"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/puzzleLeftBTN"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="102dp"
         android:onClick="moveLeft"
         android:text="Left"
-        app:layout_constraintStart_toEndOf="@+id/puzzleActiveTV"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleUpBTN" />
+        app:layout_constraintBottom_toTopOf="@+id/puzzleDownBTN"
+        app:layout_constraintEnd_toStartOf="@+id/puzzleDownBTN" />
 
     <Button
         android:id="@+id/puzzleUpBTN"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="125dp"
         android:onClick="moveUp"
         android:text="UP"
-        app:layout_constraintStart_toEndOf="@+id/puzzleLevelTV"
-        app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
+        app:layout_constraintBottom_toTopOf="@+id/puzzleLeftBTN"
+        app:layout_constraintEnd_toEndOf="@+id/puzzleDownBTN" />
 
     <Button
         android:id="@+id/puzzleBackBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="9dp"
-        android:onClick="returnMain"
+        android:layout_marginTop="15dp"
+        android:onClick="returnBTN"
         android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,82 +52,59 @@
         android:layout_height="60dp"
         android:onClick="moveRight"
         android:text="RIGHT"
-        app:layout_constraintStart_toEndOf="@+id/puzzleLeftBTN"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleUpBTN" />
+        app:layout_constraintBottom_toTopOf="@+id/puzzleDownBTN"
+        app:layout_constraintStart_toEndOf="@+id/puzzleDownBTN" />
 
     <TextView
         android:id="@+id/puzzleMovesTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
         android:background="#CBCBCB"
         android:padding="10dp"
         android:text="Move: # ____"
-        app:layout_constraintStart_toEndOf="@+id/puzzleBackBTN"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/puzzleLevelTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:text="Level #:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
-
-    <TextView
-        android:id="@+id/puzzleActiveTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="34dp"
-        android:text="Active:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleLevelTV" />
-
-    <TextView
-        android:id="@+id/puzzleInactiveTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="34dp"
-        android:text="Inactive:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleActiveTV" />
+        app:layout_constraintBottom_toBottomOf="@+id/puzzleBackBTN"
+        app:layout_constraintEnd_toStartOf="@+id/puzzleMovesTV"
+        app:layout_constraintStart_toEndOf="@+id/puzzleBackBTN" />
 
     <Button
         android:id="@+id/puzzleUndoBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
         android:onClick="undoBTN"
         android:text="UNDO"
-        app:layout_constraintStart_toEndOf="@+id/puzzleUpBTN"
-        app:layout_constraintTop_toBottomOf="@+id/gridboardIV" />
+        app:layout_constraintEnd_toEndOf="@+id/puzzleActivityResetBTN"
+        app:layout_constraintTop_toTopOf="@+id/puzzleUpBTN" />
 
     <Button
         android:id="@+id/puzzleActivityResetBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:onClick="resetPuzzle"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
         android:text="RESET"
-        app:layout_constraintStart_toEndOf="@+id/puzzleDownBTN"
-        app:layout_constraintTop_toBottomOf="@+id/puzzleUndoBTN" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/gridboardIV"
         android:layout_width="360dp"
         android:layout_height="360dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puzzleBackBTN"
         app:srcCompat="@drawable/gridboard1" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

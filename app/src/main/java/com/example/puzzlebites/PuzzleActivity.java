@@ -87,7 +87,7 @@ public class PuzzleActivity extends AppCompatActivity {
         super.onResume();
         setPuzzle(this.puzzleNum);
     }
-    public void returnMain(View v)
+    public void returnBTN(View v)
     {
         returnMain();
     }

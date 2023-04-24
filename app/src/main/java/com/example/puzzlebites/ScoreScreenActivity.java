@@ -121,7 +121,6 @@ public class ScoreScreenActivity extends AppCompatActivity {
     // The exit button and the retry button do essentially the same thing
     public void exitBTN(View v) {
         Intent exitPuzzle = new Intent(this, PuzzleActivity.class);
-        exitPuzzle.putExtra("returned",  "returned");
         setResult(Activity.RESULT_OK, exitPuzzle);
         finish();
     }

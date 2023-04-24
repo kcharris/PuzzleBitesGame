@@ -36,14 +36,14 @@ public class MainPageActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page);
-        myLayout = (ConstraintLayout) findViewById(R.id.MainPageActivity);
+        setContentView(R.layout.activity_puzzle);
+        myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         applySettings();
         score = new ViewModelProvider(this).get(Score.class);
         score.getNumOfMovesString().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                TextView moves = findViewById(R.id.movesTV);
+                TextView moves = findViewById(R.id.puzzleMovesTV);
                 moves.setText(s);
             }
         });
@@ -79,28 +79,28 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     // For the following move functions. They attempt to move the pieces with moveGeneral, and ++Score on success.
-    public void moveUp2(View v) {
+    public void moveUp(View v) {
         if(puzzle.moveGeneral("up")){
             score.incrementNumOfMove();
             checkForLevelSelect();
         }
     }
 
-    public void moveDown2(View v) {
+    public void moveDown(View v) {
         if(puzzle.moveGeneral("down")){
             score.incrementNumOfMove();
             checkForLevelSelect();
         }
     }
 
-    public void moveRight2(View v) {
+    public void moveRight(View v) {
         if(puzzle.moveGeneral("right")){
             score.incrementNumOfMove();
             checkForLevelSelect();
         }
     }
 
-    public void moveLeft2(View v) {
+    public void moveLeft(View v) {
         if(puzzle.moveGeneral("left")){
             score.incrementNumOfMove();
             checkForLevelSelect();
@@ -145,7 +145,7 @@ public class MainPageActivity  extends AppCompatActivity {
         setResult(Activity.RESULT_OK, trophy);
         pStartLauncher.launch(trophy);
     }
-    public void returnHome(View v) {
+    public void returnBTN(View v) {
         Intent mainIntent = new Intent(this, MainActivity.class);
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
