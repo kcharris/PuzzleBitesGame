@@ -88,9 +88,9 @@ public class Puzzles {
                 p.pieces.add(new Piece(context, PLATE, 6, 2));
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
 
-                p.bronzeThres = 0;
-                p.silverThres = 0;
-                p.goldThres = 0;
+                p.bronzeThres = 17;
+                p.silverThres = 12;
+                p.goldThres = 8;
                 break;
             case "four":
                 p.endPieces.add(new Piece(context, END, 1, 1));

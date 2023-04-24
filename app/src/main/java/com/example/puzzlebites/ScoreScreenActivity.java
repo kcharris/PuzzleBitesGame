@@ -62,21 +62,21 @@ public class ScoreScreenActivity extends AppCompatActivity {
         ImageView gold = findViewById(R.id.gold);
         gold.setVisibility(View.INVISIBLE); bronze.setVisibility(View.INVISIBLE); silver.setVisibility(View.INVISIBLE);
 
-        final Animation fadeIn0 = new AlphaAnimation(0.0F, 1.0F); fadeIn0.setStartOffset(2000); fadeIn0.setDuration(2000);
-        final Animation fadeIn1 = new AlphaAnimation(0.0F, 1.0F); fadeIn1.setStartOffset(3000); fadeIn1.setDuration(2000);
-        final Animation fadeIn2 = new AlphaAnimation(0.0F, 1.0F); fadeIn2.setStartOffset(4000); fadeIn2.setDuration(2000);
+        final Animation fadeIn0 = new AlphaAnimation(0.0F, 1.0F); fadeIn0.setStartOffset(500); fadeIn0.setDuration(1000);
+        final Animation fadeIn1 = new AlphaAnimation(0.0F, 1.0F); fadeIn1.setStartOffset(1000); fadeIn1.setDuration(1000);
+        final Animation fadeIn2 = new AlphaAnimation(0.0F, 1.0F); fadeIn2.setStartOffset(1500); fadeIn2.setDuration(1000);
 
         /*final Animation fadeLock0 = new AlphaAnimation(0.0F, 0.7F); fadeLock0.setStartOffset(2000); fadeLock0.setDuration(1500);
         final Animation fadeLock1 = new AlphaAnimation(0.0F, 0.7F); fadeLock1.setStartOffset(3000); fadeLock1.setDuration(1500);
         final Animation fadeLock2 = new AlphaAnimation(0.0F, 0.7F); fadeLock2.setStartOffset(4000); fadeLock2.setDuration(1500);*/
         stars = 0;
-        if (score > silverThres && score <= bronzeThres) {
+        if (score <= bronzeThres) {
             bronzeStat.setBackgroundResource(R.color.bronze);
             bronze.startAnimation(fadeIn0);
             bronze.setVisibility(View.VISIBLE);
             stars = 1;
         }
-        if (score > goldThres && score <= silverThres) {
+        if (score <= silverThres) {
             silverStat.setBackgroundResource(R.color.silver);
             silver.startAnimation(fadeIn1);
             silver.setVisibility(View.VISIBLE);
