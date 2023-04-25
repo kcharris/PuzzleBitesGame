@@ -18,6 +18,7 @@
     <style name= "PuzzleBites.EditText.Style" parent="@android:style/Widget.EditText">
         <item name="android:background">@color/silver</item>
         <item name="android:focusableInTouchMode">false</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="Theme.PuzzleBites.theme1" parent="Theme.MaterialComponents.DayNight.NoActionBar">

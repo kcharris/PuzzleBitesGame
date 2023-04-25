@@ -42,7 +42,7 @@ public class SettingRepository {
     public Setting getSettings(){
         final Map<String, ?> settingMap = shared.getAll();
         Setting setting = new Setting();
-        if(settingMap.size() > 0){
+        if(settingMap.size() >0){
             setting.level1Score = (int)settingMap.get("level1Score");
             setting.level2Score = (int)settingMap.get("level2Score");
             setting.level3Score = (int)settingMap.get("level3Score");

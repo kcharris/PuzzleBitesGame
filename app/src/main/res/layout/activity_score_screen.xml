@@ -10,8 +10,8 @@
     <TextView
         android:id="@+id/congratsTV"
         android:layout_width="216dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="CONGRATS\nYOUR SCORE IS \n BLANK MOVES!"
         android:textAlignment="center"
         android:textAllCaps="true"
