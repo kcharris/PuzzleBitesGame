@@ -42,20 +42,23 @@ public class SettingRepository {
     public Setting getSettings(){
         final Map<String, ?> settingMap = shared.getAll();
         Setting setting = new Setting();
-        if(settingMap.size() >0){
-            setting.level1Score = (int)settingMap.get("level1Score");
-            setting.level2Score = (int)settingMap.get("level2Score");
-            setting.level3Score = (int)settingMap.get("level3Score");
-            setting.level4Score = (int)settingMap.get("level4Score");
-            setting.level5Score = (int)settingMap.get("level5Score");
+        try {
+            setting.level1Score = (int) settingMap.get("level1Score");
+            setting.level2Score = (int) settingMap.get("level2Score");
+            setting.level3Score = (int) settingMap.get("level3Score");
+            setting.level4Score = (int) settingMap.get("level4Score");
+            setting.level5Score = (int) settingMap.get("level5Score");
 
-            setting.level1Star = (int)settingMap.get("level1Star");
-            setting.level2Star = (int)settingMap.get("level2Star");
-            setting.level3Star = (int)settingMap.get("level3Star");
-            setting.level4Star = (int)settingMap.get("level4Star");
-            setting.level5Star = (int)settingMap.get("level5Star");
+            setting.level1Star = (int) settingMap.get("level1Star");
+            setting.level2Star = (int) settingMap.get("level2Star");
+            setting.level3Star = (int) settingMap.get("level3Star");
+            setting.level4Star = (int) settingMap.get("level4Star");
+            setting.level5Star = (int) settingMap.get("level5Star");
 
-            setting.style = (int)settingMap.get("backgroundColor");
+            setting.style = (int) settingMap.get("backgroundColor");
+        }
+        catch (Exception e){
+            setting = new Setting();
         }
         return setting;
     }
