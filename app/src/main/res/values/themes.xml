@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Customize your theme here. When creating custom styles there may be items that come with -->
         <item name="materialThemeOverlay">@style/PuzzleBites.EditText.Style</item>
 
     </style>
@@ -19,6 +19,7 @@
         <item name="android:background">@color/silver</item>
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:padding">10dp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="Theme.PuzzleBites.theme1" parent="Theme.MaterialComponents.DayNight.NoActionBar">
