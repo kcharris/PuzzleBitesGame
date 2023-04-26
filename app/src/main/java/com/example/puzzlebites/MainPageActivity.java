@@ -85,106 +85,71 @@ public class MainPageActivity  extends AppCompatActivity {
     public void moveUp(View v) {
         if(puzzle.moveGeneral("up")){
             score.incrementNumOfMove();
-            checkForLevelSelect();
+            if(puzzle.checkLevelSelect()){
+                PieceType puzzleEnum = puzzle.getOverlappedLevel();
+                toNext(puzzleEnum);
+            }
         }
     }
 
     public void moveDown(View v) {
         if(puzzle.moveGeneral("down")){
             score.incrementNumOfMove();
-            checkForLevelSelect();
+            if(puzzle.checkLevelSelect()){
+                PieceType puzzleEnum = puzzle.getOverlappedLevel();
+                toNext(puzzleEnum);
+            }
         }
     }
 
     public void moveRight(View v) {
         if(puzzle.moveGeneral("right")){
             score.incrementNumOfMove();
-            checkForLevelSelect();
+            if(puzzle.checkLevelSelect()){
+                PieceType puzzleEnum = puzzle.getOverlappedLevel();
+                toNext(puzzleEnum);
+            }
         }
     }
 
     public void moveLeft(View v) {
         if(puzzle.moveGeneral("left")){
             score.incrementNumOfMove();
-            checkForLevelSelect();
+            if(puzzle.checkLevelSelect()){
+                PieceType puzzleEnum = puzzle.getOverlappedLevel();
+                toNext(puzzleEnum);
+            }
         }
     }
     // Attempts an undo, and if it works decrement the score
     public void undoBTN(View v){
         if(puzzle.undoMove()){
-            score.decrementNumOfMoves();
+            if(puzzle.checkLevelSelect()){
+                PieceType puzzleEnum = puzzle.getOverlappedLevel();
+                toNext(puzzleEnum);
+            }
         }
     }
     public void resetPuzzle(View v){
         setPuzzle(PieceType.LEVEL_MAIN);
     }
 
-
-    private boolean viewsOverlap(View v1, View v2) {
-        if (v1 == null || v2 == null) return false;
-        final int[] view1Loc = new int[2];
-        v1.getLocationOnScreen(view1Loc);
-        final Rect view1Rect = new Rect(view1Loc[0],
-                view1Loc[1],
-                view1Loc[0] + v1.getWidth(),
-                view1Loc[1] + v1.getHeight());
-        int[] view2Loc = new int[2];
-        v2.getLocationOnScreen(view2Loc);
-        final Rect view2Rect = new Rect(view2Loc[0],
-                view2Loc[1],
-                view2Loc[0] + v2.getWidth(),
-                view2Loc[1] + v2.getHeight());
-        return view1Rect.intersect(view2Rect);
-    }
-
-    public void toPuzzle(PieceType puzzleEnum) {
-        Intent puzzle = new Intent(this, PuzzleActivity.class);
-        puzzle.putExtra("puzzleEnum", puzzleEnum.toString());
-        setResult(Activity.RESULT_OK, puzzle);
-        pStartLauncher.launch(puzzle);
-    }
-    public void toTrophies() {
-        Intent trophy = new Intent(this, TrophyPage.class);
-        setResult(Activity.RESULT_OK, trophy);
-        pStartLauncher.launch(trophy);
+    public void toNext(PieceType puzzleEnum) {
+        if(puzzleEnum == PieceType.LEVEL_TROPHY){
+            Intent trophy = new Intent(this, TrophyPage.class);
+            setResult(Activity.RESULT_OK, trophy);
+            pStartLauncher.launch(trophy);
+        }
+        else {
+            Intent puzzle = new Intent(this, PuzzleActivity.class);
+            puzzle.putExtra("puzzleEnum", puzzleEnum.toString());
+            setResult(Activity.RESULT_OK, puzzle);
+            pStartLauncher.launch(puzzle);
+        }
     }
     public void returnBTN(View v) {
         Intent mainIntent = new Intent(this, MainActivity.class);
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
-    }
-
-
-    // Checks to see if the bagel piece lands on either a level or the trophy piece and if so moves to the respective Activity.
-    private void checkForLevelSelect() {
-        Piece bagel = puzzle.getBagel();
-        ImageView lvlOne = findViewById(R.id.lvlOne);
-        if (viewsOverlap(bagel, lvlOne)) {
-            toPuzzle(PieceType.LEVEL1);
-        }
-        ImageView lvlTwo = findViewById(R.id.lvlTwo);
-        if (viewsOverlap(bagel, lvlTwo)) {
-            toPuzzle(PieceType.LEVEL2);
-        }
-        ImageView lvlThree = findViewById(R.id.lvlThree);
-        if (viewsOverlap(bagel, lvlThree)) {
-            toPuzzle(PieceType.LEVEL3);
-        }
-        ImageView lvlFour = findViewById(R.id.lvlFour);
-        if (viewsOverlap(bagel, lvlFour)) {
-            toPuzzle(PieceType.LEVEL4);
-        }
-        ImageView lvlFive = findViewById(R.id.lvlFive);
-        if (viewsOverlap(bagel, lvlFive)) {
-            toPuzzle(PieceType.LEVEL5);
-        }
-        ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
-        if (viewsOverlap(bagel, lvlTrophy)) {
-            toTrophies();
-        }
-
-    /*public boolean viableMove() {
-    this is kind of useless because each move detects if it's viable before it activates
-    }*/
     }
 }
