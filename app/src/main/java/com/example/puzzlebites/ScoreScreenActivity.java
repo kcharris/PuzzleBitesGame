@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.puzzlebites.data.model.PieceType;
 import com.example.puzzlebites.data.model.Score;
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
@@ -28,7 +29,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
     private int goldThres;
     private int silverThres;
     private int bronzeThres;
-    private String puzzleNum;
+    private PieceType puzzleEnum;
     private int stars;
     private int score;
     @Override
@@ -43,7 +44,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         goldThres = intent.getExtras().getInt("gold");
         silverThres = intent.getExtras().getInt("silver");
         bronzeThres = intent.getExtras().getInt("bronze");
-        puzzleNum = intent.getExtras().getString("puzzleNum");
+        puzzleEnum = PieceType.valueOf(intent.getExtras().getString("puzzleEnum"));
         score = intent.getExtras().getInt("score");
 
         setScoreTextViews();
@@ -100,9 +101,9 @@ public class ScoreScreenActivity extends AppCompatActivity {
     }
     public void saveScore(){
 
-        int oldScore = setting.getScore(puzzleNum);
+        int oldScore = setting.getScore(puzzleEnum);
         if(score < oldScore){
-            setting.setLevelScore(puzzleNum, score, stars);
+            setting.setLevelScore(puzzleEnum, score, stars);
         }
         settingRepository.saveSettings(setting);
     }

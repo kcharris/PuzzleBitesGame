@@ -20,6 +20,10 @@
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:padding">10dp</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/coustard</item>
+        <item name="android:textStyle">bold</item>
+
     </style>
 
     <style name="Theme.PuzzleBites.theme1" parent="Theme.MaterialComponents.DayNight.NoActionBar">

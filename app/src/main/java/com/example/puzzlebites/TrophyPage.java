@@ -1,5 +1,11 @@
 package com.example.puzzlebites;
 
+import static com.example.puzzlebites.data.model.PieceType.LEVEL1;
+import static com.example.puzzlebites.data.model.PieceType.LEVEL2;
+import static com.example.puzzlebites.data.model.PieceType.LEVEL3;
+import static com.example.puzzlebites.data.model.PieceType.LEVEL4;
+import static com.example.puzzlebites.data.model.PieceType.LEVEL5;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -13,6 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.puzzlebites.data.model.PieceType;
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
 
@@ -53,18 +60,18 @@ public class TrophyPage extends AppCompatActivity {
             starIV.setImageResource(R.drawable.catend);
         }
     }
-    public void setScoreButtonText(TextView btn,String level, int score){
+    public void setScoreButtonText(TextView btn,PieceType level, int score){
         if(score == 0){
-            btn.setText("Level " + level + ": not completed");
+            btn.setText(level.toString() + ": not completed");
         }
         else{
-            btn.setText("Level " + level + ": completed in " + score + " moves.");
+            btn.setText(level.toString() + ": completed in " + score + " moves.");
         }
     }
 
     public void setTextViews(){
         int stars = 0;
-        String level;
+        PieceType level;
         int score;
         TextView numOfStarsTV = findViewById(R.id.totalStarsTV);
         numOfStars = setting.getTotalStars();
@@ -72,7 +79,7 @@ public class TrophyPage extends AppCompatActivity {
 
         ImageView level1StarIV = findViewById(R.id.level1StarIV);
         TextView level1BTN = findViewById(R.id.lv1BTN);
-        level = "one";
+        level = LEVEL1;
         stars = setting.getStars(level);
         score = setting.getScore(level);
         setStarImage(level1StarIV, stars);
@@ -80,7 +87,7 @@ public class TrophyPage extends AppCompatActivity {
 
         ImageView level2StarIV = findViewById(R.id.level2StarIV);
         TextView level2BTN = findViewById(R.id.lv2BTN);
-        level = "two";
+        level = LEVEL2;
         stars = setting.getStars(level);
         score = setting.getScore(level);
         setStarImage(level2StarIV, stars);
@@ -88,7 +95,7 @@ public class TrophyPage extends AppCompatActivity {
 
         ImageView level3StarIV = findViewById(R.id.level3StarIV);
         TextView level3BTN = findViewById(R.id.lv3BTN);
-        level = "three";
+        level = LEVEL3;
         stars = setting.getStars(level);
         score = setting.getScore(level);
         setStarImage(level3StarIV, stars);
@@ -96,7 +103,7 @@ public class TrophyPage extends AppCompatActivity {
 
         ImageView level4StarIV = findViewById(R.id.level4StarIV);
         TextView level4BTN = findViewById(R.id.lv4BTN);
-        level = "four";
+        level = LEVEL4;
         stars = setting.getStars(level);
         score = setting.getScore(level);
         setStarImage(level4StarIV, stars);
@@ -104,7 +111,7 @@ public class TrophyPage extends AppCompatActivity {
 
         ImageView level5StarIV = findViewById(R.id.level5StarIV);
         TextView level5BTN = findViewById(R.id.lv5BTN);
-        level = "five";
+        level = LEVEL5;
         stars = setting.getStars(level);
         score = setting.getScore(level);
         setStarImage(level5StarIV, stars);
