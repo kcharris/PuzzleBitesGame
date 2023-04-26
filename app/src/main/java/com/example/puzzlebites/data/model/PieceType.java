@@ -6,7 +6,7 @@ public enum PieceType {
     // switch pieces
     CAT_SWITCH, BEAR_SWITCH, SOUP_SWITCH, SALAD_SWITCH,
     // level pieces
-    LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL_TROPHY,
+    LEVEL_MAIN, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL_TROPHY,
     // end location piece
     END;
 }

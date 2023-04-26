@@ -54,18 +54,18 @@ public class MainPageActivity  extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == Activity.RESULT_OK) {
-                            setPuzzle("main");
+                            setPuzzle(PieceType.LEVEL_MAIN);
                         }
                     }
                 });
-        setPuzzle("main");
+        setPuzzle(PieceType.LEVEL_MAIN);
     }
     public void applySettings(){
         Setting.applySettingToView(this);
     }
 
     private ActivityResultLauncher<Intent> pStartLauncher;
-    private void setPuzzle(String puzzleStr) {
+    private void setPuzzle(PieceType puzzleEnum) {
         TextView levelNameTV = findViewById(R.id.puzzleLevelTV);
         levelNameTV.setText("Level: " + "main");
         // If the puzzle already exists, remove it from view and then reset it. Removing from view may be unnecessary.
@@ -74,7 +74,7 @@ public class MainPageActivity  extends AppCompatActivity {
                 myLayout.removeViewInLayout(p);
             }
         }
-        puzzle = puzzles.getPuzzle(puzzleStr);
+        puzzle = puzzles.getPuzzle(puzzleEnum);
         for (Piece p : puzzle.getAllPieces()) {
             myLayout.addView(p);
         }
@@ -116,7 +116,7 @@ public class MainPageActivity  extends AppCompatActivity {
         }
     }
     public void resetPuzzle(View v){
-        setPuzzle("main");
+        setPuzzle(PieceType.LEVEL_MAIN);
     }
 
 
@@ -137,9 +137,9 @@ public class MainPageActivity  extends AppCompatActivity {
         return view1Rect.intersect(view2Rect);
     }
 
-    public void toPuzzle(String s) {
+    public void toPuzzle(PieceType puzzleEnum) {
         Intent puzzle = new Intent(this, PuzzleActivity.class);
-        puzzle.putExtra("puzzleNum", s);
+        puzzle.putExtra("puzzleEnum", puzzleEnum);
         setResult(Activity.RESULT_OK, puzzle);
         pStartLauncher.launch(puzzle);
     }
@@ -160,23 +160,23 @@ public class MainPageActivity  extends AppCompatActivity {
         Piece bagel = puzzle.getBagel();
         ImageView lvlOne = findViewById(R.id.lvlOne);
         if (viewsOverlap(bagel, lvlOne)) {
-            toPuzzle("one");
+            toPuzzle(PieceType.LEVEL1);
         }
         ImageView lvlTwo = findViewById(R.id.lvlTwo);
         if (viewsOverlap(bagel, lvlTwo)) {
-            toPuzzle("two");
+            toPuzzle(PieceType.LEVEL2);
         }
         ImageView lvlThree = findViewById(R.id.lvlThree);
         if (viewsOverlap(bagel, lvlThree)) {
-            toPuzzle("three");
+            toPuzzle(PieceType.LEVEL3);
         }
         ImageView lvlFour = findViewById(R.id.lvlFour);
         if (viewsOverlap(bagel, lvlFour)) {
-            toPuzzle("four");
+            toPuzzle(PieceType.LEVEL4);
         }
         ImageView lvlFive = findViewById(R.id.lvlFive);
         if (viewsOverlap(bagel, lvlFive)) {
-            toPuzzle("five");
+            toPuzzle(PieceType.LEVEL5);
         }
         ImageView lvlTrophy = findViewById(R.id.lvlTrophy);
         if (viewsOverlap(bagel, lvlTrophy)) {

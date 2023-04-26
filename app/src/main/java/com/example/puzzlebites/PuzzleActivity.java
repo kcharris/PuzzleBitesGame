@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.puzzlebites.data.model.Piece;
+import com.example.puzzlebites.data.model.PieceType;
 import com.example.puzzlebites.data.model.Puzzle;
 import com.example.puzzlebites.data.model.Puzzles;
 import com.example.puzzlebites.data.model.Score;
@@ -30,7 +31,7 @@ public class PuzzleActivity extends AppCompatActivity {
     public Puzzle puzzle;
     Puzzles puzzles = new Puzzles(this);
     private HashSet<String> endLocations;
-    private String puzzleNum;
+    private PieceType puzzleEnum;
     private ConstraintLayout myLayout;
     private SettingRepository settingRepository;
 
@@ -38,7 +39,7 @@ public class PuzzleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         applySettings();
         super.onCreate(savedInstanceState);
-        this.puzzleNum = getIntent().getExtras().getString("puzzleNum");
+        this.puzzleEnum = PieceType.valueOf(getIntent().getExtras().getString("puzzleEnum"));
         setContentView(R.layout.activity_puzzle);
         myLayout = (ConstraintLayout) findViewById(R.id.puzzleActivity);
         score = new ViewModelProvider(this).get(Score.class);
@@ -57,7 +58,7 @@ public class PuzzleActivity extends AppCompatActivity {
                         if(result.getResultCode() == Activity.RESULT_OK)
                         {
                             if(result.getData().hasExtra("returned")){
-                                setPuzzle(puzzleNum);
+                                setPuzzle(puzzleEnum);
                             }
                             else{
                                 returnMain();
@@ -65,21 +66,21 @@ public class PuzzleActivity extends AppCompatActivity {
                         }
                     }
                 });
-        setPuzzle(puzzleNum);
+        setPuzzle(puzzleEnum);
     }
     public void applySettings(){
         Setting.applySettingToView(this);
     }
     private ActivityResultLauncher<Intent> sStartLauncher;
-    private void setPuzzle(String puzzleNum) {
+    private void setPuzzle(PieceType puzzleEnum) {
         TextView levelNameTV = findViewById(R.id.puzzleLevelTV);
-        levelNameTV.setText("Level: " + puzzleNum);
+        levelNameTV.setText("Level: " + puzzleEnum);
         if(!(this.puzzle == null)){
             for(Piece p: puzzle.getAllPieces()) {
                 myLayout.removeViewInLayout(p);
             }
         }
-        puzzle = puzzles.getPuzzle(puzzleNum);
+        puzzle = puzzles.getPuzzle(puzzleEnum);
         for (Piece p : puzzle.getAllPieces()) {
             myLayout.addView(p);
         }
@@ -88,7 +89,7 @@ public class PuzzleActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setPuzzle(this.puzzleNum);
+        setPuzzle(this.puzzleEnum);
     }
     public void returnBTN(View v)
     {
@@ -144,14 +145,14 @@ public class PuzzleActivity extends AppCompatActivity {
         Intent scoreIntent = new Intent(this, ScoreScreenActivity.class);
         scoreIntent.putExtra("score", score.getNumOfMoves());
 
-        scoreIntent.putExtra("puzzleNum",puzzleNum);
+        scoreIntent.putExtra("puzzleEnum",puzzleEnum);
         scoreIntent.putExtra("bronze", puzzle.bronzeThres);
         scoreIntent.putExtra("silver", puzzle.silverThres);
         scoreIntent.putExtra("gold", puzzle.goldThres);
         sStartLauncher.launch(scoreIntent);
     }
     public void resetPuzzle(View v){
-        setPuzzle(puzzleNum);
+        setPuzzle(puzzleEnum);
     }
 
 }

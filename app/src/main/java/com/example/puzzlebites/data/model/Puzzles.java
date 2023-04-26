@@ -14,13 +14,13 @@ public class Puzzles {
         this.context = context;
     }
 
-    public Puzzle getPuzzle(String s){
+    public Puzzle getPuzzle(PieceType pt){
         // for puzzles, order of input into the array matters
         // ealier entries will show behind other views in the layout
         // until other puzzles are created
         Puzzle p = new Puzzle();
-        switch (s) {
-            case "main":
+        switch (pt) {
+            case LEVEL_MAIN:
                 p.levelPieces.add(new Piece(context, LEVEL1,1,6 ));
                 p.levelPieces.add(new Piece(context, LEVEL2,1,3 ));
                 p.levelPieces.add(new Piece(context, LEVEL3,3,2 ));
@@ -29,7 +29,7 @@ public class Puzzles {
                 p.levelPieces.add(new Piece(context, LEVEL_TROPHY,7,6 ));
                 p.pieces.add(new Piece(context, BAGEL, 4, 6));
                 break;
-            case "one":
+            case LEVEL1:
                 p.endPieces.add(new Piece(context, END, 1, 1));
                 p.endPieces.add(new Piece(context, END, 3, 2));
                 p.endPieces.add(new Piece(context, END, 6, 1));
@@ -50,7 +50,7 @@ public class Puzzles {
                 p.silverThres = 12;
                 p.goldThres = 8;
                 break;
-            case "two":
+            case LEVEL2:
                 p.endPieces.add(new Piece(context, END, 1, 1));
                 p.endPieces.add(new Piece(context, END, 2, 3));
                 p.endPieces.add(new Piece(context, END, 1, 6));
@@ -71,7 +71,7 @@ public class Puzzles {
                 p.silverThres = 12;
                 p.goldThres = 8;
                 break;
-            case "three":
+            case LEVEL3:
                 p.endPieces.add(new Piece(context, END, 1, 1));
                 p.endPieces.add(new Piece(context, END, 3, 2));
                 p.endPieces.add(new Piece(context, END, 6, 1));
@@ -92,7 +92,7 @@ public class Puzzles {
                 p.silverThres = 12;
                 p.goldThres = 8;
                 break;
-            case "four":
+            case LEVEL4:
                 p.endPieces.add(new Piece(context, END, 1, 1));
                 p.endPieces.add(new Piece(context, END, 3, 2));
                 p.endPieces.add(new Piece(context, END, 6, 1));
@@ -113,7 +113,7 @@ public class Puzzles {
                 p.silverThres = 12;
                 p.goldThres = 8;
                 break;
-            case "five":
+            case LEVEL5:
                 p.endPieces.add(new Piece(context, END, 1, 1));
                 p.endPieces.add(new Piece(context, END, 3, 2));
                 p.endPieces.add(new Piece(context, END, 6, 1));

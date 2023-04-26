@@ -24,6 +24,7 @@ public class Puzzle {
     private HashSet endLocations;
     private HashSet locationsHash;
     private HashSet switchLocations;
+    private HashSet levelLocations;
     private Piece bagel;
     private List<Piece> allPieces;
 
@@ -47,6 +48,28 @@ public class Puzzle {
             }
         }
         return this.bagel;
+    }
+    public boolean checkLevelSelect(){
+        if (levelLocations == null) {
+            levelLocations = new HashSet<>();
+            for (Piece s : this.levelPieces) {
+                levelLocations.add(s.nextStartMargin + ", " + s.nextTopMargin);
+            }
+        }
+        String bagelLocation = getBagel().nextStartMargin + ", " + getBagel().nextTopMargin;
+        if(levelLocations.contains(bagelLocation)){
+            return true;
+        }
+        return false;
+    }
+    public PieceType getOverlappedLevel(){
+        PieceType level = PieceType.LEVEL1;
+        for(Piece lp: levelPieces){
+            if(bagel.nextStartMargin == lp.nextStartMargin && bagel.nextTopMargin == lp.nextTopMargin){
+                return lp.type;
+            }
+        }
+        return level;
     }
     public void updateSwitches(){
         // if the bagel lands on a switch, try  and activate it as well as it's related pieces

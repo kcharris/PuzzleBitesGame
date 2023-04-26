@@ -33,58 +33,58 @@ public class Setting {
         return level1Star + level2Star + level3Star + level4Star + level5Star;
     }
 
-    public void setLevelScore(String level, int score, int stars){
+    public void setLevelScore(PieceType level, int score, int stars){
         switch (level){
-            case "one":
+            case LEVEL1:
                 level1Score = score;
                 level1Star = stars;
                 break;
-            case "two":
+            case LEVEL2:
                 level2Score = score;
                 level2Star = stars;
                 break;
-            case "three":
+            case LEVEL3:
                 level3Score = score;
                 level3Star = stars;
                 break;
-            case "four":
+            case LEVEL4:
                 level4Score = score;
                 level4Star = stars;
                 break;
-            case "five":
+            case LEVEL5:
                 level5Score = score;
                 level5Star = stars;
                 break;
         }
     }
 
-    public int getScore(String level){
+    public int getScore(PieceType level){
         switch (level){
-            case "one":
+            case LEVEL1:
                 return level1Score;
-            case "two":
+            case LEVEL2:
                 return level2Score;
-            case "three":
+            case LEVEL3:
                 return level3Score;
-            case "four":
+            case LEVEL4:
                 return level4Score;
-            case "five":
+            case LEVEL5:
                 return level5Score;
             default:
                 return -1;
         }
     }
-    public int getStars(String level){
+    public int getStars(PieceType level){
         switch (level){
-            case "one":
+            case LEVEL1:
                 return level1Star;
-            case "two":
+            case LEVEL2:
                 return level2Star;
-            case "three":
+            case LEVEL3:
                 return level3Star;
-            case "four":
+            case LEVEL4:
                 return level4Star;
-            case "five":
+            case LEVEL5:
                 return level5Star;
             default:
                 return -1;
