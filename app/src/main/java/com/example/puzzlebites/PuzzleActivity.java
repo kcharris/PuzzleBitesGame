@@ -145,7 +145,7 @@ public class PuzzleActivity extends AppCompatActivity {
         Intent scoreIntent = new Intent(this, ScoreScreenActivity.class);
         scoreIntent.putExtra("score", score.getNumOfMoves());
 
-        scoreIntent.putExtra("puzzleEnum",puzzleEnum);
+        scoreIntent.putExtra("puzzleEnum",puzzleEnum.toString());
         scoreIntent.putExtra("bronze", puzzle.bronzeThres);
         scoreIntent.putExtra("silver", puzzle.silverThres);
         scoreIntent.putExtra("gold", puzzle.goldThres);

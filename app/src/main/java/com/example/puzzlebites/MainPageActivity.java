@@ -139,7 +139,7 @@ public class MainPageActivity  extends AppCompatActivity {
 
     public void toPuzzle(PieceType puzzleEnum) {
         Intent puzzle = new Intent(this, PuzzleActivity.class);
-        puzzle.putExtra("puzzleEnum", puzzleEnum);
+        puzzle.putExtra("puzzleEnum", puzzleEnum.toString());
         setResult(Activity.RESULT_OK, puzzle);
         pStartLauncher.launch(puzzle);
     }
