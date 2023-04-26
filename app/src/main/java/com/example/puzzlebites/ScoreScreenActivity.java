@@ -102,7 +102,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
     public void saveScore(){
 
         int oldScore = setting.getScore(puzzleEnum);
-        if(score < oldScore){
+        if(score < oldScore || oldScore == 0){
             setting.setLevelScore(puzzleEnum, score, stars);
         }
         settingRepository.saveSettings(setting);
