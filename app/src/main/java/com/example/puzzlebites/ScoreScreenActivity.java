@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -40,7 +41,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
         myLayout = (ConstraintLayout) findViewById(R.id.scoreScreen);
         settingRepository = new SettingRepository(this);
         setting = settingRepository.getSettings();
-        Intent intent = getIntent();
+        Intent intent = getIntent(); //this might be a problem, revisit later
         goldThres = intent.getExtras().getInt("gold");
         silverThres = intent.getExtras().getInt("silver");
         bronzeThres = intent.getExtras().getInt("bronze");
@@ -85,18 +86,21 @@ public class ScoreScreenActivity extends AppCompatActivity {
             bronze.startAnimation(fadeIn0);
             bronze.setVisibility(View.VISIBLE);
             stars = 1;
+            Log.d("star 1", "One Star");
         }
         if (score <= silverThres) {
             silverStat.setBackgroundResource(R.color.silver);
             silver.startAnimation(fadeIn1);
             silver.setVisibility(View.VISIBLE);
             stars = 2;
+            Log.d("star 2", "Two Stars");
         }
         if (score <= goldThres) {
             goldStat.setBackgroundResource(R.color.gold);
             gold.startAnimation(fadeIn2);
             gold.setVisibility(View.VISIBLE);
             stars = 3;
+            Log.d("star 3", "Three Stars");
         }
     }
     public void saveScore(){
@@ -106,6 +110,7 @@ public class ScoreScreenActivity extends AppCompatActivity {
             setting.setLevelScore(puzzleEnum, score, stars);
         }
         settingRepository.saveSettings(setting);
+        Log.d("Score!", "saveScore ran");
     }
     public void applySettings(){
         Setting.applySettingToView(this);

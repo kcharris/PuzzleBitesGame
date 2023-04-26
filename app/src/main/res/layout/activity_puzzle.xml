@@ -9,9 +9,11 @@
 
     <Button
         android:id="@+id/puzzleDownBTN"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="78dp"
+        android:layout_height="56dp"
         android:onClick="moveDown"
+        android:text="Down"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/puzzleActivityResetBTN"
         app:layout_constraintEnd_toStartOf="@+id/puzzleActivityResetBTN"
         app:layout_constraintStart_toStartOf="parent" />
@@ -21,14 +23,17 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:onClick="moveLeft"
+        android:text="Left"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/puzzleDownBTN"
         app:layout_constraintEnd_toStartOf="@+id/puzzleDownBTN" />
 
     <Button
         android:id="@+id/puzzleUpBTN"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="76dp"
+        android:layout_height="59dp"
         android:onClick="moveUp"
+        android:text="Up"
         app:layout_constraintBottom_toTopOf="@+id/puzzleLeftBTN"
         app:layout_constraintEnd_toEndOf="@+id/puzzleDownBTN" />
 
@@ -45,9 +50,11 @@
 
     <Button
         android:id="@+id/puzzleRightBTN"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="72dp"
+        android:layout_height="65dp"
         android:onClick="moveRight"
+        android:text="Right"
+        android:textSize="11sp"
         app:layout_constraintBottom_toTopOf="@+id/puzzleDownBTN"
         app:layout_constraintStart_toEndOf="@+id/puzzleDownBTN" />
 

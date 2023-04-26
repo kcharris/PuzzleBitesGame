@@ -2,6 +2,7 @@ package com.example.puzzlebites.data.model;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -38,22 +39,27 @@ public class Setting {
             case LEVEL1:
                 level1Score = score;
                 level1Star = stars;
+                Log.d("TAG", "Level 1 star");
                 break;
             case LEVEL2:
                 level2Score = score;
                 level2Star = stars;
+                Log.d("TAG", "Level 2 star");
                 break;
             case LEVEL3:
                 level3Score = score;
                 level3Star = stars;
+                Log.d("TAG", "Level 3 star");
                 break;
             case LEVEL4:
                 level4Score = score;
                 level4Star = stars;
+                Log.d("TAG", "Level 4 star");
                 break;
             case LEVEL5:
                 level5Score = score;
                 level5Star = stars;
+                Log.d("TAG", "Level 5 star");
                 break;
         }
     }

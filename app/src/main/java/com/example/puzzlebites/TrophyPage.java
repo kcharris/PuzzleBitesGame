@@ -70,9 +70,13 @@ public class TrophyPage extends AppCompatActivity {
     }
 
     public void setTextViews(){
-        int stars = 0;
+        int stars;
         PieceType level;
-        int score;
+        int score1;
+        int score2;
+        int score3;
+        int score4;
+        int score5;
         TextView numOfStarsTV = findViewById(R.id.totalStarsTV);
         numOfStars = setting.getTotalStars();
         numOfStarsTV.setText("You Have " + numOfStars + " Stars out of 15!");
@@ -81,41 +85,41 @@ public class TrophyPage extends AppCompatActivity {
         TextView level1BTN = findViewById(R.id.lv1BTN);
         level = LEVEL1;
         stars = setting.getStars(level);
-        score = setting.getScore(level);
+        score1 = setting.getScore(level);
         setStarImage(level1StarIV, stars);
-        setScoreButtonText(level1BTN, level, score);
+        setScoreButtonText(level1BTN, level, score1);
 
         ImageView level2StarIV = findViewById(R.id.level2StarIV);
         TextView level2BTN = findViewById(R.id.lv2BTN);
         level = LEVEL2;
         stars = setting.getStars(level);
-        score = setting.getScore(level);
+        score2 = setting.getScore(level);
         setStarImage(level2StarIV, stars);
-        setScoreButtonText(level2BTN, level, score);
+        setScoreButtonText(level2BTN, level, score2);
 
         ImageView level3StarIV = findViewById(R.id.level3StarIV);
         TextView level3BTN = findViewById(R.id.lv3BTN);
         level = LEVEL3;
         stars = setting.getStars(level);
-        score = setting.getScore(level);
+        score3 = setting.getScore(level);
         setStarImage(level3StarIV, stars);
-        setScoreButtonText(level3BTN,level, score);
+        setScoreButtonText(level3BTN,level, score3);
 
         ImageView level4StarIV = findViewById(R.id.level4StarIV);
         TextView level4BTN = findViewById(R.id.lv4BTN);
         level = LEVEL4;
         stars = setting.getStars(level);
-        score = setting.getScore(level);
+        score4 = setting.getScore(level);
         setStarImage(level4StarIV, stars);
-        setScoreButtonText(level4BTN,level, score);
+        setScoreButtonText(level4BTN,level, score4);
 
         ImageView level5StarIV = findViewById(R.id.level5StarIV);
         TextView level5BTN = findViewById(R.id.lv5BTN);
         level = LEVEL5;
         stars = setting.getStars(level);
-        score = setting.getScore(level);
+        score5 = setting.getScore(level);
         setStarImage(level5StarIV, stars);
-        setScoreButtonText(level5BTN,level, score);
+        setScoreButtonText(level5BTN,level, score5);
     }
     public void applySettings(){
         Setting.applySettingToView(this);
