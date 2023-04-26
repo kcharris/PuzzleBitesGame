@@ -74,7 +74,9 @@ public class PuzzleActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> sStartLauncher;
     private void setPuzzle(PieceType puzzleEnum) {
         TextView levelNameTV = findViewById(R.id.puzzleLevelTV);
-        levelNameTV.setText(puzzleEnum.toString());
+        StringBuilder strBuld = new StringBuilder(puzzleEnum.toString());
+        strBuld.insert(5, " ");
+        levelNameTV.setText(String.valueOf(strBuld));
         if(!(this.puzzle == null)){
             for(Piece p: puzzle.getAllPieces()) {
                 myLayout.removeViewInLayout(p);

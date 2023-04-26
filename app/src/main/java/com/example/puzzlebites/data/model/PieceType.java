@@ -1,5 +1,7 @@
 package com.example.puzzlebites.data.model;
 
+import androidx.annotation.NonNull;
+
 public enum PieceType {
     //movable pieces
     BAGEL, CAT, BEAR, SOUP, SALAD,
