@@ -83,7 +83,7 @@ public class MainPageActivity  extends AppCompatActivity {
 
     // For the following move functions. They attempt to move the pieces with moveGeneral, and ++Score on success.
     public void moveUp(View v) {
-        if(puzzle.moveGeneral("up")){
+        if(puzzle.moveGeneral("up", MainPageActivity.this)){
             score.incrementNumOfMove();
             if(puzzle.checkLevelSelect()){
                 PieceType puzzleEnum = puzzle.getOverlappedLevel();
@@ -93,7 +93,7 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveDown(View v) {
-        if(puzzle.moveGeneral("down")){
+        if(puzzle.moveGeneral("down", MainPageActivity.this)){
             score.incrementNumOfMove();
             if(puzzle.checkLevelSelect()){
                 PieceType puzzleEnum = puzzle.getOverlappedLevel();
@@ -103,7 +103,7 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveRight(View v) {
-        if(puzzle.moveGeneral("right")){
+        if(puzzle.moveGeneral("right", MainPageActivity.this)){
             score.incrementNumOfMove();
             if(puzzle.checkLevelSelect()){
                 PieceType puzzleEnum = puzzle.getOverlappedLevel();
@@ -113,7 +113,7 @@ public class MainPageActivity  extends AppCompatActivity {
     }
 
     public void moveLeft(View v) {
-        if(puzzle.moveGeneral("left")){
+        if(puzzle.moveGeneral("left", MainPageActivity.this)){
             score.incrementNumOfMove();
             if(puzzle.checkLevelSelect()){
                 PieceType puzzleEnum = puzzle.getOverlappedLevel();

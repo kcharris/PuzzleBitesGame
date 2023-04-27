@@ -1,11 +1,14 @@
 package com.example.puzzlebites.data.model;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.puzzlebites.PuzzleActivity;
 import com.example.puzzlebites.R;
 import com.example.puzzlebites.data.repository.SettingRepository;
 
@@ -119,7 +122,7 @@ public class Puzzle {
         }
     }
 
-    public boolean moveGeneral(String direction) {
+    public boolean moveGeneral(String direction, Context c) {
         // This first part gets the next location of each moveable piece and store it in that pieces p.next(top/start)margin
         // The checker bool checks to see if a move tries to go outside it's bounds and if so prevents all movement
         // The locationHash checks to make sure no two pieces potentially overlap
@@ -140,8 +143,15 @@ public class Puzzle {
                     checker = p.moveRight();
                     break;
             }
-            if (checker == false) break;
+            if (checker == false)
+            {
+                MediaPlayer wall = MediaPlayer.create(c, R.raw.wall);
+                wall.start();
+                break;
+            }
             /*setting.moveTime();*/
+            MediaPlayer whoosh = MediaPlayer.create(c, R.raw.whoosh);
+            whoosh.start();
             locationsHash.add(p.nextStartMargin + ", " + p.nextTopMargin);
         }
 //      If the pieces do not share an endlocation, go ahead and move

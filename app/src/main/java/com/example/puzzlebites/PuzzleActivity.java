@@ -101,7 +101,7 @@ public class PuzzleActivity extends AppCompatActivity {
         finish();
     }
     public void moveUp(View v) {
-        if(puzzle.moveGeneral("up")){
+        if(puzzle.moveGeneral("up", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
         if(puzzle.isWinState()){
@@ -110,7 +110,7 @@ public class PuzzleActivity extends AppCompatActivity {
     }
 
     public void moveDown(View v) {
-        if(puzzle.moveGeneral("down")){
+        if(puzzle.moveGeneral("down", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
         if(puzzle.isWinState()){
@@ -119,7 +119,7 @@ public class PuzzleActivity extends AppCompatActivity {
     }
 
     public void moveRight(View v) {
-        if(puzzle.moveGeneral("right")){
+        if(puzzle.moveGeneral("right", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
         if(puzzle.isWinState()){
@@ -128,7 +128,7 @@ public class PuzzleActivity extends AppCompatActivity {
     }
 
     public void moveLeft(View v) {
-        if(puzzle.moveGeneral("left")){
+        if(puzzle.moveGeneral("left", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
         if(puzzle.isWinState()){
