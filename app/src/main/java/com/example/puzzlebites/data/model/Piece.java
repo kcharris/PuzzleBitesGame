@@ -5,10 +5,13 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.puzzlebites.R;
+import com.example.puzzlebites.data.repository.SettingRepository;
 
 //this class needs methods that will determine viable moves or not
 //methods can be called per piece to determine what pieces can and cannot move
@@ -130,19 +133,30 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         }
         this.nextStartMargin = getPXFromDP(x * 40);
         this.nextTopMargin = getPXFromDP(y * 40);
-        setMargins();
+        layoutParams.setMargins(this.nextStartMargin, this.nextTopMargin, 0, 0);
         layoutParams.height = getPXFromDP(40);
         layoutParams.width = getPXFromDP(40);
         layoutParams.topToTop = R.id.gridboardIV;
         layoutParams.startToStart = R.id.gridboardIV;
         this.setLayoutParams(layoutParams);
     }
-
     public void setMargins() {
         if (this.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) this.getLayoutParams();
-            p.setMargins(nextStartMargin, nextTopMargin, 0, 0);
-            this.setLayoutParams(p);
+            int topMargin = p.topMargin;
+            int startMargin = p.leftMargin;
+            Animation a = new Animation(){
+                @Override
+                protected void applyTransformation(float interpolatedTime, Transformation t) {
+                    p.leftMargin = p.leftMargin + (int)((nextStartMargin- p.leftMargin) * interpolatedTime);
+                    p.topMargin = p.topMargin + (int) ((nextTopMargin - p.topMargin) * interpolatedTime);
+                    setLayoutParams(p);
+                }
+            };
+            SettingRepository settingRepository = new SettingRepository(getContext());
+            setting = settingRepository.getSettings();
+            a.setDuration(setting.animationSeconds);
+            this.startAnimation(a);
         }
     }
 
@@ -157,12 +171,9 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int startMargin = vlp.leftMargin;
 
         if(this.isActive) {
-//        score.addNumOfMove();
             if (vlp.topMargin - getPXFromDP(speed * 40) >= 0) {
-                //setMargins(startMargin, topMargin - getPXFromDP(speed * 40));
                 nextStartMargin = startMargin;
                 nextTopMargin = topMargin - getPXFromDP(speed * 40);
-                //this.animate().setDuration(1000).translationYBy((topMargin -getPXFromDP(speed*40))-topMargin);
                 return true;
             }
             else{
@@ -184,8 +195,6 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         if(this.isActive) {
 //        score.addNumOfMove();
             if (vlp.topMargin + getPXFromDP(speed * 40) <= getPXFromDP(8 * 40)) {
-                //this.animate().setDuration(1000).translationYBy(topMargin + getPXFromDP(speed * 40));
-                //setMargins(startMargin, topMargin + getPXFromDP(speed * 40));
                 nextStartMargin = startMargin;
                 nextTopMargin = topMargin + getPXFromDP(speed * 40);
                 return true;
@@ -206,13 +215,8 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
         int topMargin = vlp.topMargin;
         int startMargin = vlp.leftMargin;
         if(this.isActive) {
-
-//        score.addNumOfMove();
             if (vlp.leftMargin + getPXFromDP(speed * 40) <= getPXFromDP(8 * 40)) {
-                //this.animate().setDuration(1000).translationXBy(startMargin + getPXFromDP(speed * 40));
-                //setMargins(startMargin + getPXFromDP(speed * 40), topMargin);
                 nextStartMargin = startMargin + getPXFromDP(speed * 40);
-                //this.animate().setDuration(1000).translationXBy((startMargin + getPXFromDP(speed*40) - startMargin));
                 nextTopMargin = topMargin;
                 return true;
             }
@@ -235,8 +239,6 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
 
 //        score.addNumOfMove();
             if (vlp.leftMargin - getPXFromDP(speed * 40) >= 0) {
-                //this.animate().setDuration(1000).translationXBy(startMargin - getPXFromDP(speed * 40));
-                //setMargins(startMargin - getPXFromDP(speed * 40), topMargin);
                 nextStartMargin = startMargin - getPXFromDP(speed * 40);
                 nextTopMargin = topMargin;
                 return true;

@@ -12,11 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.puzzlebites.data.model.MoveTimer;
 import com.example.puzzlebites.data.model.Piece;
 import com.example.puzzlebites.data.model.PieceType;
 import com.example.puzzlebites.data.model.Puzzle;
@@ -26,8 +29,10 @@ import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class MainPageActivity  extends AppCompatActivity {
+public class MainPageActivity  extends AppCompatActivity implements MoveTimer.MoveTimerInterface {
     public Score score;
     private Puzzle puzzle;
     private Puzzles puzzles = new Puzzles(this);
@@ -80,54 +85,68 @@ public class MainPageActivity  extends AppCompatActivity {
         }
         score.reset();
     }
+    public void disableThenReenableButtons(){
+        Button upBTN = findViewById(R.id.puzzleUpBTN);
+        Button rightBTN = findViewById(R.id.puzzleRightBTN);
+        Button downBTN = findViewById(R.id.puzzleDownBTN);
+        Button leftBTN = findViewById(R.id.puzzleLeftBTN);
+
+        upBTN.setEnabled(false);
+        rightBTN.setEnabled(false);
+        downBTN.setEnabled(false);
+        leftBTN.setEnabled(false);
+
+        SettingRepository settingRepository = new SettingRepository(this);
+        new MoveTimer(this, settingRepository.getSettings().animationSeconds);
+    }
+    public void reenableButtons(){
+        Button upBTN = findViewById(R.id.puzzleUpBTN);
+        Button rightBTN = findViewById(R.id.puzzleRightBTN);
+        Button downBTN = findViewById(R.id.puzzleDownBTN);
+        Button leftBTN = findViewById(R.id.puzzleLeftBTN);
+
+        upBTN.setEnabled(true);
+        rightBTN.setEnabled(true);
+        downBTN.setEnabled(true);
+        leftBTN.setEnabled(true);
+        if(puzzle.checkLevelSelect()){
+            PieceType puzzleEnum = puzzle.getOverlappedLevel();
+            toNext(puzzleEnum);
+        }
+    }
 
     // For the following move functions. They attempt to move the pieces with moveGeneral, and ++Score on success.
     public void moveUp(View v) {
         if(puzzle.moveGeneral("up", MainPageActivity.this)){
             score.incrementNumOfMove();
-            if(puzzle.checkLevelSelect()){
-                PieceType puzzleEnum = puzzle.getOverlappedLevel();
-                toNext(puzzleEnum);
-            }
+            disableThenReenableButtons();
         }
     }
 
     public void moveDown(View v) {
         if(puzzle.moveGeneral("down", MainPageActivity.this)){
             score.incrementNumOfMove();
-            if(puzzle.checkLevelSelect()){
-                PieceType puzzleEnum = puzzle.getOverlappedLevel();
-                toNext(puzzleEnum);
-            }
+            disableThenReenableButtons();
         }
     }
 
     public void moveRight(View v) {
         if(puzzle.moveGeneral("right", MainPageActivity.this)){
             score.incrementNumOfMove();
-            if(puzzle.checkLevelSelect()){
-                PieceType puzzleEnum = puzzle.getOverlappedLevel();
-                toNext(puzzleEnum);
-            }
+            disableThenReenableButtons();
         }
     }
 
     public void moveLeft(View v) {
         if(puzzle.moveGeneral("left", MainPageActivity.this)){
             score.incrementNumOfMove();
-            if(puzzle.checkLevelSelect()){
-                PieceType puzzleEnum = puzzle.getOverlappedLevel();
-                toNext(puzzleEnum);
-            }
+            disableThenReenableButtons();
         }
     }
     // Attempts an undo, and if it works decrement the score
     public void undoBTN(View v){
         if(puzzle.undoMove()){
-            if(puzzle.checkLevelSelect()){
-                PieceType puzzleEnum = puzzle.getOverlappedLevel();
-                toNext(puzzleEnum);
-            }
+            disableThenReenableButtons();
         }
     }
     public void resetPuzzle(View v){

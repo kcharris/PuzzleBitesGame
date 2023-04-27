@@ -13,8 +13,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.puzzlebites.data.model.MoveTimer;
 import com.example.puzzlebites.data.model.Piece;
 import com.example.puzzlebites.data.model.PieceType;
 import com.example.puzzlebites.data.model.Puzzle;
@@ -26,7 +28,7 @@ import com.example.puzzlebites.data.repository.SettingRepository;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class PuzzleActivity extends AppCompatActivity {
+public class PuzzleActivity extends AppCompatActivity implements MoveTimer.MoveTimerInterface {
     private Score score;
     public Puzzle puzzle;
     Puzzles puzzles = new Puzzles(this);
@@ -86,6 +88,35 @@ public class PuzzleActivity extends AppCompatActivity {
         }
         score.reset();
     }
+    public void disableThenReenableButtons(){
+        Button upBTN = findViewById(R.id.puzzleUpBTN);
+        Button rightBTN = findViewById(R.id.puzzleRightBTN);
+        Button downBTN = findViewById(R.id.puzzleDownBTN);
+        Button leftBTN = findViewById(R.id.puzzleLeftBTN);
+
+        upBTN.setEnabled(false);
+        rightBTN.setEnabled(false);
+        downBTN.setEnabled(false);
+        leftBTN.setEnabled(false);
+
+        settingRepository = new SettingRepository(this);
+        new MoveTimer(this, settingRepository.getSettings().animationSeconds);
+    }
+    public void reenableButtons(){
+        Button upBTN = findViewById(R.id.puzzleUpBTN);
+        Button rightBTN = findViewById(R.id.puzzleRightBTN);
+        Button downBTN = findViewById(R.id.puzzleDownBTN);
+        Button leftBTN = findViewById(R.id.puzzleLeftBTN);
+
+        upBTN.setEnabled(true);
+        rightBTN.setEnabled(true);
+        downBTN.setEnabled(true);
+        leftBTN.setEnabled(true);
+
+        if(puzzle.isWinState()){
+            finishPuzzle();
+        }
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -104,42 +135,38 @@ public class PuzzleActivity extends AppCompatActivity {
         if(puzzle.moveGeneral("up", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
-        if(puzzle.isWinState()){
-            finishPuzzle();
-        }
+        disableThenReenableButtons();
     }
 
     public void moveDown(View v) {
         if(puzzle.moveGeneral("down", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
-        if(puzzle.isWinState()){
-            finishPuzzle();
-        }
+
+        disableThenReenableButtons();
     }
 
     public void moveRight(View v) {
         if(puzzle.moveGeneral("right", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
-        if(puzzle.isWinState()){
-            finishPuzzle();
-        }
+
+        disableThenReenableButtons();
     }
 
     public void moveLeft(View v) {
         if(puzzle.moveGeneral("left", PuzzleActivity.this)){
             score.incrementNumOfMove();
         }
-        if(puzzle.isWinState()){
-            finishPuzzle();
-        }
+
+        disableThenReenableButtons();
     }
 
     public void undoBTN(View v){
         if(puzzle.undoMove()){
             score.decrementNumOfMoves();
         }
+        disableThenReenableButtons();
     }
     public void finishPuzzle(){
         Intent scoreIntent = new Intent(this, ScoreScreenActivity.class);
