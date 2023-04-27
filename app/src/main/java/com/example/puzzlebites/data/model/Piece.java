@@ -155,7 +155,7 @@ public class Piece extends androidx.appcompat.widget.AppCompatImageView {
             };
             SettingRepository settingRepository = new SettingRepository(getContext());
             setting = settingRepository.getSettings();
-            a.setDuration(setting.animationSeconds);
+            a.setDuration(setting.animationMilliseconds);
             this.startAnimation(a);
         }
     }

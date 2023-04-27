@@ -21,6 +21,7 @@
         android:layout_height="50dp"
         android:contentDescription="This buttons returns user to MainActivity"
         android:onClick="returnButton"
+        android:background="@color/silver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.016"

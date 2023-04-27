@@ -11,12 +11,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.puzzlebites.data.model.MoveTimer;
@@ -27,10 +24,6 @@ import com.example.puzzlebites.data.model.Puzzles;
 import com.example.puzzlebites.data.model.Score;
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
-
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainPageActivity  extends AppCompatActivity implements MoveTimer.MoveTimerInterface {
     public Score score;
@@ -97,7 +90,7 @@ public class MainPageActivity  extends AppCompatActivity implements MoveTimer.Mo
         leftBTN.setEnabled(false);
 
         SettingRepository settingRepository = new SettingRepository(this);
-        new MoveTimer(this, settingRepository.getSettings().animationSeconds);
+        new MoveTimer(this, settingRepository.getSettings().animationMilliseconds);
     }
     public void reenableButtons(){
         Button upBTN = findViewById(R.id.puzzleUpBTN);

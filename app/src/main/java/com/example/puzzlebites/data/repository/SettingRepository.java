@@ -33,7 +33,8 @@ public class SettingRepository {
         edit.putInt("level4Star", setting.level4Star);
         edit.putInt("level5Star", setting.level5Star);
         // total score is not a saved property of Setting
-        edit.putLong("seconds", setting.animationSeconds);
+        edit.putLong("seconds", setting.animationMilliseconds);
+        edit.putBoolean("soundToggle", setting.soundToggle);
 
         edit.putInt("backgroundColor", setting.style);
         edit.commit();
@@ -56,7 +57,8 @@ public class SettingRepository {
             setting.level5Star = (int) settingMap.get("level5Star");
 
             setting.style = (int) settingMap.get("backgroundColor");
-            setting.animationSeconds = (long) settingMap.get("seconds");
+            setting.animationMilliseconds = (long) settingMap.get("seconds");
+            setting.soundToggle = (boolean) settingMap.get("soundToggle");
         }
         catch (Exception e){
             setting = new Setting();

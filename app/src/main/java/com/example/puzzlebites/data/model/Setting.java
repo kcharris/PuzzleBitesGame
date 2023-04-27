@@ -1,19 +1,11 @@
 package com.example.puzzlebites.data.model;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import java.util.concurrent.TimeUnit;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import com.example.puzzlebites.R;
 import com.example.puzzlebites.data.repository.SettingRepository;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Setting {
     public int style = R.style.Theme_PuzzleBites_theme1;
@@ -27,14 +19,14 @@ public class Setting {
     public int level4Star =0;
     public int level5Score = 0;
     public int level5Star =0;
-    public long animationSeconds = 1015;
+    public long animationMilliseconds = 1000;
     public boolean soundToggle = true;
 
     public void setAnimationTime(long animationTimes) {
-        animationTimes = animationSeconds;
+        animationTimes = animationMilliseconds;
     }
     public long getAnimationTime() {
-        return animationSeconds;
+        return animationMilliseconds;
     }
 
     public void moveTime() {

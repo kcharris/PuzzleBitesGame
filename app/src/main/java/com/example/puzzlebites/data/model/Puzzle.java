@@ -148,6 +148,8 @@ public class Puzzle {
                 break;
             }
         }
+
+        settingRepository = new SettingRepository(c);
         if(settingRepository.getSettings().soundToggle == true) {
             if (checker == false) {
                 MediaPlayer wall = MediaPlayer.create(c, R.raw.wall);

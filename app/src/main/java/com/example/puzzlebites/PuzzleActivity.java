@@ -25,7 +25,6 @@ import com.example.puzzlebites.data.model.Score;
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class PuzzleActivity extends AppCompatActivity implements MoveTimer.MoveTimerInterface {
@@ -100,7 +99,7 @@ public class PuzzleActivity extends AppCompatActivity implements MoveTimer.MoveT
         leftBTN.setEnabled(false);
 
         settingRepository = new SettingRepository(this);
-        new MoveTimer(this, settingRepository.getSettings().animationSeconds);
+        new MoveTimer(this, settingRepository.getSettings().animationMilliseconds);
     }
     public void reenableButtons(){
         Button upBTN = findViewById(R.id.puzzleUpBTN);

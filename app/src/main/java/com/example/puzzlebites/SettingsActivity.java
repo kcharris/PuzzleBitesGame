@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
@@ -37,8 +34,25 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         setting = settingRepository.getSettings();
         myLayout = (ConstraintLayout) findViewById(R.id.activitySetting);
+        Button as = findViewById(R.id.animationSpeed);
+        if (setting.animationMilliseconds == 800){
+            as.setText("Animation Speed slow");
+        }
+        else{
+            as.setText("Animation Speed fast");
+        }
+        Button soundTV = findViewById(R.id.changeSound);
+        if(setting.soundToggle) {
+            soundTV.setText("Sound On");
+        }
+        else {
+            soundTV.setText("Sound Off");
+        }
+
     }
     public void applySettings(){
+        settingRepository = new SettingRepository(this);
+        setting = settingRepository.getSettings();
         Setting.applySettingToView(this);
     }
 
@@ -49,6 +63,20 @@ public class SettingsActivity extends AppCompatActivity {
         mainIntent.putExtra("fromSettings", "fromSettings");
         setResult(Activity.RESULT_OK, mainIntent);
         finish();
+    }
+    public void changeAnimationSpeed(View v){
+        Button as = findViewById(R.id.animationSpeed);
+
+        if (setting.animationMilliseconds == 400){
+            setting.animationMilliseconds = 800;
+            as.setText("Animation Speed slow");
+        }
+        else{
+            setting.animationMilliseconds = 400;
+            as.setText("Animation Speed fast");
+        }
+        saveSharedPreferences();
+        applySettings();
     }
 
     public void changeTheme(View v)
@@ -65,12 +93,18 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void toggleSound(View v)
     {
+        Button soundTV = findViewById(R.id.changeSound);
         boolean sound = setting.soundToggle;
-        if(sound)
+        if(sound) {
             setting.soundToggle = false;
-        else
+            soundTV.setText("Sound off");
+        }
+        else {
             setting.soundToggle = true;
-        Log.d("SoundSet", String.valueOf(setting.soundToggle));
+            soundTV.setText("Sound on");
+        }
+        saveSharedPreferences();
+        applySettings();
     }
 
     public void resetScore(View v) {
