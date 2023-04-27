@@ -48,7 +48,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24sp"
         android:visibility="visible"
-        android:background="@drawable/rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gold"
         app:layout_constraintTop_toBottomOf="@+id/congratsTV" />
@@ -63,7 +62,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24sp"
         android:visibility="visible"
-        android:background="@drawable/rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/silver"
         app:layout_constraintTop_toBottomOf="@+id/goldTV" />
@@ -78,7 +76,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24sp"
         android:visibility="visible"
-        android:background="@drawable/rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bronze"
         app:layout_constraintTop_toBottomOf="@+id/silverTV" />

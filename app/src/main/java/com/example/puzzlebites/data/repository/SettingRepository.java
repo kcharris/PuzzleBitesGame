@@ -60,6 +60,9 @@ public class SettingRepository {
         catch (Exception e){
             setting = new Setting();
         }
+        if (setting.style == 0){
+            setting = new Setting();
+        }
         return setting;
     }
     public void resetScore(Setting setting){
