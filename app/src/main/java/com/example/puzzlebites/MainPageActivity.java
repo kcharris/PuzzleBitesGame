@@ -83,11 +83,13 @@ public class MainPageActivity  extends AppCompatActivity implements MoveTimer.Mo
         Button rightBTN = findViewById(R.id.puzzleRightBTN);
         Button downBTN = findViewById(R.id.puzzleDownBTN);
         Button leftBTN = findViewById(R.id.puzzleLeftBTN);
+        Button undoBTN = findViewById(R.id.puzzleUndoBTN);
 
         upBTN.setEnabled(false);
         rightBTN.setEnabled(false);
         downBTN.setEnabled(false);
         leftBTN.setEnabled(false);
+        undoBTN.setEnabled(false);
 
         SettingRepository settingRepository = new SettingRepository(this);
         new MoveTimer(this, settingRepository.getSettings().animationMilliseconds);
@@ -97,11 +99,13 @@ public class MainPageActivity  extends AppCompatActivity implements MoveTimer.Mo
         Button rightBTN = findViewById(R.id.puzzleRightBTN);
         Button downBTN = findViewById(R.id.puzzleDownBTN);
         Button leftBTN = findViewById(R.id.puzzleLeftBTN);
+        Button undoBTN = findViewById(R.id.puzzleUndoBTN);
 
         upBTN.setEnabled(true);
         rightBTN.setEnabled(true);
         downBTN.setEnabled(true);
         leftBTN.setEnabled(true);
+        undoBTN.setEnabled(true);
         if(puzzle.checkLevelSelect()){
             PieceType puzzleEnum = puzzle.getOverlappedLevel();
             toNext(puzzleEnum);
