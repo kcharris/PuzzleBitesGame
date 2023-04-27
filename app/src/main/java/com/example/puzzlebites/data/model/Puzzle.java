@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.puzzlebites.R;
+import com.example.puzzlebites.data.repository.SettingRepository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,6 +28,8 @@ public class Puzzle {
     private HashSet levelLocations;
     private Piece bagel;
     private List<Piece> allPieces;
+    private Setting setting;
+    SettingRepository settingRepository;
 
     public List<Piece> getAllPieces() {
         if (allPieces == null) {
@@ -138,6 +141,7 @@ public class Puzzle {
                     break;
             }
             if (checker == false) break;
+            /*setting.moveTime();*/
             locationsHash.add(p.nextStartMargin + ", " + p.nextTopMargin);
         }
 //      If the pieces do not share an endlocation, go ahead and move

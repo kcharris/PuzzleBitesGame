@@ -61,11 +61,13 @@ public class TrophyPage extends AppCompatActivity {
         }
     }
     public void setScoreButtonText(TextView btn,PieceType level, int score){
+        StringBuilder strBuld = new StringBuilder(level.toString());
+        strBuld.insert(5, " ");
         if(score == 0){
-            btn.setText(level.toString() + ": not completed");
+            btn.setText(strBuld.toString() + ": not completed");
         }
         else{
-            btn.setText(level.toString() + ": completed in " + score + " moves.");
+            btn.setText(strBuld.toString() + ": completed in " + score + " moves.");
         }
     }
 

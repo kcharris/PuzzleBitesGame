@@ -74,9 +74,7 @@ public class PuzzleActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> sStartLauncher;
     private void setPuzzle(PieceType puzzleEnum) {
         TextView levelNameTV = findViewById(R.id.puzzleLevelTV);
-        StringBuilder strBuld = new StringBuilder(puzzleEnum.toString());
-        strBuld.insert(5, " ");
-        levelNameTV.setText(String.valueOf(strBuld));
+        levelNameTV.setText(String.valueOf(puzzleEnum));
         if(!(this.puzzle == null)){
             for(Piece p: puzzle.getAllPieces()) {
                 myLayout.removeViewInLayout(p);
@@ -146,8 +144,7 @@ public class PuzzleActivity extends AppCompatActivity {
     public void finishPuzzle(){
         Intent scoreIntent = new Intent(this, ScoreScreenActivity.class);
         scoreIntent.putExtra("score", score.getNumOfMoves());
-
-        scoreIntent.putExtra("puzzleEnum",puzzleEnum.toString());
+        scoreIntent.putExtra("puzzleEnum",puzzleEnum);
         scoreIntent.putExtra("bronze", puzzle.bronzeThres);
         scoreIntent.putExtra("silver", puzzle.silverThres);
         scoreIntent.putExtra("gold", puzzle.goldThres);

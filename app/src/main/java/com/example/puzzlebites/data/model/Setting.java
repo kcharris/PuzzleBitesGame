@@ -3,6 +3,7 @@ package com.example.puzzlebites.data.model;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
+import java.util.concurrent.TimeUnit;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -26,6 +27,22 @@ public class Setting {
     public int level4Star =0;
     public int level5Score = 0;
     public int level5Star =0;
+    public long animationTime=1000;
+
+    public void setAnimationTime(long animationTimes) {
+        animationTimes = animationTime;
+    }
+    public long getAnimationTime() {
+        return animationTime;
+    }
+
+    public void moveTime() {
+        try {
+            TimeUnit.SECONDS.sleep(getAnimationTime());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public int getTotalScore(){
         return level1Score + level2Score + level3Score + level4Score + level5Score;
