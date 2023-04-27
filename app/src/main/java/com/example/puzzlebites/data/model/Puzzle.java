@@ -155,7 +155,7 @@ public class Puzzle {
 //      If the pieces do not share an endlocation, go ahead and move
         if (locationsHash.size() == this.pieces.size() && checker) {
             //Add Setting.soundToggle here
-            if(false)
+            if(true)
             {
                 MediaPlayer whoosh = MediaPlayer.create(c, R.raw.whoosh);
                 whoosh.start();
@@ -176,7 +176,7 @@ public class Puzzle {
             return true;
         }
         //Add Setting.soundToggle here
-        if(false)
+        if(true)
         {
             MediaPlayer wall = MediaPlayer.create(c, R.raw.wall);
             wall.start();
