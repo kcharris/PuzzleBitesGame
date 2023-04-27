@@ -38,5 +38,15 @@
     <!-- Theme 2 Colors -->
     <color name="lemon">#DFDE95</color>
     <color name="tomato">#F75202</color>
-    <color name="carrot">#F35C02</color>
+    <color name="carrot">#E35C02</color>
+
+    <!-- Theme 3 Colors -->
+    <color name="leaf">#74C151</color>
+    <color name="bread">#E7BB85</color>
+    <color name="table">#E6E6E7</color>
+
+    <!-- Theme 4 Colors -->
+    <color name="goldBowl">#B9885C</color>
+    <color name="towelBlue">#454F65</color>
+    <color name="spinach">#4F5F1F</color>
 </resources>

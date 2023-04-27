@@ -15,6 +15,7 @@
         android:layout_marginTop="15dp"
         android:text="Puzzle Bites!"
         android:textSize="48sp"
+        android:background="@drawable/rounded_corner"
         app:layout_constraintBottom_toTopOf="@+id/playBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

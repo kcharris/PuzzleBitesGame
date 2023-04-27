@@ -57,9 +57,9 @@
 
     <style name="Theme.PuzzleBites.theme3" parent="Theme.PuzzleBites">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/medium_blue</item>
-        <item name="colorPrimaryVariant">@color/dark_blue</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/leaf</item>
+        <item name="colorPrimaryVariant">@color/table</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -72,8 +72,8 @@
 
     <style name="Theme.PuzzleBites.theme4" parent="Theme.PuzzleBites">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/medium_blue</item>
-        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorPrimary">@color/towelBlue</item>
+        <item name="colorPrimaryVariant">@color/spinach</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
