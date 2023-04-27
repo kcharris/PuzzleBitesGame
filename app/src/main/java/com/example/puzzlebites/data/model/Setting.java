@@ -28,6 +28,7 @@ public class Setting {
     public int level5Score = 0;
     public int level5Star =0;
     public long animationTime=1000;
+    public boolean soundToggle = true;
 
     public void setAnimationTime(long animationTimes) {
         animationTimes = animationTime;

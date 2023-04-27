@@ -5,9 +5,11 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.puzzlebites.MainPageActivity;
 import com.example.puzzlebites.PuzzleActivity;
 import com.example.puzzlebites.R;
 import com.example.puzzlebites.data.repository.SettingRepository;
@@ -145,17 +147,19 @@ public class Puzzle {
             }
             if (checker == false)
             {
-                MediaPlayer wall = MediaPlayer.create(c, R.raw.wall);
-                wall.start();
                 break;
             }
             /*setting.moveTime();*/
-            MediaPlayer whoosh = MediaPlayer.create(c, R.raw.whoosh);
-            whoosh.start();
             locationsHash.add(p.nextStartMargin + ", " + p.nextTopMargin);
         }
 //      If the pieces do not share an endlocation, go ahead and move
         if (locationsHash.size() == this.pieces.size() && checker) {
+            //Add Setting.soundToggle here
+            if(false)
+            {
+                MediaPlayer whoosh = MediaPlayer.create(c, R.raw.whoosh);
+                whoosh.start();
+            }
             moveList.add(direction);
             for (Piece p : this.pieces) {
                 p.setMargins();
@@ -170,6 +174,12 @@ public class Puzzle {
                 }
             }
             return true;
+        }
+        //Add Setting.soundToggle here
+        if(false)
+        {
+            MediaPlayer wall = MediaPlayer.create(c, R.raw.wall);
+            wall.start();
         }
         return false;
     }

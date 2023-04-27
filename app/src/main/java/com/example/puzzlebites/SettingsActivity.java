@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.puzzlebites.data.model.Setting;
 import com.example.puzzlebites.data.repository.SettingRepository;
@@ -60,6 +61,16 @@ public class SettingsActivity extends AppCompatActivity {
         setting.style = styles.get(cycle% styles.size());
         saveSharedPreferences();
         this.recreate();
+    }
+
+    public void toggleSound(View v)
+    {
+        boolean sound = setting.soundToggle;
+        if(sound)
+            setting.soundToggle = false;
+        else
+            setting.soundToggle = true;
+        Log.d("SoundSet", String.valueOf(setting.soundToggle));
     }
 
     public void resetScore(View v) {
