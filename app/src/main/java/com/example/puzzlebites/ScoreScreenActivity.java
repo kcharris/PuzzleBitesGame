@@ -67,9 +67,6 @@ public class ScoreScreenActivity extends AppCompatActivity {
 
     }
     public void setStars(){
-        TextView goldStat = findViewById(R.id.goldTV);
-        TextView bronzeStat = findViewById(R.id.bronzeTV);
-        TextView silverStat = findViewById(R.id.silverTV);
         ImageView bronze = findViewById(R.id.bronze);
         ImageView silver = findViewById(R.id.silver);
         ImageView gold = findViewById(R.id.gold);
@@ -81,19 +78,16 @@ public class ScoreScreenActivity extends AppCompatActivity {
 
         stars = 0;
         if (score <= bronzeThres) {
-            bronzeStat.setBackgroundResource(R.color.bronze);
             bronze.startAnimation(fadeIn0);
             bronze.setVisibility(View.VISIBLE);
             stars = 1;
         }
         if (score <= silverThres) {
-            silverStat.setBackgroundResource(R.color.silver);
             silver.startAnimation(fadeIn1);
             silver.setVisibility(View.VISIBLE);
             stars = 2;
         }
         if (score <= goldThres) {
-            goldStat.setBackgroundResource(R.color.gold);
             gold.startAnimation(fadeIn2);
             gold.setVisibility(View.VISIBLE);
             stars = 3;

@@ -57,7 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
-        android:background="#CBCBCB"
         android:padding="10dp"
         android:text="Move: # __"
         android:textAlignment="textStart"
