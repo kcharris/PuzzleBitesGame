@@ -1,6 +1,6 @@
 # PuzzleBitesGame
 #### Notes on running:  
-In order for the app to work we currently recommend testing the application using a larger screen or high pixel density. Android Studio with the built in emulator running the Google Pixel, or any of the Pixel phones is recommended. The target sdk is 33, and the minSDK is 24. Except for a buggy undo button, the app is fully functional.
+In order for the app to work we currently recommend testing the application using a larger screen or high pixel density. Android Studio with the built in emulator running the Google Pixel, or any of the Pixel phone is recommended. The target sdk is 33, and the minSDK is 24. Except for a buggy undo button, the app is fully functional.
 
 #### Game Made By
 * Braeden
