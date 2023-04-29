@@ -1,6 +1,6 @@
 # PuzzleBitesGame
 #### Notes on running:  
-In order for the app to work we currently recommend testing the application using a larger screen or high pixel density. Android Studio with the built in emulator running the Google Pixel, or any of the Pixel phone is recommended. The target sdk is 33, and the minSDK is 24.
+In order for the app to work we currently recommend testing the application using a larger screen or high pixel density. Android Studio with the built in emulator running the Google Pixel, or any of the Pixel phone is recommended. The target sdk is 33, and the minSDK is 24. When running the app it is recommended to go to the settings first to turn off the sound and increase the movement speed. For testing, the solution to the first puzzle, the one at the bottom left, is "u, l, l, l, d, r, r, u."
 
 #### Completion Status
 Except for a buggy undo button, the app is fully functional.
