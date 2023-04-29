@@ -13,7 +13,7 @@ In order for the app to work we currently recommend testing the application usin
 * Kevin Harris
 
 #### Completion Status
-##### Note - Functionality has been added and removed since the project proposal. Notable changes include defining a Main page, including a settings page, removing fractional movement, removing solid walls to prevent movement, and updating the "change background" and "dark theme" settings into a "change theme" switch. Of the updated functionality the only thing that is not completely working due to bugs is the undo button. The rest of the app is fully functional.
+##### Note - Functionality has been added and removed since the project proposal. Notable changes include defining a Main page, including a settings page, removing fractional movement, removing solid walls to prevent movement, and combining the "change background" and "dark theme" settings into a "change theme" switch. Of the updated functionality the only thing that is not completely working due to bugs is the undo button. The rest of the app is fully functional.
 
 Activities:
 * Main Page - Done
